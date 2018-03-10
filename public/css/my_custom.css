@@ -8,3 +8,7 @@
 .register-logo a, .login-logo a{
     color: brown;
 }
+.error
+{
+    color: red;
+}

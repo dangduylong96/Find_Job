@@ -39,22 +39,27 @@
     <body class="hold-transition register-page">
         <div class="register-box">
             <div class="register-logo">
-                <a href="../../index2.html"><b>Nhà Tuyển Dụng</b></a>
+                <a href="#"><b>Nhà Tuyển Dụng</b></a>
             </div>
             <div class="register-box-body">
                 <p class="login-box-msg">Đăng kí tài khoản tuyển dụng mới</p>
-                <form action="../../index.html" method="post">
+                <form action="{{route('postRegister')}}" method="post">
+                    @csrf
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <input name="email" type="email" class="form-control" value="{{old('email')}}" placeholder="Email">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>          
+                        <span class="error">{{$errors->first('email')}}</span>
                     </div>
+                    
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input name="password" type="password" class="form-control" placeholder="Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <span class="error">{{$errors->first('password')}}</span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Retype password">
+                        <input name="repassword" type="password" class="form-control" placeholder="Retype password">
                         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                        <span class="error">{{$errors->first('repassword')}}</span>
                     </div>
                     <div class="row">
                         <!-- /.col -->
@@ -64,7 +69,7 @@
                         <!-- /.col -->
                     </div>
                 </form>
-                <a href="{{route('login')}}" class="text-center">Tôi đã có tài khoản</a>
+                <a href="{{route('employer_login')}}" class="text-center">Tôi đã có tài khoản</a>
             </div>
             <!-- /.form-box -->
         </div>

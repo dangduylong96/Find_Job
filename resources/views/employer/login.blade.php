@@ -44,14 +44,20 @@
             <!-- /.login-logo -->
             <div class="login-box-body">
                 <p class="login-box-msg">Nhập thông tin đăng nhập</p>
-                <form action="../../index2.html" method="post">
+                @if(isset($message_login))
+                <p class="login-box-msg error"><?php echo $message_login?></p>
+                @endif
+                <form action="{{route('post_employer_login')}}" method="post">
+                    @csrf
                     <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input name="email" type="email" class="form-control" value="{{old('email')}}" placeholder="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        <span class="error">{{$errors->first('email')}}</span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input name="password" type="password" class="form-control" placeholder="Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        <span class="error">{{$errors->first('password')}}</span>
                     </div>
                     <div class="row">
                         <div class="col-xs-8">
@@ -90,5 +96,8 @@
               });
             });
         </script>
+        @if(session()->has('message'))
+            <?php echo '<script>alert("'.session('message').'")</script>'?>
+        @endif
     </body>
 </html>

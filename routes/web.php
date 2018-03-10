@@ -16,7 +16,14 @@ Route::get('/', function () {
 });
 
 //Nhà tuyển dụng
-/*Nhà tuyển dụng đăng nhập trước khi quản trị*/
-Route::get('/employer/dang-nhap.html','UserController@getLogin')->name('login');
-/*Nhà tuyển dụng đăng kí*/
+/*****Nhà tuyển dụng đăng nhập trước khi quản trị*/
+Route::get('/employer/dang-nhap.html','UserController@getLogin')->name('employer_login');
+Route::post('/employer/dang-nhap.html','UserController@postLogin')->name('post_employer_login');
+/*****Nhà tuyển dụng đăng kí*/
 Route::get('/employer/dang-ki.html','UserController@getRegister')->name('register');
+Route::post('/employer/dang-ki.html','UserController@postRegister')->name('postRegister');
+/***Quản trị nhà tuyền dụng */
+Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
+    Route::get('dashboard.html','EmployerController@dashBoard');
+    Route::get('thong-tin-cong-ty.html','EmployerController@company');
+});
