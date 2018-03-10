@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Nhà tuyển dụng
+//--Nhà tuyển dụng đăng nhập trước khi quản trị
+Route::get('/employer/login','UserController@Login');
