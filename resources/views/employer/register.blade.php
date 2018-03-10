@@ -20,8 +20,8 @@
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')}}"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js')}}"></script>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -30,21 +30,20 @@
             .login-page, .register-page
             {
                 <?php
-                    echo "background-image: url('".url('/')."/public/images/background/".mt_rand(1,60).".jpg');";
-                ?>
-                background-size:cover;
+                  echo "background-image: url('".url('/')."/public/images/background/".mt_rand(1,60).".jpg');";
+                ?>   
+                background-size:cover;            
             }
         </style>
     </head>
-    <body class="hold-transition login-page">
-        <div class="login-box">
-            <div class="login-logo">
-                <a href="#"><b>Nhà Tuyển Dụng</b></a>
+    <body class="hold-transition register-page">
+        <div class="register-box">
+            <div class="register-logo">
+                <a href="../../index2.html"><b>Nhà Tuyển Dụng</b></a>
             </div>
-            <!-- /.login-logo -->
-            <div class="login-box-body">
-                <p class="login-box-msg">Nhập thông tin đăng nhập</p>
-                <form action="../../index2.html" method="post">
+            <div class="register-box-body">
+                <p class="login-box-msg">Đăng kí tài khoản tuyển dụng mới</p>
+                <form action="../../index.html" method="post">
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control" placeholder="Email">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -53,28 +52,23 @@
                         <input type="password" class="form-control" placeholder="Password">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Retype password">
+                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    </div>
                     <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label>
-                                <input type="checkbox"> Nhớ tài khoản
-                                </label>
-                            </div>
-                        </div>
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng kí</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-                <!-- /.social-auth-links -->
-                <a href="#">Quên mật khẩu?</a><br>
-                <a href="{{route('register')}}" class="text-center">Đăng kí tài khoản mới</a>
+                <a href="{{route('login')}}" class="text-center">Tôi đã có tài khoản</a>
             </div>
-            <!-- /.login-box-body -->
+            <!-- /.form-box -->
         </div>
-        <!-- /.login-box -->
+        <!-- /.register-box -->
         <!-- jQuery 3 -->
         <script src="{{asset('public/admin/bower_components/jquery/dist/jquery.min.js')}}"></script>
         <!-- Bootstrap 3.3.7 -->

@@ -16,5 +16,7 @@ Route::get('/', function () {
 });
 
 //Nhà tuyển dụng
-//--Nhà tuyển dụng đăng nhập trước khi quản trị
-Route::get('/employer/login','UserController@Login');
+/*Nhà tuyển dụng đăng nhập trước khi quản trị*/
+Route::get('/employer/dang-nhap.html','UserController@getLogin')->name('login');
+/*Nhà tuyển dụng đăng kí*/
+Route::get('/employer/dang-ki.html','UserController@getRegister')->name('register');

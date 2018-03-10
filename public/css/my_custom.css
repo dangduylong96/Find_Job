@@ -1,0 +1,10 @@
+.login-box-body, .register-box-body {
+    background: white;
+    padding: 20px;
+    border-top: 0;
+    color: #666;
+    opacity: 0.9;
+}
+.register-logo a, .login-logo a{
+    color: brown;
+}
