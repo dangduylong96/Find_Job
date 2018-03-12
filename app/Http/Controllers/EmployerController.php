@@ -10,10 +10,4 @@ class EmployerController extends Controller
     {
         return view('employer.dashboard.dashboard');
     }
-
-    //Thông tin công ty
-    public function company()
-    {
-        return view('employer.company.company');
-    }
 }

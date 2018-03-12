@@ -25,5 +25,37 @@ Route::post('/employer/dang-ki.html','UserController@postRegister')->name('postR
 /***Quản trị nhà tuyền dụng */
 Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
     Route::get('dashboard.html','EmployerController@dashBoard');
-    Route::get('thong-tin-cong-ty.html','EmployerController@company');
+    Route::get('thong-tin-cong-ty.html','CompaniesController@company');
+    Route::post('thong-tin-cong-ty.html','CompaniesController@updateCompany')->name('employer_update_company');
+});
+
+//Admin (Quản trị viên)
+Route::get('/admin/dang-nhap.html','AdminController@getLogin')->name('admin_login');
+Route::post('/admin/dang-nhap.html','AdminController@postLogin')->name('post_admin_login');
+/****Quản trị Admin */
+Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
+    Route::get('dashboard.html','AdminController@dashBoard');
+    //Setting thành phố
+    Route::get('thanh-pho.html','SettingController@listCity');
+    Route::get('thanh-pho/them.html',function(){
+        return view('admin.setting.city.add_city');
+    });
+    Route::post('thanh-pho/them.html','SettingController@postCity')->name('add_city');
+    Route::get('thanh-pho/sua-{id}.html','SettingController@editCity');
+    Route::post('thanh-pho/sua-{id}.html','SettingController@postEditCity');
+    Route::get('thanh-pho/xoa-{id}.html','SettingController@deleteCity');
+
+    //Setting Quy mô
+    Route::get('qui-mo.html','SettingController@companySize');
+    Route::get('qui-mo/them.html',function(){
+        return view('admin.setting.size_company.add_size_company');
+    });
+    Route::post('qui-mo/them.html','SettingController@addSizeCompany')->name('add_size_company');
+    Route::get('qui-mo/sua-{id}.html','SettingController@editSizeCompany');
+    Route::post('qui-mo/sua-{id}.html','SettingController@postEditSizeCompany');
+    Route::get('qui-mo/xoa-{id}.html','SettingController@deleteSizeCompany');
+});
+
+Route::get('/demo', function () {
+    return MyLibrary::get_username(1);
 });

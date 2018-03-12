@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost:90/Find_Job',
+    'url' => 'http://localhost:90/Find_Job/',
 
     /*
     |--------------------------------------------------------------------------
@@ -159,6 +159,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\MyLibaryProvider::class,
 
     ],
 
@@ -208,6 +209,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'MyLibrary' => App\Helper\MyLibrary::class,
 
     ],
 

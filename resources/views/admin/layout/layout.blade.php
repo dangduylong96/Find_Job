@@ -3,12 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Nhà tuyển Dụng</title>
+        <title>Admin</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link REL="SHORTCUT ICON" HREF="{{asset('public/images/logo/logo.png')}}">
         <!-- Bootstrap 3.3.7 -->
         <link rel="stylesheet" href="{{asset('public/admin/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+        <!-- Select2 -->
+        <link rel="stylesheet" href="{{asset('public/admin/bower_components/select2/dist/css/select2.min.css')}}">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="{{asset('public/admin/bower_components/font-awesome/css/font-awesome.min.css')}}">
         <!-- Ionicons -->
@@ -289,7 +291,7 @@
                 </nav>
             </header>
             <!-- Left side column. contains the logo and sidebar -->
-            @include('employer.partials.left_sidebar')
+            @include('admin.partials.left_sidebar')
             <!-- Content Wrapper. Contains page content -->
             @yield('main_page')
             <!-- /.content-wrapper -->
@@ -313,6 +315,8 @@
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
+        <!-- Select2 -->
+        <script src="{{asset('public/admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
         <!-- Bootstrap 3.3.7 -->
         <script src="{{asset('public/admin/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
         <!-- AdminLTE App -->
