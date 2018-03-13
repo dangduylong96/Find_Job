@@ -16,6 +16,26 @@ if (! function_exists('createMessage')) {
         {
             $title='Thông tin';
         }
-        return '<div class="box-header"><div class="alert alert-'.$status.' alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-check"></i> '.$title.'!</h4>'.$string.'</div><h3 class="box-title">Quản lí thành phố</h3></div>';
+        return '<div class="box-header"><div class="alert alert-'.$status.' alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><h4><i class="icon fa fa-check"></i> '.$title.'!</h4>'.$string.'</div>';
+    }
+}
+
+//Hiện ra lable trạng thái
+if (! function_exists('createLabel')) {
+    function createLabel($status=0)
+    {
+        $arr_status=[
+            0=>'Đang chờ duyệt',
+            1=>'Đã duyệt',
+            2=>'Hết hạn',
+            3=>'Hủy'
+        ];
+        $arr_color_status=[
+            0=>'primary',
+            1=>'success',
+            2=>'warning',
+            3=>'danger'
+        ];
+        return '<span class="label label-'.$arr_color_status[$status].'">'.$arr_status[$status].'</span>';
     }
 }

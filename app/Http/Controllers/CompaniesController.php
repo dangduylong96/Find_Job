@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use MyLibrary;
 use App\Http\Requests\CompaniesRequest;
 use App\User;
 use App\Company;
+use MyLibrary;
 use Auth;
 use File;
 class CompaniesController extends Controller

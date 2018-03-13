@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Số điện thoại</label>
                                 <div class="col-sm-10">
-                                    <input name="phone" type="number" class="form-control" id="phone" placeholder="Số điện thoại" value="{{old('phone',$company['phone'])}}" required>
+                                    <input name="phone" type="text" class="form-control" id="phone" placeholder="Số điện thoại" value="{{old('phone',$company['phone'])}}" required>
                                     <span class="error">{{$errors->first('phone')}}</span>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                 <div class="col-sm-10">
                                     <select id="city" name="city" class="form-control select2" style="width: 100%;">
                                         @foreach($list_place as $k=>$v)
-                                        <option value="{{$k}}" {{(old("city") == $company['place'] ? "selected":"") }}>{{$v}}</option>
+                                        <option value="{{$k}}" {{($k == $company['place'] ? "selected":"") }}>{{$v}}</option>
                                         @endforeach
                                     </select>
                                     <span class="error">{{$errors->first('city')}}</span>
@@ -63,7 +63,7 @@
                                 <div class="col-sm-10">
                                     <select id="size" name="size" class="form-control select2" style="width: 100%;">
                                         @foreach($list_size as $k=>$v)
-                                        <option value="{{$k}}" {{(old("size") == $company['size'] ? "selected":"") }}>{{$v}}</option>
+                                        <option value="{{$k}}" {{($k == $company['size'] ? "selected":"") }}>{{$v}}</option>
                                         @endforeach
                                     </select>
                                     <span class="error">{{$errors->first('size')}}</span>

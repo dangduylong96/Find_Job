@@ -31,7 +31,7 @@ class CreatePostEmployersTable extends Migration
             $table->string('career');
             $table->string('workplace');
             $table->text('contact');
-            $table->dateTime('expiration date');
+            $table->dateTime('expiration_date');
             $table->tinyInteger('status');
             $table->timestamps();
         });

@@ -197,4 +197,13 @@ class SettingController extends Controller
         $size_company->save();
         return redirect('admin/qui-mo.html')->with('message',['status'=>'success','content'=>'Thêm thành công!!']);        
     }
+
+    //Giới tính
+    public function Sex()
+    {
+        $setting=Setting::where('name','sex')->get()->toArray();
+        $list_sex=json_decode($setting[0]['value'],true);
+        $data['list_sex']=$list_sex;
+        return view('admin.setting.sex.sex',$data);
+    }
 }

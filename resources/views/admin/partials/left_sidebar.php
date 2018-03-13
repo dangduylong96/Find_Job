@@ -93,6 +93,16 @@
                             <li class="<?php if(strpos(url()->current(),'qui-mo/them.html')!==false) echo 'active'?>" data-active="setting,size"><a href="<?php echo url('/admin/qui-mo/them.html')?>"><i class="fa fa-circle-o text-red"></i> Thêm qui mô</a></li>
                         </ul>
                     </li>
+                    <li id="sex" class="treeview" data-active="city">
+                        <a href="#"><i class="fa fa-circle-o text-yellow"></i> Giới Tính
+                            <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="<?php if(strpos(url()->current(),'gioi-tinh.html')!==false) echo 'active'?>" data-active="setting,sex"><a href="<?php echo url('/admin/qui-mo.html')?>"><i class="fa fa-circle-o text-red"></i> Danh sách giới tính</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
     </section>

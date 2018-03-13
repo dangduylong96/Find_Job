@@ -24,7 +24,18 @@ Route::get('/employer/dang-ki.html','UserController@getRegister')->name('registe
 Route::post('/employer/dang-ki.html','UserController@postRegister')->name('postRegister');
 /***Quản trị nhà tuyền dụng */
 Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
-    Route::get('dashboard.html','EmployerController@dashBoard');
+    Route::group(['middleware' => 'checkexitscompany'], function(){
+        Route::get('dashboard.html','EmployerController@dashBoard');    
+        
+        //Quản lí tin của nhà tuyển dụng
+        Route::get('dashboard.html','EmployerController@dashBoard');    
+        Route::get('them-tin.html','PostEmployerController@employerGetAddEmployer');    
+        Route::post('them-tin.html','PostEmployerController@employerPostAddEmployer')->name('post_add_employer');
+        Route::get('sua-tin-{id}.html','PostEmployerController@employerGetEditEmployer');
+        Route::post('sua-tin-{id}.html','PostEmployerController@employerPostEditEmployer');
+        Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');    
+        Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
+    });
     Route::get('thong-tin-cong-ty.html','CompaniesController@company');
     Route::post('thong-tin-cong-ty.html','CompaniesController@updateCompany')->name('employer_update_company');
 });
@@ -54,6 +65,9 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('qui-mo/sua-{id}.html','SettingController@editSizeCompany');
     Route::post('qui-mo/sua-{id}.html','SettingController@postEditSizeCompany');
     Route::get('qui-mo/xoa-{id}.html','SettingController@deleteSizeCompany');
+
+    //Setting giới tính
+    Route::get('gioi-tinh.html','SettingController@Sex');
 });
 
 Route::get('/demo', function () {

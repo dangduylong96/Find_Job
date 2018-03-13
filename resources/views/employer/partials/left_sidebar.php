@@ -14,7 +14,7 @@
                 <i class="fa fa-building"></i> <span>Thông tin Công Ty</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="treeview" id="post">
                 <a href="#">
                 <i class="fa  fa-sticky-note-o"></i>
                 <span>Tin tuyển dụng</span>
@@ -23,8 +23,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Dang sách tin</a></li>
-                    <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Thêm tin</a></li>
+                    <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>" data-active="post"><a href="<?php echo url('/employer/danh-sach-tin.html')?>"><i class="fa fa-circle-o"></i> Dang sách tin</a></li>
+                    <li class="<?php if(strpos(url()->current(),'them-tin.html')!==false) echo 'active'?>" data-active="post"><a href="<?php echo url('/employer/them-tin.html')?>"><i class="fa fa-circle-o"></i> Thêm tin</a></li>
                 </ul>
             </li>
             <li class="treeview">
