@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 //Nhà tuyển dụng
-/*****Nhà tuyển dụng đăng nhập trước khi quản trị*/
+/****************************Nhà tuyển dụng đăng nhập trước khi quản trị*/
 Route::get('/employer/dang-nhap.html','UserController@getLogin')->name('employer_login');
 Route::post('/employer/dang-nhap.html','UserController@postLogin')->name('post_employer_login');
 /*****Nhà tuyển dụng đăng kí*/
@@ -40,7 +40,34 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
     Route::post('thong-tin-cong-ty.html','CompaniesController@updateCompany')->name('employer_update_company');
 });
 
-//Admin (Quản trị viên)
+
+
+//Ứng viên
+/*************************************Ứng viên quản trị */
+Route::get('/ung-vien/dang-nhap.html','CandidateController@getLogin')->name('candidate_login');
+Route::post('/ung-vien/dang-nhap.html','CandidateController@postLogin')->name('post_candidate_login');
+Route::get('/ung-vien/dang-ki.html','CandidateController@getRegister')->name('candidate_register');
+Route::post('/ung-vien/dang-ki.html','CandidateController@postRegister')->name('post_register_candidate');
+Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
+    Route::group(['middleware' => 'checkExitsInfoCandicate'], function(){
+        Route::get('dashboard.html','CandidateController@dashBoard');  
+        
+        // //Quản lí tin của nhà tuyển dụng
+        // Route::get('dashboard.html','EmployerController@dashBoard');    
+        // Route::get('them-tin.html','PostEmployerController@employerGetAddEmployer');    
+        // Route::post('them-tin.html','PostEmployerController@employerPostAddEmployer')->name('post_add_employer');
+        // Route::get('sua-tin-{id}.html','PostEmployerController@employerGetEditEmployer');
+        // Route::post('sua-tin-{id}.html','PostEmployerController@employerPostEditEmployer');
+        // Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');    
+        // Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
+    });
+    
+    Route::get('thong-tin-tai-khoan.html','CandidateController@candidateGetCandidateInfo');
+    Route::post('thong-tin-tai-khoan.html','CandidateController@candidatePostCandidateInfo')->name('candidate_post_candidate_info');
+});
+
+
+/********************Admin (Quản trị viên)*/
 Route::get('/admin/dang-nhap.html','AdminController@getLogin')->name('admin_login');
 Route::post('/admin/dang-nhap.html','AdminController@postLogin')->name('post_admin_login');
 /****Quản trị Admin */

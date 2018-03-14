@@ -31,4 +31,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Company','user_id','id');
     }
+
+    //Lấy thông tin người ứng tuyển
+    public function candidate()
+    {
+        return $this->hasOne('App\Candidate','user_id','id');
+    }
 }
