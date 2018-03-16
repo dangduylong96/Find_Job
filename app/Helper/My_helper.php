@@ -39,3 +39,19 @@ if (! function_exists('createLabel')) {
         return '<span class="label label-'.$arr_color_status[$status].'">'.$arr_status[$status].'</span>';
     }
 }
+
+//Hiện ra lable hiện ẩn
+if (! function_exists('createLabelShowHide')) {
+    function createLabelShowHide($status=0)
+    {
+        $arr_status=[
+            0=>'Không tìm kiếm',
+            1=>'Cho tìm kiếm'
+        ];
+        $arr_color_status=[
+            0=>'danger',
+            1=>'success'
+        ];
+        return '<span class="label label-'.$arr_color_status[$status].'">'.$arr_status[$status].'</span>';
+    }
+}

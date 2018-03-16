@@ -51,15 +51,16 @@ Route::post('/ung-vien/dang-ki.html','CandidateController@postRegister')->name('
 Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
     Route::group(['middleware' => 'checkExitsInfoCandicate'], function(){
         Route::get('dashboard.html','CandidateController@dashBoard');  
-        
-        // //Quản lí tin của nhà tuyển dụng
-        // Route::get('dashboard.html','EmployerController@dashBoard');    
-        // Route::get('them-tin.html','PostEmployerController@employerGetAddEmployer');    
-        // Route::post('them-tin.html','PostEmployerController@employerPostAddEmployer')->name('post_add_employer');
-        // Route::get('sua-tin-{id}.html','PostEmployerController@employerGetEditEmployer');
-        // Route::post('sua-tin-{id}.html','PostEmployerController@employerPostEditEmployer');
-        // Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');    
-        // Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
+
+        Route::get('danh-sach-tro-giup-nha-tuyen-dung.html','CandidateProfileController@candidateGetListHelpSearch');
+        Route::get('sua-tro-giup-{id}.html','CandidateProfileController@candidateGetHelpSearch');
+        Route::post('sua-tro-giup-{id}.html','CandidateProfileController@candidatePostHelpSearch');
+        Route::get('them-tro-giup.html','CandidateProfileController@candidateGetAddHelpSearch');
+        Route::post('them-tro-giup.html','CandidateProfileController@candidatePostAddHelpSearch')->name('candidate_post_add_help_search');
+
+        Route::get('chi-tiet-ho-so-{id}.html','ProfileCvController@candidateGetProfile');
+        //Ajax thêm hồ sơ
+        Route::post('them-ho-so.html','ProfileCvController@candidatePostAddProfile');
     });
     
     Route::get('thong-tin-tai-khoan.html','CandidateController@candidateGetCandidateInfo');

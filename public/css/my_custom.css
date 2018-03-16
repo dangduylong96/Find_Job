@@ -12,3 +12,47 @@
 {
     color: red;
 }
+.title-custom
+{
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0;
+    line-height: 29px;
+    margin-bottom: 10px;
+    position: relative;
+    color: deeppink;
+}
+.button-custom
+{
+    text-align: center;
+}
+.button-custom button
+{
+    margin: 1%;
+}
+.button-collapse
+{
+    margin-left:1%;
+}
+.show_data_profile_form
+{
+    margin-left: 1%;
+}
+.show_data_profile_form p
+{
+    font-weight: bold;
+    font-size: 17px;
+}
+.show_data_profile_form p span
+{
+    font-weight: 100;
+    color: blue;
+}
+.header_list
+{
+    margin-bottom: 1%;
+}
+#level
+{
+    margin-top: 1%;
+}

@@ -14,17 +14,17 @@
                 <i class="fa fa-building"></i> <span>Thông tin Tài Khoản</span>
                 </a>
             </li>
-            <li class="treeview" id="post">
+            <li class="treeview" id="search">
                 <a href="#">
-                <i class="fa  fa-sticky-note-o"></i>
-                <span>Tin tuyển dụng</span>
+                <i class="fa fa-search"></i>
+                <span>Trợ giúp nhà tuyển tìm kiếm</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>" data-active="post"><a href="<?php echo url('/candidate/danh-sach-tin.html')?>"><i class="fa fa-circle-o"></i> Dang sách tin</a></li>
-                    <li class="<?php if(strpos(url()->current(),'them-tin.html')!==false) echo 'active'?>" data-active="post"><a href="<?php echo url('/candidate/them-tin.html')?>"><i class="fa fa-circle-o"></i> Thêm tin</a></li>
+                    <li class="<?php if(strpos(url()->current(),'danh-sach-tro-giup-nha-tuyen-dung.html')!==false) echo 'active'?>" data-active="search"><a href="<?php echo url('/ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')?>"><i class="fa fa-circle-o"></i> Dang sách trợ giúp</a></li>
+                    <li class="<?php if(strpos(url()->current(),'them-tro-giup.html')!==false) echo 'active'?>" data-active="search"><a href="<?php echo url('/ung-vien/them-tro-giup.html')?>"><i class="fa fa-circle-o"></i> Thêm trợ giúp</a></li>
                 </ul>
             </li>
             <li class="treeview">

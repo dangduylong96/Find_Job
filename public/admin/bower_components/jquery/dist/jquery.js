@@ -3814,19 +3814,19 @@ jQuery.Deferred.exceptionHook = function( error, stack ) {
 
 	// Support: IE 8 - 9 only
 	// Console exists when dev tools are open, which can happen at any time
-	if ( window.console && window.console.warn && error && rerrorNames.test( error.name ) ) {
-		window.console.warn( "jQuery.Deferred exception: " + error.message, error.stack, stack );
-	}
+	// if ( window.console && window.console.warn && error && rerrorNames.test( error.name ) ) {
+	// 	window.console.warn( "jQuery.Deferred exception: " + error.message, error.stack, stack );
+	// }
 };
 
 
 
 
-jQuery.readyException = function( error ) {
-	window.setTimeout( function() {
-		throw error;
-	} );
-};
+// jQuery.readyException = function( error ) {
+// 	window.setTimeout( function() {
+// 		throw error;
+// 	} );
+// };
 
 
 
