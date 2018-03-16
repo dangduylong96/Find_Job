@@ -166,7 +166,7 @@ $(document).on('click','#submit_experience',function(){
         {
             $('#add_experience').removeClass('hidden');
             var form_target='<div class="list_collapse" data-remove="'+res.content['last_key']+'"> <div class="header_list"> <h3>'+experience_name_company+'</h3> <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#experience_'+res.content['last_key']+'"><i class="fa fa-sort-desc"> Mở rộng</i></button><button data-edit="'+res.content['last_key']+'" type="button" class="btn btn-default btn-sm edit_experience"><i class="fa fa-edit"> Sửa</i></button> <button type="button" data-remove="'+res.content['last_key']+'" class="btn btn-default btn-sm remove_experience">Xóa</button> </div> <table id="experience_'+res.content['last_key']+'" class="show_data_profile_form collapse"> <tr> <td><p>Tên công ty:</p></td> <td><p><span>'+experience_name_company+'</span><p></td> </tr> <tr> <td><p>Chức vụ:</p></td> <td><p><span>'+experience_title+'</span><p></td> </tr> <tr> <td><p>Thời gian làm việc:</p></td> <td><p><span>'+experience_time+' tháng</span><p></td> </tr> <tr> <td><p>Mô tả công việc:</p></td> <td><p><span>'+experience_desc.substring(0,50)+'..</span><p></td> </tr> <tr> <td><p>Thành tích đạt được:</p></td> <td><p><span>'+experience_medal.substring(0,50)+'...</span><p></td> </tr> </table> </div>';
-            $('.list_collapse').last().append(form_target);
+            $('.list_collapse_experience').last().append(form_target);
             $('#form_experience').remove();
         }
     })
@@ -310,6 +310,124 @@ $(document).on('click','.remove_level',function(){
         }else
         {
             $('#level').html(res.content);
+        }
+    })
+})
+//Lấy form trình độ tiếng anh
+$(document).on('click','#add_english',function(){
+    var data={
+        '_token': token,
+        'id': id,
+        'name': 'get_form_english'
+    };
+    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+        var res=JSON.parse(data);
+        if(res.status==404)
+        {
+            alert(res.content);
+        }else
+        {
+            $('#english').html(res.content);
+        }
+    })
+})
+//Submit form trình độ tiếng anh
+$(document).on('click','#add_new_english',function(){
+    var english=$('textarea[name="english"]').val();
+    var data={
+        '_token': token,
+        'id': id,
+        'name': 'add_new_english',
+        'value': {
+            'english': english
+        }
+    };
+    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+        var res=JSON.parse(data);
+        if(res.status==404)
+        {
+            alert(res.content);
+        }else
+        {
+            $('#english').html(res.content);
+        }
+    })
+})
+//Lầy form sửa trình độ tiếng anh
+$(document).on('click','#edit_english',function(){
+    var data={
+        '_token': token,
+        'id': id,
+        'name': 'edit_english'
+    };
+    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+        var res=JSON.parse(data);
+        if(res.status==404)
+        {
+            alert(res.content);
+        }else
+        {
+            $('#english').html(res.content);
+        }
+    })
+})
+
+//Kĩ năng và sở trường
+//Lấy form kĩ năng sở trường
+$(document).on('click','#add_advantages',function(){
+    var data={
+        '_token': token,
+        'id': id,
+        'name': 'get_form_advantages'
+    };
+    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+        var res=JSON.parse(data);
+        if(res.status==404)
+        {
+            alert(res.content);
+        }else
+        {
+            $('#advantages').html(res.content);
+        }
+    })
+})
+//Submit form trình độ tiếng anh
+$(document).on('click','#add_new_advantages',function(){
+    var advantages=$('textarea[name="advantages"]').val();
+    var data={
+        '_token': token,
+        'id': id,
+        'name': 'add_new_advantages',
+        'value': {
+            'advantages': advantages
+        }
+    };
+    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+        var res=JSON.parse(data);
+        if(res.status==404)
+        {
+            alert(res.content);
+        }else
+        {
+            $('#advantages').html(res.content);
+        }
+    })
+})
+//Lầy form sửa trình độ kĩ năng sở trường
+$(document).on('click','#edit_advantages',function(){
+    var data={
+        '_token': token,
+        'id': id,
+        'name': 'edit_advantages'
+    };
+    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+        var res=JSON.parse(data);
+        if(res.status==404)
+        {
+            alert(res.content);
+        }else
+        {
+            $('#advantages').html(res.content);
         }
     })
 })

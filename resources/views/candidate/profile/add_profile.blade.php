@@ -18,16 +18,23 @@
             <div class="col-md-12">
                 <!-- Horizontal Form -->
                 <div class="box box-info">
+                @if(session()->has('message'))
+                    <?php
+                        $mg=session('message');
+                        echo createMessage($mg['status'],$mg['content']);
+                    ?>
+                @endif
                     <div class="box-header with-border">
                         <h3 class="box-title title-custom">Mục tiêu nghề nghiệp</h3>
+                        <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#target"><i class="fa fa-sort-desc"> Mở rộng</i></button>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" action="{{route('post_add_employer')}}" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="id_profile" value="{{$id}}">
                         <div class="box-body">
-                            <div id="target" class="form-group">
+                            <div id="target" class="form-group collapse">
                                 @if(empty($profile['target']))
                                 <div id="button_target" class="button-custom">
                                     <button id="add_target" type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"> Thêm mục tiêu nghề nghiệp</i></button>
@@ -42,13 +49,12 @@
                                 </div>
                                 @endif
                             </div>
-                            <hr>
                             <div class="box-header with-border">
                                 <h3 class="box-title title-custom">Kinh Nghiệm Làm Việc</h3>
                                 <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#experience"><i class="fa fa-sort-desc"> Mở rộng</i></button>
                             </div>
-                            <div id="experience" class="collapse in">
-                                <div class="list_collapse">
+                            <div id="experience" class="collapse">
+                                <div class="list_collapse_experience">
                                 </div>
                                 @if(!empty($profile['experience']))
                                 @foreach(json_decode($profile['experience'],true) as $k=>$v)
@@ -92,7 +98,7 @@
                                 <h3 class="box-title title-custom">Trình độ bằng cấp</h3>
                                 <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#level"><i class="fa fa-sort-desc"> Mở rộng</i></button>
                             </div>
-                            <div id="level" class="collapse in">
+                            <div id="level" class="collapse ">
                                 <div class="list_collapse">
                                 </div>
                                 @if(!empty($profile['level']))
@@ -130,136 +136,82 @@
                                 </div>
                             </div>
                             <div class="box-header with-border">
-                                <h3 class="box-title title-custom">Trình độ và bằng cấp</h3>
+                                <h3 class="box-title title-custom">Trình độ tiếng anh</h3>
+                                <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#english"><i class="fa fa-sort-desc"> Mở rộng</i></button>
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Hình thức làm việc</label>
-                                <div class="col-sm-10">
-                                    <select id="working_form" name="working_form" class="form-control select2" style="width: 100%;">
-                                        @foreach($list_working_form as $k=>$v)
-                                        <option value="{{$k}}" {{(old("working_form") == $k ? "selected":"") }}>{{$v}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="error">{{$errors->first('working_form')}}</span>
+                            <div id="english" class="form-group collapse">
+                                @if(empty($profile['english']))
+                                <div id="button_target" class="button-custom">
+                                    <button id="add_english" type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"> Thêm trình độ tiếng anh</i></button>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Trình độ</label>
+                                @else
+                                <label for="inputEmail3" class="col-sm-2 control-label">Sơ lược về tiếng anh</label>
                                 <div class="col-sm-10">
-                                    <select id="level" name="level" class="form-control select2" style="width: 100%;">
-                                        @foreach($level as $k=>$v)
-                                        <option value="{{$k}}" {{(old("level") == $k ? "selected":"") }}>{{$v}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="error">{{$errors->first('level')}}</span>
+                                    <textarea name="english" class="form-control" rows="10"  placeholder="Nên ghi bằng những gạch đầu dòng" required disabled>{{json_decode($profile['english'])->english}}</textarea>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Kinh nghiệm</label>
-                                <div class="col-sm-10">
-                                    <select id="experience" name="experience" class="form-control select2" style="width: 100%;">
-                                        @foreach($experience as $k=>$v)
-                                        <option value="{{$k}}" {{(old("experience") == $k ? "selected":"") }}>{{$v}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="error">{{$errors->first('experience')}}</span>
+                                <div id="button_target" class="button-custom">
+                                    <button id="edit_english" type="button" class="btn btn-info btn-lg"><i class="fa fa-save">Sửa</i></button>
                                 </div>
+                                @endif
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Mức lương</label>
-                                <div class="col-sm-10">
-                                    <select id="slary" name="slary" class="form-control select2" style="width: 100%;">
-                                        @foreach($slary as $k=>$v)
-                                        <option value="{{$k}}" {{(old("slary") == $k ? "selected":"") }}>{{$v}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="error">{{$errors->first('slary')}}</span>
+                            <div class="box-header with-border">
+                                <h3 class="box-title title-custom">Kĩ năng và Sở trường</h3>
+                                <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#advantages"><i class="fa fa-sort-desc"> Mở rộng</i></button>
+                            </div>
+                            <div id="advantages" class="form-group collapse">
+                                @if(empty($profile['advantages']))
+                                <div id="button_target" class="button-custom">
+                                    <button id="add_advantages" type="button" class="btn btn-success btn-lg"><i class="fa fa-plus"> Thêm kĩ năng sở trường</i></button>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Thời gian thử việc</label>
+                                @else
+                                <label for="inputEmail3" class="col-sm-2 control-label">Liệt kê kĩ năng sở trường</label>
                                 <div class="col-sm-10">
-                                    <select id="time_try" name="time_try" class="form-control select2" style="width: 100%;">
-                                        @foreach($time_try as $k=>$v)
-                                        <option value="{{$k}}" {{(old("time_try") == $k ? "selected":"") }}>{{$v}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="error">{{$errors->first('time_try')}}</span>
+                                    <textarea name="advantages" class="form-control" rows="10"  placeholder="Liệt kê bằng các gạch đầu dòng" required disabled>{{json_decode($profile['advantages'])->advantages}}</textarea>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Quyền Lợi</label>
-                                <div class="col-sm-10">
-                                    <textarea name="benefit" class="form-control" rows="10"  placeholder="Sơ lược về hồ sơ">{{old('benefit')}}</textarea>
-                                    <span class="error" required>{{$errors->first('benefit')}}</span>
+                                <div id="button_target" class="button-custom">
+                                    <button id="edit_advantages" type="button" class="btn btn-info btn-lg"><i class="fa fa-save">Sửa</i></button>
                                 </div>
+                                @endif
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Nơi làm việc</label>
-                                <div class="col-sm-10">
-                                    <select id="workplace" name="workplace" class="form-control select2" style="width: 100%;">
-                                        @foreach($city as $k=>$v)
-                                        <option value="{{$k}}" {{(old("workplace") == $k ? "selected":"") }}>{{$v}}</option>
-                                        @endforeach
-                                    </select>
-                                    <span class="error">{{$errors->first('workplace')}}</span>
-                                </div>
+                            <div class="box-header with-border">
+                                <h3 class="box-title title-custom">Hồ sơ bổ sung</h3>
+                                <button type="button" class="btn btn-default btn-sm button-collapse" data-toggle="collapse" data-target="#cv_form"><i class="fa fa-sort-desc"> Mở rộng</i></button>
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Ngày hết hạn</label>
-                                <div class="col-sm-10">
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
+                            </form>
+                            <div id="cv_form" class="collapse">
+                                <form id="upload_cv" action="http://localhost:90/Find_Job/ung-vien/upload-ho-so.html" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="id_profile1" value="{{$id}}">
+                                    <div id="cv" class="form-group">                               
+                                        <div class="list_collapse">
+                                            <table class="show_data_profile_form" with="300">
+                                                <tr>
+                                                    <td with="200px"><p>Hồ sơ hiện tại:</p></td>
+                                                    @if(empty($profile['cv']))
+                                                    <td><p><span> Chưa có hồ sơ</span><p></td>
+                                                    @else
+                                                    <td><p><span> <a target="_blank" href="{{asset('public/cv/'.$profile['cv'])}}">{{$profile['cv']}}</a></span><p></td>
+                                                    @endif
+                                                </tr>
+                                            </table>
+                                        </div>                            
+                                        <label class="col-sm-2 control-label">Hồ sơ</label>
+                                        <div class="col-sm-10">
+                                            <input id="image" name="cv" class="form-control" type="file" placehoder="Chọn file upload hồ sơ">
+                                            @if(session()->has('error_upload_cv'))
+                                            <span class="error">{{session('error_upload_cv')}}</span>
+                                            @endif
                                         </div>
-                                        <input name="expiration_date" type="text" class="form-control pull-right" id="datepicker" value="{{old('expiration_date')}}" required>
+                                        <div id="button_target" class="button-custom">
+                                            <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-save">Upload</i></button>
+                                        </div>                                   
                                     </div>
-                                    <span class="error">{{$errors->first('expiration_date')}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Keywords</label>
-                                <div class="col-sm-10">
-                                    <select id="tags" class="form-control select2" name="tags[]" multiple="multiple" data-placeholder="Chọn keyword.." style="width: 100%;">
-                                        
-                                    </select>
-                                    <span class="error">{{$errors->first('tags')}}</span>
-                                </div>
-                            </div>
-                            <hr>
-                            <h4 style="color:green">Thông tin liên hệ</h4>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Tên người liên hệ</label>
-                                <div class="col-sm-10">
-                                    <input name="name_contact" type="text" class="form-control" placeholder="Tên người liên hệ" value="{{old('name_contact')}}" required>
-                                    <span class="error">{{$errors->first('name_contact')}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input name="email_contact" type="email" class="form-control" placeholder="Email người liên hệ" value="{{old('email_contact')}}" required>
-                                    <span class="error">{{$errors->first('email_contact')}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Địa chỉ</label>
-                                <div class="col-sm-10">
-                                    <input name="address_contact" type="text" class="form-control" placeholder="Địa chỉ người liên hệ" value="{{old('address_contact')}}" required>
-                                    <span class="error">{{$errors->first('address_contact')}}</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Số điện thoại</label>
-                                <div class="col-sm-10">
-                                    <input name="mobile_contact" type="text" class="form-control" placeholder="Số điện thoại người liên hệ" value="{{old('mobile_contact')}}" required>
-                                    <span class="error">{{$errors->first('mobile_contact')}}</span>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-success btn-block">Thêm</button>
+                            <button type="submit" class="btn btn-danger btn-block">Xem trước hồ sơ</button>
                         </div>
                         <!-- /.box-footer -->
                     </form>

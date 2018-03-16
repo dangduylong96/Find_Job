@@ -61,6 +61,8 @@ Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
         Route::get('chi-tiet-ho-so-{id}.html','ProfileCvController@candidateGetProfile');
         //Ajax thêm hồ sơ
         Route::post('them-ho-so.html','ProfileCvController@candidatePostAddProfile');
+        //Ajax upload hồ sơ bổ sung
+        Route::post('upload-ho-so.html','ProfileCvController@candidatePostCVProfile');
     });
     
     Route::get('thong-tin-tai-khoan.html','CandidateController@candidateGetCandidateInfo');
