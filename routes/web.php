@@ -11,9 +11,11 @@
 |
 */
 
+//Frontend
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.layout.layout');
 });
+
 
 //Nhà tuyển dụng
 /****************************Nhà tuyển dụng đăng nhập trước khi quản trị*/
