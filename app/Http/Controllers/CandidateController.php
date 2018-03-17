@@ -111,7 +111,6 @@ class CandidateController extends Controller
             $candidate_info->sex=$request->sex;
             $candidate_info->address=$request->address;
             $candidate_info->phone=$request->phone;
-            $candidate_info->status=0;
             $candidate_info->image='public/images/public_image/default_image.gif';
             if ($request->hasFile('image')){
                 $file=$request->file('image');

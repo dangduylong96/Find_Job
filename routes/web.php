@@ -12,9 +12,7 @@
 */
 
 //Frontend
-Route::get('/', function () {
-    return view('frontend.layout.layout');
-});
+Route::get('/','FrontendHomeController@Home'); 
 
 
 //Nhà tuyển dụng
@@ -35,6 +33,7 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
         Route::post('them-tin.html','PostEmployerController@employerPostAddEmployer')->name('post_add_employer');
         Route::get('sua-tin-{id}.html','PostEmployerController@employerGetEditEmployer');
         Route::post('sua-tin-{id}.html','PostEmployerController@employerPostEditEmployer');
+        Route::get('huy-tin-{id}.html','PostEmployerController@employerPostRemoveEmployer');
         Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');    
         Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
     });

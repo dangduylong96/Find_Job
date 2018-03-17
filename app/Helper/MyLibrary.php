@@ -22,4 +22,11 @@ class MyLibrary {
         $arr=implode(',',$list_key);
         return $arr;
     }
+
+    //Lấy giá trị là name theo key(phần frontend)
+    public static function getNameSetting($colum,$key) {
+        $setting=Setting::where('name',$colum)->get()->toArray();
+        $list=json_decode($setting[0]['value'],true);
+        return $list[$key];
+    }
 }

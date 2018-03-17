@@ -25,12 +25,12 @@ class TagController extends Controller
             return response()->json($list_return);
         }else
         {
-            $list_searh=Tag::select('*')->distinct()->get();
+            $list_searh=Tag::distinct()->select('name')->get();
             $list_return=[];
             foreach($list_searh as $v)
             {
                 $list_return[]=[
-                    'id'=>$v['id'],
+                    'id'=>$v['name'],
                     'text'=>$v['name']
                 ];
             }

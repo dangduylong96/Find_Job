@@ -224,4 +224,27 @@ class PostEmployerController extends Controller
         }
         return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Cập nhập bài tuyển dụng thành công']);
     }
+    public function employerPostRemoveEmployer($id)
+    {
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $company=Company::where('user_id',$user_id)->get()->toArray();
+        $company_id=$company[0]['id'];
+        //Lấy thông tin hiện tại
+        $current_post=PostEmployer::find($id);
+        if(!isset($current_post))
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không tồn tại']);
+        }
+        $current_post=$current_post->toArray();
+        if($current_post['company_id']!=$company_id && $current_post['status']!=3)
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không thuộc sở hữu của bạn']);
+        }
+        $post=PostEmployer::find($id);
+        $post->status=3;
+        $post->save();
+        return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'warning','content'=>'Hủy thành công. Vui lòng liên hệ quản trị viên nếu muốn khôi phục']);
+    }
 }
