@@ -13,7 +13,7 @@
                 <div class="jp_header_form_wrapper">
                     <form action="#" method="post">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <input type="text" placeholder="Keyword e.g. (PHP, Java, SQL,..)">
+                            <input id="search_job" type="text" placeholder="Keyword e.g. (PHP, Java, SQL,..)">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="jp_form_location_wrapper">

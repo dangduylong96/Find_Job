@@ -19,6 +19,8 @@
         <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/flaticon.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/style.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/responsive.css')}}" />
+        <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/library/jquery-ui/jquery-ui.min.css')}}" />
+        @yield('css')
         <!-- favicon links -->
         <link rel="shortcut icon" type="image/png" href="{{asset('public/frontend/images/header/favicon.ico')}}" />
     </head>
@@ -376,6 +378,8 @@
         <script src="{{asset('public/frontend/js/owl.carousel.js')}}"></script>
         <script src="{{asset('public/frontend/js/modernizr.js')}}"></script>
         <script src="{{asset('public/frontend/js/custom.js')}}"></script>
+        <script src="{{asset('public/frontend/library/jquery-ui/jquery-ui.min.js')}}"></script>
         <!--main js file end-->
+        @yield('js')
     </body>
 </html>

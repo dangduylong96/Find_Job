@@ -503,7 +503,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="ss_download_wrapper_details">
-                    <h1><span>Tải Miễn Phí</span><br>Job Portal App ngay bây giờ!</h1>
+                    <h1><span>Tải Miễn Phí</span><br>Job Pro App ngay bây giờ!</h1>
                     <p>Nhanh, Đơn giản & Hiệu quả. Tất cả chỉ mất 30s!!!.</p>
                     <a href="#" class="ss_appstore"><span><i class="fa fa-apple" aria-hidden="true"></i></span> App Store</a>
                     <a href="#" class="ss_playstore"><span><i class="fa fa-android" aria-hidden="true"></i></span> Play Store</a>
@@ -519,4 +519,15 @@
 </div>
 <!-- jp downlord Wrapper End -->
 <!-- jp Newsletter Wrapper Start -->
+@endsection
+
+@section('js')
+<script>
+$( function() {
+    var availableTags = [<?php print_r($list_search_ajax)?>];
+    $( "#search_job" ).autocomplete({
+      source: availableTags
+    });
+});
+</script>
 @endsection

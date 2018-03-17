@@ -26,6 +26,29 @@ class FrontendHomeController extends Controller
         {
             $data['top_5_tag'][]=$v['name'];
         }
+        
+        //List search ajax = name_tags + name_company + name_post
+        $list_search_ajax=[];
+        //lấy dánh sách tag
+        $list_tag=Tag::distinct()->select('name')->get();
+        foreach($list_tag as $k=>$v)
+        {
+            $list_search_ajax[]='"'.$v->name.'"';
+        }
+        //Lấy danh sách tên công ty
+        $list_name_company=Company::where('status',1)->distinct()->get();
+        foreach($list_name_company as $k=>$v)
+        {
+            $list_search_ajax[]='"'.$v->name.'"';
+        }
+        //Lấy danh sách tên bài viết
+        $list_name_post=PostEmployer::where('status',1)->distinct()->get();
+        foreach($list_name_post as $k=>$v)
+        {
+            $list_search_ajax[]='"'.$v->title.'"';
+        }
+        $list_search_ajax=implode(',',$list_search_ajax);        
+        $data['list_search_ajax']=$list_search_ajax;
         View::share($data);
     }
     public function Home()
@@ -58,6 +81,7 @@ class FrontendHomeController extends Controller
 
         //Ứng viên mới
         $data['new_candidate']=Candidate::where('status',1)->orderBy('created_at','desc')->skip(0)->take(3)->get();
+
         return view('frontend.home.home',$data);
     }
 }
