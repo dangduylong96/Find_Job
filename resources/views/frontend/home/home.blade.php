@@ -115,7 +115,7 @@
                                                             <div class="jp_job_post_right_btn_wrapper">
                                                                 <ul>
                                                                     <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="#">Xem</a></li>
+                                                                    <li><a href="{{getSeo($v->title)}}-p{{$v->id}}.html">Xem</a></li>
                                                                     <li><a href="#">Ứng tuyển</a></li>
                                                                 </ul>
                                                             </div>
@@ -182,7 +182,7 @@
                                                             <div class="jp_job_post_right_btn_wrapper">
                                                                 <ul>
                                                                     <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="#">Xem</a></li>
+                                                                    <li><a href="{{getSeo($v->title)}}-p{{$v->id}}.html">Xem</a></li>
                                                                     <li><a href="#">Ứng tuyển</a></li>
                                                                 </ul>
                                                             </div>

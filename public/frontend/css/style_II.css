@@ -5291,6 +5291,10 @@ input[type="checkbox"]:checked + label:after {
 .jp_job_apply p{
 	padding-top:50px;
 }
+.jp_job_apply span{
+	display: block;
+	padding-top: 20px;
+}
 .jp_job_map{
 	float:left;
 	width:100%;
