@@ -9,9 +9,9 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="<?php if(strpos(url()->current(),'thong-tin-cong-ty.html')!==false) echo 'active'?>">
-                <a href="thong-tin-cong-ty.html">
-                <i class="fa fa-building"></i> <span>Thông tin Công Ty</span>
+            <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>">
+                <a href="danh-sach-tin.html">
+                <i class="fa fa-sticky-note"></i> <span>Tin tuyển dụng</span>
                 </a>
             </li>
             <li class="treeview">
@@ -19,11 +19,10 @@
                 <i class="fa  fa-sticky-note-o"></i>
                 <span>Tin tuyển dụng</span>
                 <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Dang sách tin</a></li>
+                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Dang sách bài đăng</a></li>
                     <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Thêm tin</a></li>
                 </ul>
             </li>

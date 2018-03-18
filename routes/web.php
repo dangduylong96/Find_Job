@@ -13,6 +13,9 @@
 
 //Frontend
 Route::get('/','FrontendHomeController@Home'); 
+Route::get('tim-kiem.html','FrontendSearchController@Search'); 
+Route::post('tim-kiem-ajax.html','FrontendSearchController@ajaxSearch'); 
+Route::get('{{url}}-{{id}}','FrontendSearchController@ajaxSearch'); 
 
 
 //Nhà tuyển dụng
@@ -87,6 +90,12 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::post('thanh-pho/sua-{id}.html','SettingController@postEditCity');
     Route::get('thanh-pho/xoa-{id}.html','SettingController@deleteCity');
 
+    Route::get('danh-sach-tin.html','AmdminPostEmployerController@adminGetListPost');
+    Route::get('sua-tin-{id}.html','AmdminPostEmployerController@adminGetEditEmployer');
+    Route::post('sua-tin-{id}.html','AmdminPostEmployerController@adminPostEditEmployer');
+    Route::get('duyet-tin-{id}.html','AmdminPostEmployerController@adminCheckPost');
+    Route::get('huy-tin-{id}.html','AmdminPostEmployerController@adminUnCheckPost');
+
     //Setting Quy mô
     Route::get('qui-mo.html','SettingController@companySize');
     Route::get('qui-mo/them.html',function(){
@@ -96,9 +105,6 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('qui-mo/sua-{id}.html','SettingController@editSizeCompany');
     Route::post('qui-mo/sua-{id}.html','SettingController@postEditSizeCompany');
     Route::get('qui-mo/xoa-{id}.html','SettingController@deleteSizeCompany');
-
-    //Setting giới tính
-    Route::get('gioi-tinh.html','SettingController@Sex');
 });
 
 Route::get('/demo', function () {

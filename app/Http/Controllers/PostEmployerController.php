@@ -115,7 +115,7 @@ class PostEmployerController extends Controller
         //Kiểm tra tin này có thuốc user này hay không
         $user=Auth::user()->toArray();
         $user_id=$user['id'];
-        $company=Company::where('user_id',$user_id)->first()->get()->toArray();
+        $company=Company::where('user_id',$user_id)->get()->toArray();
         $company_id=$company[0]['id'];
         //Lấy thông tin hiện tại
         $current_post=PostEmployer::find($id);

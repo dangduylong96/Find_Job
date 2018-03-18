@@ -4595,6 +4595,7 @@ ul{
 	-ms-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
+	height: 230px;
 }
 .jp_job_post_side_img{
 	float:left;
@@ -4727,6 +4728,7 @@ ul{
 	-ms-transition: all 0.5s;
 	-moz-transition: all 0.5s;
 	transition: all 0.5s;
+	height: 76px;
 }
 .jp_job_post_keyword_wrapper li{
 	float:left;

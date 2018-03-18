@@ -54,7 +54,7 @@ class FrontendHomeController extends Controller
     public function Home()
     {
         //Lấy công ty mới
-        $new_company=Company::select('name','image','website')->orderBy('id','desc')->skip(0)->take(4)->get();
+        $new_company=Company::select('name','image','website')->orderBy('id','desc')->skip(0)->take(3)->get();
         $data['new_company']=$new_company->toArray();
 
         //Lấy danh sách công ty
@@ -62,7 +62,7 @@ class FrontendHomeController extends Controller
         $data['list_company']=$list_company->toArray();
 
         //Lấy bài viết mới
-        $new_post=PostEmployer::select('id','title','company_id','slary','workplace','tags')->where('status',1)->orderBy('created_at','desc')->skip(0)->take(18)->get();
+        $new_post=PostEmployer::select('id','title','company_id','slary','workplace','tags')->where('status',1)->orderBy('created_at','desc')->skip(0)->take(15)->get();
         $data['new_post']=$new_post;
 
         //Lấy bài viết xem nhiều

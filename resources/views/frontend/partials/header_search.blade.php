@@ -13,15 +13,15 @@
                 <div class="jp_header_form_wrapper">
                     <form id="form_search" action="tim-kiem.html" method="get">
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                            <input name="keyword" id="search_job" type="text" placeholder="Keyword e.g. (PHP, Java, SQL,..)">
+                            <input name="keyword" id="search_job" type="text" placeholder="Keyword e.g. (PHP, Java, SQL,..)" value="{{$keyword}}">
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="jp_form_location_wrapper">
                                 <i class="fa fa-dot-circle-o first_icon"></i>
                                 <select name="city">
-                                    <option value="all">Tất cả</option>
+                                    <option value="all" {{$current_city=='all'?'selected':''}}>Tất cả</option>
                                     @foreach($city as $k=>$v)
-                                    <option value="{{$k}}">{{$v}}</option>
+                                    <option value="{{$k}}" {{$current_city==$k?'selected':''}}>{{$v}}</option>
                                     @endforeach
                                 </select><i class="fa fa-angle-down second_icon"></i>
                             </div>
@@ -30,9 +30,9 @@
                             <div class="jp_form_exper_wrapper">
                                 <i class="fa fa-dot-circle-o first_icon"></i>
                                 <select name="experience">
-                                    <option value="all">Tất cả</option>
+                                    <option value="all" {{$current_experience=='all'?'selected':''}}>Tất cả</option>
                                     @foreach($experience as $k=>$v)
-                                    <option value="{{$k}}">{{$v}}</option>
+                                    <option value="{{$k}}" {{$current_experience==$k?'selected':''}}>{{$v}}</option>
                                     @endforeach
                                 </select><i class="fa fa-angle-down second_icon"></i>
                             </div>
@@ -55,56 +55,10 @@
                             @foreach($top_5_tag as $k=>$v)
                             <li><a href="tim-kiem.html?keyword={{$v}}&city=all&experience=all">{{$v}},</a></li>
                             @endforeach
-                            <li><a href="#">...</a></li>
+                            <li><a href="javascript:void(0)">...</a></li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="jp_banner_jobs_categories_wrapper">
-    <div class="container">
-        <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border jp_job_cate_left_border_bottom">
-            <div class="jp_top_jobs_category">
-                <i class="fa fa-chrome"></i>
-                <h3><a href="#">Web Developer</a></h3>
-                <p>(240 mục)</p>
-            </div>
-        </div>
-        <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
-            <div class="jp_top_jobs_category">
-                <i class="fa fa-laptop"></i>
-                <h3><a href="#">Desktop Developer</a></h3>
-                <p>(504 jobs)</p>
-            </div>
-        </div>
-        <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
-            <div class="jp_top_jobs_category">
-                <i class="fa fa-android"></i>
-                <h3><a href="#">Android Developer</a></h3>
-                <p>(2250 mục)</p>
-            </div>
-        </div>
-        <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
-            <div class="jp_top_jobs_category">
-                <i class="fa fa-apple"></i>
-                <h3><a href="#">IOS Developer</a></h3>
-                <p>(202 mục)</p>
-            </div>
-        </div>
-        <div class="jp_top_jobs_category_wrapper">
-            <div class="jp_top_jobs_category">
-                <i class="fa fa-code"></i>
-                <h3><a href="#">Order</a></h3>
-                <p>(1457 mục)</p>
-            </div>
-        </div>
-        <div class="jp_top_jobs_category_wrapper">
-            <div class="jp_top_jobs_category">
-                <i class="fa fa-th-large"></i>
-                <h3><a href="#">Tất cả</a></h3>
-                <p>(2000+ mục)</p>
             </div>
         </div>
     </div>

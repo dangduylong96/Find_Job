@@ -40,7 +40,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 hidden-xs hidden-sm full_width">
                             <div class="gc_header_wrapper">
                                 <div class="gc_logo">
-                                    <a href="index.html"><img src="{{asset('public/frontend/images/header/logo.png')}}" alt="Logo" title="Job Pro" class="img-responsive"></a>
+                                    <a href="{{url('/')}}"><img src="{{asset('public/frontend/images/header/logo.png')}}" alt="Logo" title="Job Pro" class="img-responsive"></a>
                                 </div>
                             </div>
                         </div>

@@ -91,7 +91,9 @@
                                                 </div>
                                                 @endif
                                             <div class="item" data-hash="{{$arr_hash[$page_new_post]}}">
-                                            <?php $page_new_post++?>
+                                            <?php 
+                                                $page_new_post++
+                                            ?>
                                             @endif
                                             <div class="jp_job_post_main_wrapper_cont">
                                                 <div class="jp_job_post_main_wrapper">
@@ -522,6 +524,7 @@
 @endsection
 
 @section('js')
+<script src="{{asset('public/js/home_frontend.js')}}"></script>
 <script>
 $( function() {
     var availableTags = [<?php print_r($list_search_ajax)?>];
