@@ -84,6 +84,7 @@ if (! function_exists('getSeo')) {
         $str = preg_replace('/(\))/', '-', $str);
         $str = preg_replace('/(\()/', '-', $str);
         $str = str_replace('#','-',$str);
+        $str = str_replace('$','-',$str);
         $str = preg_replace('/(\s)+/', '-', $str);       
         $str = str_replace('--','-',$str);      
         // $str = str_replace(' ', '-', str_replace('&*#39;','",$str));

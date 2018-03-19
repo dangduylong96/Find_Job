@@ -70,7 +70,7 @@
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Xem</a></li>
                                                                 <li><a href="#">Ứng tuyển</a></li>
                                                             </ul>

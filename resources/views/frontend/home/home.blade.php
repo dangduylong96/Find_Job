@@ -114,8 +114,12 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="jp_job_post_right_btn_wrapper">
                                                                 <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="{{getSeo($v->title)}}-p{{$v->id}}.html">Xem</a></li>
+                                                                    @if(isset($list_love))
+                                                                    <li><a href="javascript:void(0)" class="love_action {{in_array($v->id,$list_love)?'love_active':''}}" data-id={{$v->id}}><i class="fa fa-heart-o"></i></a></li>
+                                                                    @else
+                                                                    <li><a href="javascript:void(0)" class="love_action " data-id={{$v->id}}><i class="fa fa-heart-o"></i></a></li>
+                                                                    @endif
+                                                                    <li><a href="chi-tiet-p{{$v->id}}.html">Xem</a></li>
                                                                     <li><a href="#">Ứng tuyển</a></li>
                                                                 </ul>
                                                             </div>
@@ -181,8 +185,8 @@
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="jp_job_post_right_btn_wrapper">
                                                                 <ul>
-                                                                    <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                                    <li><a href="{{getSeo($v->title)}}-p{{$v->id}}.html">Xem</a></li>
+                                                                    <li><a href="javascript:void(0)" data-id={{$v->id}}><i class="fa fa-heart-o"></i></a></li>
+                                                                    <li><a href="chi-tiet-p{{$v->id}}.html">Xem</a></li>
                                                                     <li><a href="#">Ứng tuyển</a></li>
                                                                 </ul>
                                                             </div>

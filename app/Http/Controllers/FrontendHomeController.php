@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use MyLibrary;
 use View;
 use DB;
+use Auth;
 use App\Tag;
 use App\Company;
 use App\PostEmployer;
 use App\User;
 use App\CandidateProfile;
 use App\Candidate;
+use App\Manager_cadidate_and_post;
 class FrontendHomeController extends Controller
 {
     public function __construct()
@@ -72,6 +74,22 @@ class FrontendHomeController extends Controller
         //Việc làm nổi bật
         $hightlight_job=PostEmployer::select('id','title','company_id','slary','workplace','tags')->where('status',1)->orderBy('view','desc')->skip(0)->take(3)->get();
         $data['hightlight_job']=$hightlight_job;
+
+        //Danh sách các bài viết đã ưa thích
+        if(Auth::check())
+        {
+            $user=Auth::user();
+            $candidate_id=$user->candidate->id;
+            $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+            if(isset($list_love))
+            {
+                $data['list_love']=[];
+                foreach($list_love as $v)
+                {
+                    $data['list_love'][]=$v->post_id;
+                }
+            }
+        }
 
         //Tổng số thống kê
         $data['count_job']=PostEmployer::count();

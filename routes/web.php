@@ -17,6 +17,8 @@ Route::get('tim-kiem.html','FrontendSearchController@Search');
 Route::post('tim-kiem-ajax.html','FrontendSearchController@ajaxSearch'); 
 //Chi tiết bài đăng
 Route::get('{url}-p{id}.html','FrontendDetailPostController@getDetailPost')->where(['url'=>'[A-Za-z0-9\-]+','id'=>'[0-9]+']); 
+//Hành động yêu thích, ứng tuyển
+Route::get('yeu-thich.html','FrontendActionController@frontendLoveAction'); 
 
 
 //Nhà tuyển dụng

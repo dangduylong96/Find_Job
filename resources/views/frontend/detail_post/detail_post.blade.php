@@ -122,7 +122,7 @@
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Part Time</a></li>
                                                                 <li><a href="#">Apply</a></li>
                                                             </ul>
@@ -163,7 +163,7 @@
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Part Time</a></li>
                                                                 <li><a href="#">Apply</a></li>
                                                             </ul>
@@ -204,7 +204,7 @@
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Part Time</a></li>
                                                                 <li><a href="#">Apply</a></li>
                                                             </ul>
@@ -249,7 +249,7 @@
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Part Time</a></li>
                                                                 <li><a href="#">Apply</a></li>
                                                             </ul>
@@ -290,7 +290,7 @@
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Part Time</a></li>
                                                                 <li><a href="#">Apply</a></li>
                                                             </ul>
@@ -331,7 +331,7 @@
                                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="#">Part Time</a></li>
                                                                 <li><a href="#">Apply</a></li>
                                                             </ul>
@@ -378,7 +378,7 @@
                             <div class="jp_job_post_right_overview_btn_wrapper">
                                 <div class="jp_job_post_right_overview_btn">
                                     <ul>
-                                        <li><a href="#"><i class="fa fa-heart-o"></i></a></li>
+                                        <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
                                         <li><a href="#">Xem công ty</a></li>
                                     </ul>
                                 </div>
