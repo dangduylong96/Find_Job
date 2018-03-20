@@ -49,163 +49,8 @@
                             <div class="header-area hidden-menu-bar stick" id="sticker">
                                 <!-- mainmenu start -->
                                 <div class="mainmenu">
-                                    <div class="gc_right_menu">
-                                        <ul>
-                                            <li id="search_button">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_3" x="0px" y="0px" viewBox="0 0 451 451" style="enable-background:new 0 0 451 451;" xml:space="preserve">
-                                                    <g>
-                                                        <path id="search" d="M447.05,428l-109.6-109.6c29.4-33.8,47.2-77.9,47.2-126.1C384.65,86.2,298.35,0,192.35,0C86.25,0,0.05,86.3,0.05,192.3   s86.3,192.3,192.3,192.3c48.2,0,92.3-17.8,126.1-47.2L428.05,447c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4   C452.25,441.8,452.25,433.2,447.05,428z M26.95,192.3c0-91.2,74.2-165.3,165.3-165.3c91.2,0,165.3,74.2,165.3,165.3   s-74.1,165.4-165.3,165.4C101.15,357.7,26.95,283.5,26.95,192.3z" fill="#23c0e9"/>
-                                                    </g>
-                                                </svg>
-                                            </li>
-                                            <li>
-                                                <div id="search_open" class="gc_search_box">
-                                                    <input type="text" placeholder="Search here">
-                                                    <button><i class="fa fa-search" aria-hidden="true"></i></button>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
                                     <ul class="float_left">
-                                        <li class="has-mega gc_main_navigation">
-                                            <a href="#" class="gc_main_navigation">  Home&nbsp;<i class="fa fa-angle-down"></i></a>
-                                            <!-- mega menu start -->
-                                            <ul>
-                                                <li class="parent"><a href="index.html">Home1</a></li>
-                                                <li class="parent"><a href="index_II.html">Home2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-mega gc_main_navigation">
-                                            <a href="#" class="gc_main_navigation">  Listing&nbsp;<i class="fa fa-angle-down"></i></a>
-                                            <!-- mega menu start -->
-                                            <ul>
-                                                <li class="parent"><a href="listing_left.html">Listing-Left</a></li>
-                                                <li class="parent"><a href="listing_right.html">Listing-Right</a></li>
-                                                <li class="parent"><a href="listing_single.html">listing_single.html</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent gc_main_navigation">
-                                            <a href="#" class="gc_main_navigation">Candidates &nbsp;<i class="fa fa-angle-down"></i></a>
-                                            <!-- sub menu start -->
-                                            <ul>
-                                                <li class="parent">
-                                                    <a href="#">header style</a>
-                                                    <!-- second child menu start -->
-                                                    <ul>
-                                                        <li><a href="#">header 1</a></li>
-                                                        <li><a href="#">header 1 fluid</a></li>
-                                                        <li><a href="#">header 2</a></li>
-                                                        <li><a href="#">header 2 fluid</a></li>
-                                                        <li><a href="#">header sidebar onepage</a></li>
-                                                    </ul>
-                                                    <!-- second child menu end -->
-                                                </li>
-                                                <li class="parent">
-                                                    <a href="#">slider style</a>
-                                                    <!-- second child menu start -->
-                                                    <ul>
-                                                        <li><a href="#">slider version 1</a></li>
-                                                        <li><a href="#">slider version 2</a></li>
-                                                        <li><a href="#">slider version 3</a></li>
-                                                    </ul>
-                                                    <!-- second child menu end -->
-                                                </li>
-                                                <li class="parent">
-                                                    <a href="#">text change style</a>
-                                                    <!-- second child menu start -->
-                                                    <ul>
-                                                        <li><a href="#">clip style</a></li>
-                                                        <li><a href="#">push style</a></li>
-                                                        <li><a href="#">scale style</a></li>
-                                                        <li><a href="#">slide style</a></li>
-                                                        <li><a href="#">typed style</a></li>
-                                                        <li><a href="#">zoom style</a></li>
-                                                        <li><a href="#">rotate 1 style</a></li>
-                                                        <li><a href="#">rotate 2 style</a></li>
-                                                        <li><a href="#">rotate 3 style</a></li>
-                                                        <li><a href="#">loading bar style</a></li>
-                                                    </ul>
-                                                    <!-- second child menu end -->
-                                                </li>
-                                                <li class="parent">
-                                                    <a href="#">breadcrumb style</a>
-                                                    <!-- second child menu start -->
-                                                    <ul>
-                                                        <li><a href="#">breadcrumb default</a></li>
-                                                        <li><a href="#"> breadcrumb left </a></li>
-                                                        <li><a href="#"> breadcrumb right</a></li>
-                                                        <li><a href="#"> breadcrumb color </a></li>
-                                                        <li><a href="#">breadcrumb color left</a></li>
-                                                        <li><a href="#">breadcrumb color right</a></li>
-                                                    </ul>
-                                                    <!-- second child menu end -->
-                                                </li>
-                                                <li class="parent">
-                                                    <a href="#">multilevel dropdown</a>
-                                                    <!-- second child menu start -->
-                                                    <ul>
-                                                        <li><a href="#">second level</a></li>
-                                                        <li><a href="#">second level</a></li>
-                                                        <li class="parent">
-                                                            <a href="#">More level</a>
-                                                            <!-- third child menu start -->
-                                                            <ul>
-                                                                <li><a href="#">third level</a></li>
-                                                                <li><a href="#">third level</a></li>
-                                                                <li class="parent">
-                                                                    <a href="#">More level</a>
-                                                                    <!-- fourth child menu start -->
-                                                                    <ul>
-                                                                        <li><a href="#">forth level</a></li>
-                                                                        <li><a href="#">forth level</a></li>
-                                                                        <li class="parent">
-                                                                            <a href="#">More level</a>
-                                                                            <!-- fifth child menu start -->
-                                                                            <ul>
-                                                                                <li><a href="#">fifth level</a></li>
-                                                                                <li><a href="#">fifth level</a></li>
-                                                                                <li class="parent">
-                                                                                    <a href="#">More level</a>
-                                                                                    <!-- sixth child menu start -->
-                                                                                    <ul>
-                                                                                        <li><a href="#">sixth level</a></li>
-                                                                                        <li><a href="#">sixth level</a></li>
-                                                                                        <li><a href="#">sixth level</a></li>
-                                                                                        <li><a href="#">sixth level</a></li>
-                                                                                    </ul>
-                                                                                    <!-- sixth child menu start -->
-                                                                                </li>
-                                                                                <li><a href="#">fifth level</a></li>
-                                                                            </ul>
-                                                                            <!-- fifth child menu end -->
-                                                                        </li>
-                                                                        <li><a href="#">forth level</a></li>
-                                                                    </ul>
-                                                                    <!-- fourth child menu start -->
-                                                                </li>
-                                                                <li><a href="#">third level</a></li>
-                                                            </ul>
-                                                            <!-- third child menu end -->
-                                                        </li>
-                                                        <li><a href="#">second level</a></li>
-                                                    </ul>
-                                                    <!-- second child menu end -->
-                                                </li>
-                                            </ul>
-                                            <!-- sub menu end -->
-                                        </li>
-                                        <li class="has-mega gc_main_navigation">
-                                            <a href="#" class="gc_main_navigation">  Blog&nbsp;<i class="fa fa-angle-down"></i></a>
-                                            <!-- mega menu start -->
-                                            <ul>
-                                                <li class="parent"><a href="blog_left.html">Blog-Left</a></li>
-                                                <li class="parent"><a href="blog_right.html">Blog-Right</a></li>
-                                                <li class="parent"><a href="blog_single_left.html">Blog-Single-Left</a></li>
-                                                <li class="parent"><a href="blog_single_right.html">Blog-Single-Right</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="gc_main_navigation parent"><a href="pricing.html" class="gc_main_navigation">Pricing</a></li>
-                                        <li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation">Contact</a></li>
+                                        <li class="gc_main_navigation parent"><a href="contact.html" class="gc_main_navigation" style="visibility: hidden;">Mục ẩn đi</a></li>
                                     </ul>
                                 </div>
                                 <!-- mainmenu end -->
@@ -218,131 +63,6 @@
                                                     <a href="index.html"><img src="{{asset('public/frontend/images/header/logo.png')}}" alt="Logo" title="Grace Church"></a>
                                                 </div>
                                             </div>
-                                            <div class="col-xs-6 col-sm-6">
-                                                <div class="cd-dropdown-wrapper">
-                                                    <a class="house_toggle" href="#0">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 31.177 31.177" style="enable-background:new 0 0 31.177 31.177;" xml:space="preserve" width="25px" height="25px">
-                                                            <g>
-                                                                <g>
-                                                                    <path class="menubar" d="M30.23,1.775H0.946c-0.489,0-0.887-0.398-0.887-0.888S0.457,0,0.946,0H30.23    c0.49,0,0.888,0.398,0.888,0.888S30.72,1.775,30.23,1.775z" fill="#ffffff"/>
-                                                                </g>
-                                                                <g>
-                                                                    <path class="menubar" d="M30.23,9.126H12.069c-0.49,0-0.888-0.398-0.888-0.888c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,8.729,30.72,9.126,30.23,9.126z" fill="#ffffff"/>
-                                                                </g>
-                                                                <g>
-                                                                    <path class="menubar" d="M30.23,16.477H0.946c-0.489,0-0.887-0.398-0.887-0.888c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,16.079,30.72,16.477,30.23,16.477z" fill="#ffffff"/>
-                                                                </g>
-                                                                <g>
-                                                                    <path class="menubar" d="M30.23,23.826H12.069c-0.49,0-0.888-0.396-0.888-0.887c0-0.49,0.398-0.888,0.888-0.888H30.23    c0.49,0,0.888,0.397,0.888,0.888C31.118,23.43,30.72,23.826,30.23,23.826z" fill="#ffffff"/>
-                                                                </g>
-                                                                <g>
-                                                                    <path class="menubar" d="M30.23,31.177H0.946c-0.489,0-0.887-0.396-0.887-0.887c0-0.49,0.398-0.888,0.887-0.888H30.23    c0.49,0,0.888,0.398,0.888,0.888C31.118,30.78,30.72,31.177,30.23,31.177z" fill="#ffffff"/>
-                                                                </g>
-                                                            </g>
-                                                        </svg>
-                                                    </a>
-                                                    <nav class="cd-dropdown">
-                                                        <h2><a href="#">Job<span>Pro</span></a></h2>
-                                                        <a href="#0" class="cd-close">Close</a>
-                                                        <ul class="cd-dropdown-content">
-                                                            <li>
-                                                                <form class="cd-search">
-                                                                    <input type="search" placeholder="Search...">
-                                                                </form>
-                                                            </li>
-                                                            <li class="has-children">
-                                                                <a href="#">Home</a>
-                                                                <ul class="cd-secondary-dropdown is-hidden">
-                                                                    <li class="go-back"><a href="#0">Menu</a></li>
-                                                                    <li>
-                                                                        <a href="index.html">Home1</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="index_II.html">Home2</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                </ul>
-                                                                <!-- .cd-secondary-dropdown -->
-                                                            </li>
-                                                            <!-- .has-children -->
-                                                            <li class="has-children">
-                                                                <a href="#">Listing</a>
-                                                                <ul class="cd-secondary-dropdown is-hidden">
-                                                                    <li class="go-back"><a href="#0">Menu</a></li>
-                                                                    <li>
-                                                                        <a href="listing_left.html">Listing-Left</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="listing_right.html">Listing-Right</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="listing_single.html">Listing-Single</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                </ul>
-                                                                <!-- .cd-secondary-dropdown -->
-                                                            </li>
-                                                            <!-- .has-children -->
-                                                            <li class="has-children">
-                                                                <a href="#">Candidates</a>
-                                                                <ul class="cd-secondary-dropdown is-hidden">
-                                                                    <li class="go-back"><a href="#0">Menu</a></li>
-                                                                    <li>
-                                                                        <a href="#">Candidates</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="#">Candidates</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="#">Candidates</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                </ul>
-                                                                <!-- .cd-secondary-dropdown -->
-                                                            </li>
-                                                            <!-- .has-children -->
-                                                            <li class="has-children">
-                                                                <a href="#">Blog</a>
-                                                                <ul class="cd-secondary-dropdown is-hidden">
-                                                                    <li class="go-back"><a href="#0">Menu</a></li>
-                                                                    <li>
-                                                                        <a href="blog_left.html">Blog-Left</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="blog_right.html">Blog-Right</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="blog_single_left.html">Blog-Single-Left</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                    <li>
-                                                                        <a href="blog_single_right.html">Blog-Single-Left</a>
-                                                                    </li>
-                                                                    <!-- .has-children -->
-                                                                </ul>
-                                                                <!-- .cd-secondary-dropdown -->
-                                                            </li>
-                                                            <!-- .has-children -->
-                                                            <li>
-                                                                <a href="pricing.html">Pricing</a>
-                                                            </li>
-                                                            <!-- .has-children -->
-                                                            <li>
-                                                                <a href="contact.html">Contact</a>
-                                                            </li>
-                                                        </ul>
-                                                        <!-- .cd-dropdown-content -->
-                                                    </nav>
-                                                    <!-- .cd-dropdown -->
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                     <!-- .cd-dropdown-wrapper -->
@@ -353,8 +73,8 @@
                         <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                             <div class="jp_navi_right_btn_wrapper">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user"></i>&nbsp; SIGN UP</a></li>
-                                    <li><a href="#"><i class="fa fa-sign-in"></i>&nbsp; LOGIN</a></li>
+                                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal1"><i class="fa fa-user"></i>&nbsp; Đăng kí</a></li>
+                                    <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"><i class="fa fa-sign-in"></i>&nbsp; Đăng Nhập</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -369,6 +89,84 @@
         <!-- jp downlord Wrapper End -->
         <!-- jp Newsletter Wrapper Start -->
         @include('frontend.partials.footer')
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: antiquewhite;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Đăng nhập</h4>
+                    </div>
+                    <div class="modal-body model-body-custom">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 model_content_layout">
+                            <div class="jp_register_section_main_wrapper jp_register_section_main_wrapper_custom">
+                                <div class="jp_regis_left_side_box_wrapper">
+                                    <div class="jp_regis_left_side_box">
+                                        <img src="{{asset('public/frontend/images/content/regis_icon.png')}}" alt="icon" />
+                                        <h4>Tôi là nhà tuyển dụng</h4>
+                                        <ul>
+                                            <li><a href="{{url('/employer/dang-nhap.html')}}"><i class="fa fa-plus-circle"></i> &nbsp;Đăng nhập với công ty</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="jp_regis_right_side_box_wrapper">
+                                    <div class="jp_regis_right_img_overlay"></div>
+                                    <div class="jp_regis_right_side_box">
+                                        <img src="{{asset('public/frontend/images/content/regis_icon2.png')}}" alt="icon" />
+                                        <h4>Tôi là người tìm việc</h4>
+                                        <ul>
+                                            <li><a href="{{url('/ung-vien/dang-nhap.html')}}"><i class="fa fa-plus-circle"></i> &nbsp;Đăng nhập ứng viên</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer custom_model_layout" style="background-color: antiquewhite;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: antiquewhite;">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Đăng nhập</h4>
+                    </div>
+                    <div class="modal-body model-body-custom">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 model_content_layout">
+                            <div class="jp_register_section_main_wrapper jp_register_section_main_wrapper_custom">
+                                <div class="jp_regis_left_side_box_wrapper">
+                                    <div class="jp_regis_left_side_box">
+                                        <img src="{{asset('public/frontend/images/content/regis_icon.png')}}" alt="icon" />
+                                        <h4>Tôi là nhà tuyển dụng</h4>
+                                        <ul>
+                                            <li><a href="{{url('/employer/dang-ki.html')}}"><i class="fa fa-plus-circle"></i> &nbsp;Đăng ký với công ty</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="jp_regis_right_side_box_wrapper">
+                                    <div class="jp_regis_right_img_overlay"></div>
+                                    <div class="jp_regis_right_side_box">
+                                        <img src="{{asset('public/frontend/images/content/regis_icon2.png')}}" alt="icon" />
+                                        <h4>Tôi là người tìm việc</h4>
+                                        <ul>
+                                            <li><a href="{{url('/ung-vien/dang-ki.html')}}"><i class="fa fa-plus-circle"></i> &nbsp;Đăng ký ứng viên</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer custom_model_layout" style="background-color: antiquewhite;">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- jp footer Wrapper End -->
         <!--main js file start-->
         <script src="{{asset('public/frontend/js/jquery_min.js')}}"></script>

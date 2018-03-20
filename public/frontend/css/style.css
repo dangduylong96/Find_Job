@@ -237,9 +237,9 @@ ul{
 }
 .mainmenu ul li:hover .gc_main_navigation,
 .mainmenu ul li.active > .gc_main_navigation {
-    opacity: 1;
+    /* opacity: 1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	color:#ffffff !important;
+	color:#ffffff !important; */
 }
 .nav > li > a:focus,
 .nav > li > a:hover {
@@ -391,7 +391,7 @@ ul{
     content: "";
     width: 11px;
     height: 1px;
-    background-color: #23c0e9 !important;
+    /* background-color: #23c0e9 !important; */
     top: 20px;
     position: absolute;
 	left:0;

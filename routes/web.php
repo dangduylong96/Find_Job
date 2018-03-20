@@ -20,7 +20,9 @@ Route::get('chi-tiet-p{id}.html','FrontendDetailPostController@getDetailPost')->
 //Hành động yêu thích, ứng tuyển
 Route::get('yeu-thich.html','FrontendActionController@frontendLoveAction'); 
 Route::get('ung-tuyen-p{id}.html','FrontendActionController@frontendApplyAction'); 
-Route::post('ung-tuyen-p{id}.html','FrontendActionController@frontendPostsApplyAction'); 
+Route::post('ung-tuyen-p{id}.html','FrontendActionController@frontendPostsApplyAction');
+//Chi tiết công ty
+Route::get('cong-ty-c{id}.html','FrontendCompanyController@getDetailCompany'); 
 
 
 //Nhà tuyển dụng

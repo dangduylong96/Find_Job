@@ -11,3 +11,28 @@
 {
     color: blue;
 }
+.custom_model_layout
+{
+    clear: both;
+}
+.model_content_layout
+{
+    padding-left: 0;
+    padding-right: 0;
+}
+.jp_regis_right_img_overlay_custom
+{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    bottom: 0%;
+}
+.model-body-custom
+{
+    padding: 0;
+}
+.jp_register_section_main_wrapper_custom
+{
+    margin-top: 0;
+}

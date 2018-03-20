@@ -56,7 +56,7 @@
                                                 <h4>{{$v['name']}}</h4>
                                                 <p>{{MyLibrary::getNameSetting('city',$v['place'])}}</p>
                                                 <ul>
-                                                    <li><a href="#">{{$v['count']}} việc làm</a></li>
+                                                    <li><a href="cong-ty-c{{$v['id']}}.html">{{$v['count']}} việc làm</a></li>
                                                 </ul>
                                             </div>
                                         </div>

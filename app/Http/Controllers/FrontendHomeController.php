@@ -60,7 +60,7 @@ class FrontendHomeController extends Controller
         $data['new_company']=$new_company->toArray();
 
         //Lấy danh sách công ty
-        $list_company=Company::leftJoin('post_employers','companies.id','=','company_id')->select('companies.name','companies.image','companies.place',DB::raw('COUNT(post_employers.company_id) as count'))->groupBy('companies.name','companies.image','companies.place')->skip(0)->take(5)->get();
+        $list_company=Company::leftJoin('post_employers','companies.id','=','company_id')->select('companies.id','companies.name','companies.image','companies.place',DB::raw('COUNT(post_employers.company_id) as count'))->groupBy('companies.id','companies.name','companies.image','companies.place')->skip(0)->take(5)->get();
         $data['list_company']=$list_company->toArray();
 
         //Lấy bài viết mới
