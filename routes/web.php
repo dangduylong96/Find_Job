@@ -16,9 +16,11 @@ Route::get('/','FrontendHomeController@Home');
 Route::get('tim-kiem.html','FrontendSearchController@Search'); 
 Route::post('tim-kiem-ajax.html','FrontendSearchController@ajaxSearch'); 
 //Chi tiết bài đăng
-Route::get('{url}-p{id}.html','FrontendDetailPostController@getDetailPost')->where(['url'=>'[A-Za-z0-9\-]+','id'=>'[0-9]+']); 
+Route::get('chi-tiet-p{id}.html','FrontendDetailPostController@getDetailPost')->where(['id'=>'[0-9]+']); 
 //Hành động yêu thích, ứng tuyển
 Route::get('yeu-thich.html','FrontendActionController@frontendLoveAction'); 
+Route::get('ung-tuyen-p{id}.html','FrontendActionController@frontendApplyAction'); 
+Route::post('ung-tuyen-p{id}.html','FrontendActionController@frontendPostsApplyAction'); 
 
 
 //Nhà tuyển dụng

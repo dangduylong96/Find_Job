@@ -3,3 +3,11 @@
     color: #ffffff!important;
     border: 1px solid #f36969!important;
 }
+#form_apply label
+{
+    color: white;
+}
+.link_create_cv
+{
+    color: blue;
+}

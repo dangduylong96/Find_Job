@@ -7,7 +7,7 @@ use App\PostEmployer;
 use MyLibrary;
 class FrontendDetailPostController extends Controller
 {
-    public function getDetailPost($url,$id)
+    public function getDetailPost($id)
     {
         //Lấy thông tin bài viết hiện tại
         $post=PostEmployer::find($id);   
