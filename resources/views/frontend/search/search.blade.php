@@ -71,8 +71,8 @@
                                                         <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper">
                                                             <ul>
                                                                 <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
-                                                                <li><a href="#">Xem</a></li>
-                                                                <li><a href="#">Ứng tuyển</a></li>
+                                                                <li><a href="chi-tiet-p{{$v->id}}.html">Xem</a></li>
+                                                                <li><a href="ung-tuyen-p{{$v->id}}.html">Ứng tuyển</a></li>
                                                             </ul>
                                                         </div>
                                                     </div>

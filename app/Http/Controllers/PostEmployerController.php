@@ -9,6 +9,8 @@ use Auth;
 use App\Company;
 use App\PostEmployer;
 use App\Tag;
+use App\Category;
+use App\Manager_cadidate_and_post;
 class PostEmployerController extends Controller
 {
     /*Admin quản lí*/
@@ -39,6 +41,8 @@ class PostEmployerController extends Controller
         $data['slary']=MyLibrary::getSetting('slary');
         $data['time_try']=MyLibrary::getSetting('time_try');
         $data['city']=MyLibrary::getSetting('city');
+        //Lấy danh sách ngành
+        $data['category']=Category::get();
         return view('employer.post.post',$data);
     }
 
@@ -64,6 +68,7 @@ class PostEmployerController extends Controller
         $new_post->time_try=$request->time_try;
         $new_post->workplace=$request->workplace;
         $new_post->benefit=$request->benefit;
+        $new_post->category_id=$request->category;
         $new_post->expiration_date=date('y-m-d',strtotime($request->expiration_date));
         $new_post->status=0;
         $new_post->view=1;
@@ -145,6 +150,8 @@ class PostEmployerController extends Controller
         $data['slary']=MyLibrary::getSetting('slary');
         $data['time_try']=MyLibrary::getSetting('time_try');
         $data['city']=MyLibrary::getSetting('city');
+        //Lấy danh sách ngành
+        $data['category']=Category::get();
         return view('employer.post.edit_post',$data);
     }
     public function employerPostEditEmployer($id,PostEmployeRequest $request)
@@ -181,6 +188,7 @@ class PostEmployerController extends Controller
         $new_post->time_try=$request->time_try;
         $new_post->workplace=$request->workplace;
         $new_post->benefit=$request->benefit;
+        $new_post->category_id=$request->category;
         $new_post->expiration_date=date('y-m-d',strtotime($request->expiration_date));
         //Thông tin liên hệ
         $arr_contact=[
@@ -246,5 +254,66 @@ class PostEmployerController extends Controller
         $post->status=3;
         $post->save();
         return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'warning','content'=>'Hủy thành công. Vui lòng liên hệ quản trị viên nếu muốn khôi phục']);
+    }
+
+    //Danh sách người ứng tuyển bài viết này
+    public function getListApply($id)
+    {
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $company=Company::where('user_id',$user_id)->get()->toArray();
+        $company_id=$company[0]['id'];
+        //Lấy thông tin hiện tại
+        $current_post=PostEmployer::find($id);
+        if(!isset($current_post))
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không tồn tại']);
+        }
+        $current_post=$current_post->toArray();
+        if($current_post['company_id']!=$company_id && $current_post['status']!=3)
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không thuộc sở hữu của bạn']);
+        }
+        //Kiểm tra bài viết hết hạn chưa
+        if($current_post['status']!=1)
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết chưa được duyệt hoặc đã hết hạn']);
+        }
+
+        //Lấy tất cả người dùng đã ứng tuyển bài viết này
+        $Manager_cadidate_and_post=Manager_cadidate_and_post::where([['post_id',$id],['type_apply',1]])->get();
+        $data['Manager_cadidate_and_post']=$Manager_cadidate_and_post;
+        return view('employer.apply.list_apply_post',$data);
+    }
+    //Xem chi tiết CV
+    public function getCvApply($id)
+    {
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $company=Company::where('user_id',$user_id)->get()->toArray();
+        $company_id=$company[0]['id'];
+        //Lấy thông tin hiện tại
+        $current_post=PostEmployer::find($id);
+        if(!isset($current_post))
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không tồn tại']);
+        }
+        $current_post=$current_post->toArray();
+        if($current_post['company_id']!=$company_id && $current_post['status']!=3)
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không thuộc sở hữu của bạn']);
+        }
+        //Kiểm tra bài viết hết hạn chưa
+        if($current_post['status']!=1)
+        {
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết chưa được duyệt hoặc đã hết hạn']);
+        }
+
+        //Lấy tất cả người dùng đã ứng tuyển bài viết này
+        $Manager_cadidate_and_post=Manager_cadidate_and_post::where([['post_id',$id],['type_apply',1]])->get();
+        $data['Manager_cadidate_and_post']=$Manager_cadidate_and_post;
+        return view('employer.apply.list_apply_post',$data);
     }
 }

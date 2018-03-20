@@ -27,11 +27,9 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tin tuyển dụng</th>
-                                <th>Hết hạn</th>
-                                <th>Lượt Xem</th>
-                                <th>Ứng tuyển</th>
-                                <th>Trạng thái</th>
+                                <th>Tên</th>
+                                <th>Tiêu đề tuyển dụng</th>
+                                <th>Số điện thoại</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -39,19 +37,14 @@
                         <?php
                             $i=1;
                         ?>
-                        @foreach($list_post as $k=>$v)
+                        @foreach($Manager_cadidate_and_post as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v['title']}}</td>
-                                <td>{{date('d-m-Y',strtotime($v['expiration_date']))}}</td>
-                                <td>{{$v['view']}}</td>
-                                <td>{{MyLibrary::getCountApplyPost($v['id'])}} <a href="danh-ung-tuyen-p{{$v['id']}}.html" style="font-size:15px;color:red"><span class="label label-success">Xem</span></a></td>
-                                <td>{!!createLabel($v['status'])!!}</td>
+                                <td>{{$v->candidate->name}}</td>
+                                <td>{{$v->postemployer->title}}</td>
+                                <td>{{$v->candidate->phone}}</td>
                                 <td>
-                                    @if($v['status']!=3)
-                                    <a href="<?php echo url('/employer/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
-                                    <a href="<?php echo url('/employer/huy-tin-'.$k.'.html')?>"><button type="button" class="btn btn-danger">Hủy</button></a>
-                                    @endif
+                                    <a href="<?php echo url('/employer/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Xem CV</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

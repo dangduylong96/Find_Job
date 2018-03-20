@@ -28,12 +28,12 @@ class FrontendActionController extends Controller
             {
                 //Kiểm tra có phải là người tìm việc hay không?
                 $user=Auth::user();
-                if(!$user->type='candidate')
+                if($user->type!='candidate')
                 {
                     $message=[
                         'status'=>'404',
                         'content'=>'Tài khoản của bạn không phải là người tìm việc',
-                        'link'=>'http://localhost:90/Find_Job/ung-vien/thong-tin-tai-khoan.html'
+                        'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap.html'
                     ];
                     echo json_encode($message);
                     exit;
@@ -102,7 +102,7 @@ class FrontendActionController extends Controller
         }else
         {
             $type=$manager_cadidate_and_post->type;
-            if($type=1)
+            if($type==1)
             {
                 $manager_cadidate_and_post->type=0;
                 $message=[
@@ -134,10 +134,10 @@ class FrontendActionController extends Controller
         {
             //Kiểm tra có phải là người tìm việc hay không?
             $user=Auth::user();
-            if(!$user->type='candidate')
+            if($user->type!='candidate')
             {
                 echo '<script>alert("Tài khoản của bạn không phải là người tìm việc")</script>';
-                echo '<script>window.location.href="/"</script>';
+                echo '<script>window.location.href="ung-vien/dang-nhap.html"</script>';
                 exit;
             }else
             {
@@ -194,10 +194,10 @@ class FrontendActionController extends Controller
         {
             //Kiểm tra có phải là người tìm việc hay không?
             $user=Auth::user();
-            if(!$user->type='candidate')
+            if($user->type!='candidate')
             {
                 echo '<script>alert("Tài khoản của bạn không phải là người tìm việc")</script>';
-                echo '<script>window.location.href="/"</script>';
+                echo '<script>window.location.href="ung-vien/dang-nhap.html"</script>';
                 exit;
             }else
             {

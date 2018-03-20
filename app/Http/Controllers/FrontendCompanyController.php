@@ -27,28 +27,28 @@ class FrontendCompanyController extends Controller
         $data['company']=$company;
         
         //Lấy việc làm thuộc công ty này
-        $list_post_0_to_3=PostEmployer::where('company_id',$id)->skip(0)->take(3)->get();
+        $list_post_0_to_3=PostEmployer::where('company_id',$id)->skip(0)->take(5)->orderBy('created_at','desc')->get();
         $data['list_post_0_to_3']=$list_post_0_to_3;
-        $list_post_3_to_6=PostEmployer::where('company_id',$id)->skip(3)->take(3)->get();
-        $data['list_post_3_to_6']=$list_post_3_to_6;
 
         //Danh sách các bài viết đã ưa thích
         if(Auth::check())
         {
             $user=Auth::user();
-            $candidate_id=$user->candidate->id;
-            $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
-            if(isset($list_love))
+            if($user->type=="candidate")
             {
-                $data['list_love']=[];
-                foreach($list_love as $v)
+                $candidate_id=$user->candidate->id;
+                $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+                if(isset($list_love))
                 {
-                    $data['list_love'][]=$v->post_id;
+                    $data['list_love']=[];
+                    foreach($list_love as $v)
+                    {
+                        $data['list_love'][]=$v->post_id;
+                    }
                 }
             }
         }
 
-        
         //Lấy thông tin bài viết hiện tại
         $post=PostEmployer::find($id);   
         if(!isset($post))

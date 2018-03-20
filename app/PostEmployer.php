@@ -12,6 +12,11 @@ class PostEmployer extends Model
     //Lấy thông tin công ty
     public function Company()
     {
-        return $this->hasOne('App\Company','id','company_id');
+        return $this->belongsTo('App\Company','company_id','id');
+    }
+    //Lấy thông tin loại
+    public function category()
+    {
+        return $this->belongsTo('App\Category','category_id','id');
     }
 }

@@ -29,10 +29,10 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="jp_form_exper_wrapper">
                                 <i class="fa fa-dot-circle-o first_icon"></i>
-                                <select name="experience">
-                                    <option value="all" {{$current_experience=='all'?'selected':''}}>Tất cả</option>
-                                    @foreach($experience as $k=>$v)
-                                    <option value="{{$k}}" {{$current_experience==$k?'selected':''}}>{{$v}}</option>
+                                <select name="category">
+                                    <option value="all" {{$current_city=='all'?'selected':''}}>Tất cả</option>
+                                    @foreach($category as $k=>$v)
+                                    <option value="{{$v->id}}" {{$current_category==$v->id?'selected':''}}>{{$v->name}}</option>
                                     @endforeach
                                 </select><i class="fa fa-angle-down second_icon"></i>
                             </div>

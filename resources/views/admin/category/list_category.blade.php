@@ -1,14 +1,14 @@
-@extends('employer.layout.layout')
+@extends('admin.layout.layout')
 @section('main_page')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Quản Lí Tin tuyển dụng
+            Quản Lí nghành
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Danh sách Tin tuyển dụng</li>
+            <li class="active">Danh sách nghành</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,11 +27,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tin tuyển dụng</th>
-                                <th>Hết hạn</th>
-                                <th>Lượt Xem</th>
-                                <th>Ứng tuyển</th>
-                                <th>Trạng thái</th>
+                                <th>Tên nghành</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -39,19 +35,13 @@
                         <?php
                             $i=1;
                         ?>
-                        @foreach($list_post as $k=>$v)
+                        @foreach($category as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v['title']}}</td>
-                                <td>{{date('d-m-Y',strtotime($v['expiration_date']))}}</td>
-                                <td>{{$v['view']}}</td>
-                                <td>{{MyLibrary::getCountApplyPost($v['id'])}} <a href="danh-ung-tuyen-p{{$v['id']}}.html" style="font-size:15px;color:red"><span class="label label-success">Xem</span></a></td>
-                                <td>{!!createLabel($v['status'])!!}</td>
+                                <td>{{$v->name}}</td>
                                 <td>
-                                    @if($v['status']!=3)
-                                    <a href="<?php echo url('/employer/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
-                                    <a href="<?php echo url('/employer/huy-tin-'.$k.'.html')?>"><button type="button" class="btn btn-danger">Hủy</button></a>
-                                    @endif
+                                    <a href="<?php echo url('/admin/sua-nghanh-'.$v->id.'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
+                                    <a href="<?php echo url('/admin/xoa-nghanh-'.$v->id.'.html')?>"><button type="button" class="btn btn-danger" onclick="return confirm('Xóa loại nghành sẽ xóa tất cả các tin của nghành đó. Khi xóa không thể khôi phục lại.')">Xóa</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

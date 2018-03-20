@@ -44,7 +44,11 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
         Route::get('sua-tin-{id}.html','PostEmployerController@employerGetEditEmployer');
         Route::post('sua-tin-{id}.html','PostEmployerController@employerPostEditEmployer');
         Route::get('huy-tin-{id}.html','PostEmployerController@employerPostRemoveEmployer');
-        Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');    
+        Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');  
+        //Danh sách ng ứng tuyển  
+        Route::get('danh-ung-tuyen-p{id}.html','PostEmployerController@getListApply');  
+        Route::get('chi-tiet-cv-{id}.html','PostEmployerController@getCvApply');  
+
         Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
     });
     Route::get('thong-tin-cong-ty.html','CompaniesController@company');
@@ -103,6 +107,14 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('duyet-tin-{id}.html','AmdminPostEmployerController@adminCheckPost');
     Route::get('huy-tin-{id}.html','AmdminPostEmployerController@adminUnCheckPost');
 
+    //Quản lí loại tin
+    Route::get('danh-sach-nghanh.html','AdminCategoryController@getListCategory');
+    Route::get('them-nghanh.html','AdminCategoryController@addCategory');
+    Route::post('them-nghanh.html','AdminCategoryController@postAddCategory')->name('add_category');
+    Route::get('sua-nghanh-{id}.html','AdminCategoryController@editCategory');
+    Route::post('sua-nghanh-{id}.html','AdminCategoryController@postEditCategory');
+    Route::get('xoa-nghanh-{id}.html','AdminCategoryController@deleteCategory');
+
     //Setting Quy mô
     Route::get('qui-mo.html','SettingController@companySize');
     Route::get('qui-mo/them.html',function(){
@@ -112,8 +124,4 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('qui-mo/sua-{id}.html','SettingController@editSizeCompany');
     Route::post('qui-mo/sua-{id}.html','SettingController@postEditSizeCompany');
     Route::get('qui-mo/xoa-{id}.html','SettingController@deleteSizeCompany');
-});
-
-Route::get('/demo', function () {
-    return MyLibrary::get_username(1);
 });

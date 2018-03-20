@@ -73,8 +73,14 @@
                         <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 hidden-sm hidden-xs">
                             <div class="jp_navi_right_btn_wrapper">
                                 <ul>
+                                    @if(!Auth::check())
                                     <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal1"><i class="fa fa-user"></i>&nbsp; Đăng kí</a></li>
                                     <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"><i class="fa fa-sign-in"></i>&nbsp; Đăng Nhập</a></li>
+                                    @elseif(Auth::user()->type=="employer")
+                                    <a href="employer/dashboard.html" target="_blank"><button class="btn btn-danger btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp; Quay lại trang nhà tuyển dụng</button></a>
+                                    @else
+                                    <a href="ung-vien/dashboard.html" target="_blank"><button class="btn btn-danger btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp; Quay lại trang người tìm việc</button></a>
+                                    @endif                                    
                                 </ul>
                             </div>
                         </div>

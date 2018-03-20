@@ -3,6 +3,7 @@ namespace App\Helper;
  
 use DB;
 use App\Setting;
+use App\Manager_cadidate_and_post;
 class MyLibrary {
     public static function getSetting($colum) {
         $setting=Setting::where('name',$colum)->get()->toArray();
@@ -28,5 +29,11 @@ class MyLibrary {
         $setting=Setting::where('name',$colum)->get()->toArray();
         $list=json_decode($setting[0]['value'],true);
         return $list[$key];
+    }
+
+    //Lấy tổng lượt ứng tuyển của 1 bài viết
+    public static function getCountApplyPost($id) {
+        $count=Manager_cadidate_and_post::where([['post_id',$id],['type_apply',1]])->count();
+        return $count;
     }
 }

@@ -11,6 +11,7 @@ $(document).on('click','.ajax_page',function(){
     var keyword=$('#search_job').val();
     var sort_order=$('select[name="sort_order"]').val();
     var page=current.data('page');
+    var category_id=$('select[name="category"]').val();
     var sex = $("input[name='sex[]']:checked").map(function(){
         return $(this).val();
     }).get();
@@ -46,7 +47,7 @@ $(document).on('click','.ajax_page',function(){
     }).get();
     if(jQuery.isEmptyObject(experience))
     {
-        experience=$('select[name="experience"]').val();
+        experience="all";
     }
     var data={
         '_token':$('input[name="_token"]').val(),
@@ -57,7 +58,8 @@ $(document).on('click','.ajax_page',function(){
         'city':city,
         'level':level,
         'slary':slary,
-        'experience':experience
+        'experience':experience,
+        'category_id':category_id
     };
     $.ajax({
         url:'http://localhost:90/Find_Job/tim-kiem-ajax.html',
@@ -74,6 +76,7 @@ $(document).on('click','.ajax_page',function(){
 $(document).on('click','.ajax_page_normal',function(){
     var keyword=$('#search_job').val();
     var sort_order=$('select[name="sort_order"]').val();
+    var category_id=$('select[name="category"]').val();
     var page=1;
     var sex = $("input[name='sex[]']:checked").map(function(){
         return $(this).val();
@@ -110,7 +113,7 @@ $(document).on('click','.ajax_page_normal',function(){
     }).get();
     if(jQuery.isEmptyObject(experience))
     {
-        experience=$('select[name="experience"]').val();
+        experience="all";
     }
     var data={
         '_token':$('input[name="_token"]').val(),
@@ -121,7 +124,8 @@ $(document).on('click','.ajax_page_normal',function(){
         'city':city,
         'level':level,
         'slary':slary,
-        'experience':experience
+        'experience':experience,
+        'category_id':category_id
     };
     $.ajax({
         url:'http://localhost:90/Find_Job/tim-kiem-ajax.html',
@@ -138,6 +142,7 @@ $(document).on('click','.ajax_page_normal',function(){
 $(document).on('change','select[name="sort_order"]',function(){
     var keyword=$('#search_job').val();
     var sort_order=$('select[name="sort_order"]').val();
+    var category_id=$('select[name="category"]').val();
     var page=1;
     var sex = $("input[name='sex[]']:checked").map(function(){
         return $(this).val();
@@ -174,7 +179,7 @@ $(document).on('change','select[name="sort_order"]',function(){
     }).get();
     if(jQuery.isEmptyObject(experience))
     {
-        experience=$('select[name="experience"]').val();
+        experience="all";
     }
     var data={
         '_token':$('input[name="_token"]').val(),
@@ -185,7 +190,8 @@ $(document).on('change','select[name="sort_order"]',function(){
         'city':city,
         'level':level,
         'slary':slary,
-        'experience':experience
+        'experience':experience,
+        'category_id':category_id
     };
     $.ajax({
         url:'http://localhost:90/Find_Job/tim-kiem-ajax.html',

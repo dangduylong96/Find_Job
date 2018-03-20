@@ -10,6 +10,7 @@ use DB;
 use App\Tag;
 use App\Company;
 use App\PostEmployer;
+use App\Category;
 class FrontendSearchController extends Controller
 {
     public function __construct()
@@ -57,15 +58,15 @@ class FrontendSearchController extends Controller
             $keyword=$request->keyword;
             //Khác -1 là tìm all
             $city=['workplace','!=',-1];
-            $experience=['experience','!=',-1];
+            $category=['category_id','!=',-1];
             $page=1;
             if($request->has('city') && $request->city!='all')
             {
                 $city=['workplace',$request->city];
             }
-            if($request->has('experience') && $request->experience!='all')
+            if($request->has('category') && $request->category!='all')
             {
-                $experience=['experience',$request->experience];
+                $category=['category_id',$request->category];
             }
             if($request->has('page'))
             {
@@ -74,14 +75,14 @@ class FrontendSearchController extends Controller
             /*Danh mục tìm kiếm sẽ bằng : tên post tuyển dụng + tên công ty + tên post chưa tag là keyword*/
             $list_result=[];
             //Lấy tên post tuyển dụng có keyword đã chọn
-            $list_post=PostEmployer::where([['title','like','%'.$keyword.'%'],$city,$experience,['status',1]])->orderBy('created_at','desc')->get();
+            $list_post=PostEmployer::where([['title','like','%'.$keyword.'%'],$city,$category,['status',1]])->orderBy('created_at','desc')->get();
             foreach($list_post as $v)
             {
                 $name_company=$v->Company->name;
                 $list_result[]=$v;
             }
             //Lấy thẻ tag và tên công ty giống keyword
-            $list_tag=PostEmployer::where([$city,$experience,['status',1]])->orderBy('created_at','desc')->get();
+            $list_tag=PostEmployer::where([$city,$category,['status',1]])->orderBy('created_at','desc')->get();
             foreach($list_tag as $v)
             {
                 $check=0;
@@ -114,7 +115,10 @@ class FrontendSearchController extends Controller
             $data['page']=$page;
             $data['keyword']=$keyword;
             $data['current_city']=$request->city;
-            $data['current_experience']=$request->experience;
+            $data['current_category']=$request->category;
+
+            //Lấy danh sách ngành
+            $data['category']=Category::get();
 
             $data['sex']=Mylibrary::getSetting('sex');
             $data['city']=Mylibrary::getSetting('city');
@@ -165,6 +169,10 @@ class FrontendSearchController extends Controller
                     $list_post=$list_post->whereIn('workplace',$city);
                     $list_tag=$list_tag->whereIn('workplace',$city);
                 }              
+            }elseif($city!='all')
+            {
+                $list_post=$list_post->where('workplace',$city);
+                $list_tag=$list_tag->where('workplace',$city);
             }
 
             //Kiểm tra trình độ
@@ -200,6 +208,21 @@ class FrontendSearchController extends Controller
                 }              
             }
 
+            //Kiểm tra nghành
+            $category_id=$request->category_id;
+            if(is_array($category_id))
+            {
+                if(!in_array('all',$category_id))
+                {
+                    $list_post=$list_post->whereIn('category_id',$category_id);
+                    $list_tag=$list_tag->whereIn('category_id',$category_id);
+                }              
+            }elseif($category_id!='all')
+            {
+                $list_post=$list_post->where('category_id',$category_id);
+                $list_tag=$list_tag->where('category_id',$category_id);
+            }
+
             //Sắp xếp (mặc định là ngày đăng giảm)
             if($request->has('sort_order'))
             {
@@ -226,7 +249,6 @@ class FrontendSearchController extends Controller
                 $name_company=$v->Company->name;
                 $list_result[]=$v;
             }
-
             //Lấy thẻ tag và tên công ty giống keyword
             $list_tag=$list_tag->get();            
             foreach($list_tag as $v)
@@ -244,9 +266,10 @@ class FrontendSearchController extends Controller
                     $list_result[]=$v;
                 }
             }
+            
             //Loại bỏ các dòng trùng nhau trong mảng kết quả
             $list_result=array_unique($list_result);
-            
+
             //Tổng số tin
             $count_post = count($list_result);
             //Số tin hiển thị 1 trang;
@@ -258,9 +281,9 @@ class FrontendSearchController extends Controller
 
             foreach($list_result as $k=>$v)
             {
-                if($k>(($page-1)*$post_of_page) && $k<=($page*$post_of_page))
+                if($k>=(($page-1)*$post_of_page) && $k<=($page*$post_of_page))
                 {
-                    $html_result.='<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont"> <div class="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper"> <div class="row"> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_side_img"> <img src="'.$v->Company->image.'" alt="post_img" width="100px" height="95px"/> </div> <div class="jp_job_post_right_cont jp_job_post_grid_right_cont"> <h4>'.substr($v->title,0,50).'</h4> <p>'.substr($v->Company->name,0,50).'</p> <ul> <li><i class="fa fa-cc-paypal"></i>&nbsp; '.MyLibrary::getNameSetting('slary',$v->slary).'</li> <li><i class="fa fa-map-marker"></i>&nbsp; '.MyLibrary::getNameSetting('city',$v->workplace).'</li> </ul> </div> </div> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper"> <ul> <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li> <li><a href="#">Xem</a></li> <li><a href="#">Ứng tuyển</a></li> </ul> </div> </div> </div> </div> <div class="jp_job_post_keyword_wrapper"> <ul> <li><i class="fa fa-tags"></i>Keywords :</li>'; foreach(json_decode($v->tags) as $tag_name)
+                    $html_result.='<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont"> <div class="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper"> <div class="row"> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_side_img"> <img src="'.$v->Company->image.'" alt="post_img" width="100px" height="95px"/> </div> <div class="jp_job_post_right_cont jp_job_post_grid_right_cont"> <h4>'.substr($v->title,0,50).'</h4> <p>'.substr($v->Company->name,0,50).'</p> <ul> <li><i class="fa fa-cc-paypal"></i>&nbsp; '.MyLibrary::getNameSetting('slary',$v->slary).'</li> <li><i class="fa fa-map-marker"></i>&nbsp; '.MyLibrary::getNameSetting('city',$v->workplace).'</li> </ul> </div> </div> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper"> <ul> <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li> <li><a href="chi-tiet-p'.$v->id.'.html">Xem</a></li> <li><a href="ung-tuyen-p'.$v->id.'.html">Ứng tuyển</a></li> </ul> </div> </div> </div> </div> <div class="jp_job_post_keyword_wrapper"> <ul> <li><i class="fa fa-tags"></i>Keywords :</li>'; foreach(json_decode($v->tags) as $tag_name)
                     {
                         $html_result.='<li><a href="tim-kiem.html?keyword='.$tag_name.'&city=all&experience=all">'.$tag_name.',</a></li>';
                     }

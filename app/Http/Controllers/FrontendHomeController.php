@@ -13,6 +13,7 @@ use App\PostEmployer;
 use App\User;
 use App\CandidateProfile;
 use App\Candidate;
+use App\Category;
 use App\Manager_cadidate_and_post;
 class FrontendHomeController extends Controller
 {
@@ -79,23 +80,29 @@ class FrontendHomeController extends Controller
         if(Auth::check())
         {
             $user=Auth::user();
-            $candidate_id=$user->candidate->id;
-            $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
-            if(isset($list_love))
+            if($user->type=="candidate")
             {
-                $data['list_love']=[];
-                foreach($list_love as $v)
+                $candidate_id=$user->candidate->id;
+                $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+                if(isset($list_love))
                 {
-                    $data['list_love'][]=$v->post_id;
+                    $data['list_love']=[];
+                    foreach($list_love as $v)
+                    {
+                        $data['list_love'][]=$v->post_id;
+                    }
                 }
             }
         }
-
+        //Lấy danh sách ngành
+        $data['category']=Category::get();
         //Tổng số thống kê
         $data['count_job']=PostEmployer::count();
         $data['count_member']=User::count();
         $data['count_profile']=CandidateProfile::count();
         $data['count_company']=Company::count();
+
+        //Danh sách category
 
         //Ứng viên mới
         $data['new_candidate']=Candidate::where('status',1)->orderBy('created_at','desc')->skip(0)->take(3)->get();
