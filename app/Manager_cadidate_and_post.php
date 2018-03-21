@@ -16,4 +16,12 @@ class Manager_cadidate_and_post extends Model
     {
         return $this->belongsTo('App\PostEmployer','post_id','id');
     }
+    public function candidate_profile()
+    {
+        return $this->belongsTo('App\CandidateProfile','candidate_profile_id','id');
+    }
+    public function manager_cv_company()
+    {
+        return $this->hasOne('App\Manager_cv_company','manager_cadidate_and_posts_id','id');
+    }
 }

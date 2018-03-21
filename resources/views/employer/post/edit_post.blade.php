@@ -54,12 +54,12 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Nghành</label>
                                 <div class="col-sm-10">
-                                    <select id="sex" name="category" class="form-control select2" style="width: 100%;">
+                                    <select id="category" name="category" class="form-control select2" style="width: 100%;">
                                         @foreach($category as $k=>$v)
                                         <option value="{{$v->id}}" {{(old("category",$current_post['category_id']) == $v->id ? "selected":"") }}>{{$v->name}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="error">{{$errors->first('sex')}}</span>
+                                    <span class="error">{{$errors->first('category')}}</span>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -48,11 +48,17 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
         //Danh sách ng ứng tuyển  
         Route::get('danh-ung-tuyen-p{id}.html','PostEmployerController@getListApply');  
         Route::get('chi-tiet-cv-{id}.html','PostEmployerController@getCvApply');  
+        //Lưu CV
+        Route::get('luu-cv-{id}.html','ManagerCvCompanyController@saveCvAction');
+        Route::get('huy-luu-cv-{id}.html','ManagerCvCompanyController@deleteSaveCvAction');
+        //Danh sách CV đã lưu
+        Route::get('danh-sach-cv-luu.html','ManagerCvCompanyController@getListSaveCv');
 
         Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
     });
     Route::get('thong-tin-cong-ty.html','CompaniesController@company');
     Route::post('thong-tin-cong-ty.html','CompaniesController@updateCompany')->name('employer_update_company');
+    Route::get('dang-xuat.html','EmployerController@Logout');
 });
 
 

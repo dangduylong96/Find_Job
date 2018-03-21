@@ -10,4 +10,9 @@ class EmployerController extends Controller
     {
         return view('employer.dashboard.dashboard');
     }
+    public function Logout()
+    {
+        Auth::logout();
+        return redirect('employer/dang-nhap.html');
+    }
 }

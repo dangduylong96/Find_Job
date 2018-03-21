@@ -31,7 +31,7 @@ class ProfileCvController extends Controller
             return redirect('/ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'danger','content'=>'Không tồn mụcnày']);
         }
         //Kiểm tra tài khoản có thuộc hồ sơ đó không
-        if($profile['candidate_id']!==$candidate_id)
+        if($profile['candidate_id']!=$candidate_id)
         {
             return redirect('/ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'danger','content'=>'Bạn không có quyền quản lí mục này']);
         }
@@ -609,7 +609,7 @@ class ProfileCvController extends Controller
             $file->move('public/cv',$name_file);
             $value_data->cv=$name_file;
             $value_data->save();
-            return redirect('ung-vien/chi-tiet-ho-so-1.html');
+            return redirect('/ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('success','Upload thành công');
         }
     }
 }

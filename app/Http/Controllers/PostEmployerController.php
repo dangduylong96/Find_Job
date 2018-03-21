@@ -11,6 +11,7 @@ use App\PostEmployer;
 use App\Tag;
 use App\Category;
 use App\Manager_cadidate_and_post;
+use App\CandidateProfile;
 class PostEmployerController extends Controller
 {
     /*Admin quản lí*/
@@ -290,30 +291,51 @@ class PostEmployerController extends Controller
     public function getCvApply($id)
     {
         //Lấy id người đăng nhập
-        $user=Auth::user()->toArray();
-        $user_id=$user['id'];
-        $company=Company::where('user_id',$user_id)->get()->toArray();
-        $company_id=$company[0]['id'];
-        //Lấy thông tin hiện tại
-        $current_post=PostEmployer::find($id);
-        if(!isset($current_post))
+        $user=Auth::user();
+        $company_id=$user->company->id;
+        //Lấy thông tin ứng tuyển hiện tại
+        $manager_cadidate_and_post=Manager_cadidate_and_post::find($id);
+        if(!isset($manager_cadidate_and_post))
         {
-            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không tồn tại']);
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'CV không tồn tại']);
         }
-        $current_post=$current_post->toArray();
-        if($current_post['company_id']!=$company_id && $current_post['status']!=3)
+        $post_employer=PostEmployer::find($manager_cadidate_and_post->post_id);
+        if($company_id!=$post_employer->company_id)
         {
-            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết không thuộc sở hữu của bạn']);
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bạn không có quyền xem CV này']);
         }
-        //Kiểm tra bài viết hết hạn chưa
-        if($current_post['status']!=1)
+        $url_cv_out=$manager_cadidate_and_post->url_cv_out;
+        //Kiểm tra là dùng hồ sơ bên ngoài hay hồ sơ có sẵn
+        if(isset($url_cv_out) && $url_cv_out!='')
         {
-            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết chưa được duyệt hoặc đã hết hạn']);
-        }
+            //Nếu chỉ có cv thôi
+            return redirect('http://localhost:90/Find_Job/public/out_cv/'.$url_cv_out);
+        }elseif(isset($manager_cadidate_and_post->candidate_profile_id))
+        {
+            //Lấy thông tin của cv ứng tuyển
+            $candidate_profile=$manager_cadidate_and_post->candidate_profile;
+            $data['candidate_profile']=$candidate_profile;
+            //Lấy thông tin người tạo hồ sơ
+            $candidate=$candidate_profile->candidate;
+            $data['candidate']=$candidate;       
+            //Lấy thông tin chi tiết hồ sơ (CV_profile)
+            $profile_cv=$candidate_profile->profile_cv;
+            $data['target']=json_decode($profile_cv->target);
+            $data['experience']=json_decode($profile_cv->experience);
+            $data['level']=json_decode($profile_cv->level);
+            $data['english']=json_decode($profile_cv->english);
+            $data['advantages']=json_decode($profile_cv->advantages);
+            $data['cv']=$profile_cv->cv;
 
-        //Lấy tất cả người dùng đã ứng tuyển bài viết này
-        $Manager_cadidate_and_post=Manager_cadidate_and_post::where([['post_id',$id],['type_apply',1]])->get();
-        $data['Manager_cadidate_and_post']=$Manager_cadidate_and_post;
-        return view('employer.apply.list_apply_post',$data);
+            //Tăng lượt view của hồ sơ lên
+            if(!session()->has('view_cv_'.$id))
+            {
+                $candidate_profile->view=$candidate->view+1;
+                $candidate_profile->save();
+                session()->put('view_cv_'.$id,$id);
+            }   
+            
+            return view('employer.apply.detail_cv',$data);
+        }
     }
 }

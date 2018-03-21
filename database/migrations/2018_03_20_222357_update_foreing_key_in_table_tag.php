@@ -27,8 +27,10 @@ class UpdateForeingKeyInTableTag extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['post_id']);
-        $table->integer('post_id')->unsigned()->change();
-        $table->foreign('post_id')->references('id')->on('post_employers');
+        Schema::table('tags', function (Blueprint $table) {
+            $table->dropForeign(['post_id']);
+            $table->integer('post_id')->unsigned()->change();
+            $table->foreign('post_id')->references('id')->on('post_employers');
+        });        
     }
 }

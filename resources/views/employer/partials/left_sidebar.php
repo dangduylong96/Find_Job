@@ -27,6 +27,11 @@
                     <li class="<?php if(strpos(url()->current(),'them-tin.html')!==false) echo 'active'?>" data-active="post"><a href="<?php echo url('/employer/them-tin.html')?>"><i class="fa fa-circle-o"></i> Thêm tin</a></li>
                 </ul>
             </li>
+            <li class="<?php if(strpos(url()->current(),'danh-sach-cv-luu.html')!==false) echo 'active'?>">
+                <a href="danh-sach-cv-luu.html">
+                <i class="fa fa-save"></i> <span>Danh sách CV đã lưu</span>
+                </a>
+            </li>
             <li class="treeview">
                 <a href="#">
                 <i class="fa fa-files-o"></i>

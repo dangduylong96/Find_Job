@@ -59,7 +59,7 @@
                                         <option value="{{$v->id}}">{{$v->name}}</option>
                                         @endforeach
                                     </select>
-                                    <span class="error">{{$errors->first('sex')}}</span>
+                                    <span class="error">{{$errors->first('category')}}</span>
                                 </div>
                             </div>
                             <div class="form-group">

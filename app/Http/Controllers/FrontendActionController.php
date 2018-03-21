@@ -248,7 +248,7 @@ class FrontendActionController extends Controller
                 if($row->type_apply==1)
                 {
                     echo '<script>alert("Bạn đã ứng tuyển bài viết này")</script>';
-                    echo '<script>history.go(-1);</script>';
+                    echo '<script>window.location.href('/');</script>';
                     exit;
                 }
                 $row->type_apply=1;

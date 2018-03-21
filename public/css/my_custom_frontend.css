@@ -36,3 +36,19 @@
 {
     margin-top: 0;
 }
+.detail_cv
+{
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+.detail_cv span
+{
+    display: block;
+    padding: 8px;
+}
+.detail_cv span i
+{
+    color: white;
+    font-style: normal;
+    margin-left: 2%;
+}

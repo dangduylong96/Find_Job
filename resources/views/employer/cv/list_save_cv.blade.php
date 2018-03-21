@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Quản Lí Tin tuyển dụng
+            Quản Lí hồ sơ đã lưu
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Danh sách Tin tuyển dụng</li>
+            <li class="active">Danh sách hồ sơ đã lưu</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,11 +27,9 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tin tuyển dụng</th>
-                                <th>Hết hạn</th>
-                                <th>Lượt Xem</th>
-                                <th>Ứng tuyển</th>
-                                <th>Trạng thái</th>
+                                <th>Tên</th>
+                                <th>Tiêu đề tuyển dụng</th>
+                                <th>Số điện thoại</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -39,19 +37,15 @@
                         <?php
                             $i=1;
                         ?>
-                        @foreach($list_post as $k=>$v)
+                        @foreach($cv as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v['title']}}</td>
-                                <td>{{date('d-m-Y',strtotime($v['expiration_date']))}}</td>
-                                <td>{{$v['view']}}</td>
-                                <td>{{MyLibrary::getCountApplyPost($v['id'])}} <a href="danh-ung-tuyen-p{{$v['id']}}.html" style="font-size:15px;color:red"><span class="label label-success">Xem</span></a></td>
-                                <td>{!!createLabel($v['status'])!!}</td>
+                                <td>{{$v->manager_cadidate_and_posts->candidate->name}}</td>
+                                <td>{{$v->manager_cadidate_and_posts->postemployer->title}}</td>
+                                <td>{{$v->manager_cadidate_and_posts->candidate->phone}}</td>
                                 <td>
-                                    @if($v['status']!=3)
-                                    <a href="<?php echo url('/employer/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
-                                    <a href="<?php echo url('/employer/huy-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-danger">Hủy</button></a>
-                                    @endif
+                                    <a href="chi-tiet-cv-{{$v->manager_cadidate_and_posts->id}}.html" target="_blank"><button type="button" class="btn btn-info">Xem CV</button></a>
+                                    <a href="huy-luu-cv-{{$v->manager_cadidate_and_posts->id}}.html"><button type="button" class="btn btn-default">Hủy Lưu</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

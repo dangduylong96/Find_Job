@@ -7,6 +7,7 @@ use App\Http\Requests\HelpSearchRequest;
 use Auth;
 use MyLibrary;
 Use App\User;
+Use App\Category;
 Use App\CandidateProfile;
 class CandidateProfileController extends Controller
 {
@@ -30,6 +31,8 @@ class CandidateProfileController extends Controller
         $data['experience']=MyLibrary::getSetting('experience');
         $data['slary']=MyLibrary::getSetting('slary');
         $data['city']=MyLibrary::getSetting('city');
+        //Lấy danh sách ngành
+        $data['category']=Category::get();
         return view('candidate.candidate_help_search.candidate_add_help_search',$data);
     }
     public function candidatePostAddHelpSearch(HelpSearchRequest $request)
@@ -44,10 +47,12 @@ class CandidateProfileController extends Controller
         $profile=new CandidateProfile;
         $profile->candidate_id=$candidate_id;
         $profile->title=$request->title;
+        $profile->category_id=$request->category;
         $profile->level=$request->level;
         $profile->experience=$request->experience;
         $profile->slary=$request->slary;
         $profile->city=$request->city;
+        $profile->display=$request->status;
         $profile->display=$request->status;
         $profile->view=0;
         $profile->status=0;
@@ -80,6 +85,8 @@ class CandidateProfileController extends Controller
         $data['experience']=MyLibrary::getSetting('experience');
         $data['slary']=MyLibrary::getSetting('slary');
         $data['city']=MyLibrary::getSetting('city');
+        //Lấy danh sách ngành
+        $data['category']=Category::get();
         return view('candidate.candidate_help_search.candidate_edit_help_search',$data);
     }
     public function candidatePostHelpSearch($id,HelpSearchRequest $request)
@@ -103,6 +110,7 @@ class CandidateProfileController extends Controller
         
         $profile->candidate_id=$candidate_id;
         $profile->title=$request->title;
+        $profile->category_id=$request->category;
         $profile->level=$request->level;
         $profile->experience=$request->experience;
         $profile->slary=$request->slary;

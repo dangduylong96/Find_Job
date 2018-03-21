@@ -30,6 +30,7 @@
                                 <th>Tên</th>
                                 <th>Tiêu đề tuyển dụng</th>
                                 <th>Số điện thoại</th>
+                                <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -43,8 +44,15 @@
                                 <td>{{$v->candidate->name}}</td>
                                 <td>{{$v->postemployer->title}}</td>
                                 <td>{{$v->candidate->phone}}</td>
+                                @if(!isset($v->manager_cv_company) || $v->manager_cv_company->status!=1)
+                                <td><small class="label label-danger"><i class="fa fa-clock-o"></i>Chưa lưu </small></td>
+                                @else
+                                <td><small class="label label-success"><i class="fa fa-clock-o"></i>Đã lưu </small></td>
+                                @endif
                                 <td>
-                                    <a href="<?php echo url('/employer/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Xem CV</button></a>
+                                    <a href="chi-tiet-cv-{{$v->id}}.html" target="_blank"><button type="button" class="btn btn-info">Xem CV</button></a>
+                                    <a href="luu-cv-{{$v->id}}.html"><button type="button" class="btn btn-danger">Lưu CV</button></a>
+                                    <a href="huy-luu-cv-{{$v->id}}.html"><button type="button" class="btn btn-default">Hủy Lưu</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
