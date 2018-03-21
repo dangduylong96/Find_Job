@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use File;
+use Mail;
 use App\Manager_cadidate_and_post;
 use App\Candidate;
 use App\PostEmployer;
@@ -239,6 +240,24 @@ class FrontendActionController extends Controller
                 $row->type_apply=1;
                 $row->candidate_profile_id=$candidate_profile->id;
                 $row->save();
+
+                //gửi mail khi ứng tuyển thành công   
+                //Lấy email ng đăng bài                
+                $post=PostEmployer::find($id);
+                $contact=json_decode($post->contact);
+                $email_user_post=$contact->email_contact;
+                $name_apply=$user->name;   
+                $data=[
+                    'name_apply'=>$name_apply,
+                    'id_post'=>$id,
+                    'email_user_post'=>$email_user_post
+                ];          
+                Mail::send('mail.apply_mail', $data, function ($message) use ($email_user_post, $name_apply) {
+                    $message->from('nh0xpr0py5@gmail.com', 'Job Pro');                
+                    $message->to($email_user_post, $name_apply)->subject($name_apply.' vừa ứng tuyển');
+                });
+                
+                
                 echo '<script>alert("Ứng tuyển thành công")</script>';
                 echo '<script>history.go(-1);</script>';
                 exit;
@@ -254,6 +273,21 @@ class FrontendActionController extends Controller
                 $row->type_apply=1;
                 $row->candidate_profile_id=$candidate_profile->id;
                 $row->save();
+                //gửi mail khi ứng tuyển thành công   
+                //Lấy email ng đăng bài                
+                $post=PostEmployer::find($id);
+                $contact=json_decode($post->contact);
+                $email_user_post=$contact->email_contact;
+                $name_apply=$user->name;   
+                $data=[
+                    'name_apply'=>$name_apply,
+                    'id_post'=>$id,
+                    'email_user_post'=>$email_user_post
+                ];          
+                Mail::send('mail.apply_mail', $data, function ($message) use ($email_user_post, $name_apply) {
+                    $message->from('nh0xpr0py5@gmail.com', 'Job Pro');                
+                    $message->to($email_user_post, $name_apply)->subject($name_apply.' vừa ứng tuyển');
+                });
                 echo '<script>alert("Ứng tuyển thành công")</script>';
                 echo '<script>history.go(-1);</script>';
                 exit;
@@ -294,6 +328,21 @@ class FrontendActionController extends Controller
                 $row->type_apply=1;
                 $row->url_cv_out=$name_file;
                 $row->save();
+                //gửi mail khi ứng tuyển thành công   
+                //Lấy email ng đăng bài                
+                $post=PostEmployer::find($id);
+                $contact=json_decode($post->contact);
+                $email_user_post=$contact->email_contact;
+                $name_apply=$user->name;   
+                $data=[
+                    'name_apply'=>$name_apply,
+                    'id_post'=>$id,
+                    'email_user_post'=>$email_user_post
+                ];          
+                Mail::send('mail.apply_mail', $data, function ($message) use ($email_user_post, $name_apply) {
+                    $message->from('nh0xpr0py5@gmail.com', 'Job Pro');                
+                    $message->to($email_user_post, $name_apply)->subject($name_apply.' vừa ứng tuyển');
+                });
                 $file->move('public/out_cv',$name_file);
                 echo '<script>alert("Ứng tuyển thành công")</script>';
                 echo '<script>history.go(-1);</script>';
@@ -320,6 +369,21 @@ class FrontendActionController extends Controller
                 $row->url_cv_out=$name_file;
                 $file->move('public/out_cv',$name_file);
                 $row->save();
+                //gửi mail khi ứng tuyển thành công   
+                //Lấy email ng đăng bài                
+                $post=PostEmployer::find($id);
+                $contact=json_decode($post->contact);
+                $email_user_post=$contact->email_contact;
+                $name_apply=$user->name;   
+                $data=[
+                    'name_apply'=>$name_apply,
+                    'id_post'=>$id,
+                    'email_user_post'=>$email_user_post
+                ];          
+                Mail::send('mail.apply_mail', $data, function ($message) use ($email_user_post, $name_apply) {
+                    $message->from('nh0xpr0py5@gmail.com', 'Job Pro');                
+                    $message->to($email_user_post, $name_apply)->subject($name_apply.' vừa ứng tuyển');
+                });
                 echo '<script>alert("Ứng tuyển thành công")</script>';
                 echo '<script>history.go(-1);</script>';
                 exit;

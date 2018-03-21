@@ -1,0 +1,1 @@
+<p>{{$name_apply}} vừa ứng tuyển bài tuyển dụng của bạn</p>.<a href="http://localhost:90/Find_Job/employer/danh-ung-tuyen-p{{$id_post}}.html">Click vào đây để xem</a>
