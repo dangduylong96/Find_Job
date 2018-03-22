@@ -11,6 +11,7 @@ use App\Tag;
 use App\Category;
 use App\Manager_cadidate_and_post;
 use App\Manager_cv_company;
+use App\Company_save_candidate;
 use App\CandidateProfile;
 class ManagerCvCompanyController extends Controller
 {
@@ -92,5 +93,16 @@ class ManagerCvCompanyController extends Controller
         $cv=Manager_cv_company::where([['company_id',$company_id],['status',1]])->get();
         $data['cv']=$cv;
         return view('employer.cv.list_save_cv',$data);
+    }
+
+    public function getListSearchSaveCv()
+    {
+        //Lấy thông tin company
+        $user=Auth::user();
+        $company_id=$user->company->id;
+        //Tìm các hồ sơ đã lưu của công ty này
+        $cv=Company_save_candidate::where([['company_id',$company_id],['status',1]])->get();
+        $data['cv']=$cv;
+        return view('employer.cv.list_search_save_cv',$data);
     }
 }

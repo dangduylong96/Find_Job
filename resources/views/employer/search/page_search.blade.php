@@ -3,7 +3,7 @@
 @section('content')
 <div class="cc_slider_main_wrapper">
     <div class="cc_slider_img_section">
-        <div class="owl-carousel owl-theme">
+        <div>
             <form action="ket-qua-ung-vien.html" method="GET">
                 <div class="item cc_main_slide1">
                     <div class="cc_slider_overlay"></div>
@@ -90,5 +90,5 @@
 @section('js')
 <script src="{{asset('public/frontend/js/jquery.magnific-popup.js')}}"></script>
 <script src="{{asset('public/frontend/js/custom_II.js')}}"></script>
-<script src="{{asset('public/js/home_frontend.js')}}"></script>
+<script src="{{asset('public/js/employer_search.js')}}"></script>
 @endsection

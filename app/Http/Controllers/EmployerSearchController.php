@@ -20,15 +20,6 @@ class EmployerSearchController extends Controller
         $data['level']=Mylibrary::getSetting('level');
         $data['slary']=Mylibrary::getSetting('slary');
         $data['experience']=Mylibrary::getSetting('experience');
-
-        $list_search_ajax=[];
-        $list_profile=CandidateProfile::where('status',1)->get();
-        foreach($list_profile as $k=>$v)
-        {
-            $list_search_ajax[]='"'.$v->title.'"';
-        }
-        $list_search_ajax=implode(',',$list_search_ajax);    
-        $data['list_search_ajax']=$list_search_ajax;
         return view('employer.search.page_search',$data);
     }
 
@@ -178,5 +169,120 @@ class EmployerSearchController extends Controller
             $company_save_candidate->save();
             return redirect()->back();
         }
+    }
+
+    //Hủy lưu viên vào tài khoản của mình
+    public function removeSaveCvAction($id)
+    {
+        //Lấy id người đăng nhập
+        $user=Auth::user();
+        $company_id=$user->company->id;
+
+        //Kiểm tra nhà tuyển dụng có quyền xóa bài lưu này k
+        $company_save_candidate=Company_save_candidate::find($id);
+        if(!isset($company_save_candidate))
+        {
+           return redirect('employer/danh-sach-tim-kiem-cv.html')->with('message',['status'=>'warning','content'=>'Không tồn tại bài viết này']);
+        }
+        if($company_save_candidate->company_id!=$company_id)
+        {
+            return redirect('employer/danh-sach-tim-kiem-cv.html')->with('message',['status'=>'danger','content'=>'Bạn không có quyền trên cv này!!']);
+        } 
+        $company_save_candidate->status=0;
+        $company_save_candidate->save();
+        return redirect('employer/danh-sach-tim-kiem-cv.html')->with('message',['status'=>'success','content'=>'Hủy lưu thành công!!']);
+    }
+
+    //Ajax tìm kiếm ứng viên
+    public function ajaxSearchResult(Request $request)
+    {   
+        //Số trang
+        $page=1;
+        if($request->has('page')) $page=$request->page;
+        //Lấy giá trị input cũ
+        $list_profile=CandidateProfile::select('*')->where('status',1);
+        if($request->has('keyword') && $request->keyword!='')
+        {
+            $list_profile=$list_profile->where('title','like','%'.$request->keyword.'%');
+        }
+        if($request->has('category_id') && is_array($request->category_id))
+        {
+            if(!in_array('all',$request->category_id))
+            {
+                $list_profile=$list_profile->whereIn('category_id',$request->category_id);
+            }
+        }
+        if($request->has('level') && is_array($request->level))
+        {
+            if(!in_array('all',$request->level))
+            {
+                $list_profile=$list_profile->whereIn('level',$request->level);
+            }
+        }
+        if($request->has('slary') && is_array($request->slary))
+        {
+            if(!in_array('all',$request->slary))
+            {
+                $list_profile=$list_profile->whereIn('slary',$request->slary);                
+            }
+        }
+        if($request->has('city') && is_array($request->city))
+        {
+            if(!in_array('all',$request->city))
+            {
+                $list_profile=$list_profile->whereIn('city',$request->city);                
+            }
+        }
+        //Tổng tìm được và số ứng viên mỗi trang
+        $total_profile=$list_profile->count();
+        $post_of_page=10;
+        //Số trang       
+        $total_page=ceil($total_profile/$post_of_page);
+        //Lấy theo số trang
+        $list_profile=$list_profile->skip($page-1)->take($post_of_page);
+        $list_profile=$list_profile->get();
+
+        //Lấy các hồ sơ đã lưu của công ty này
+        $user=Auth::user();
+        $company_id=$user->company->id;
+        $save_profile=Company_save_candidate::where([['company_id',$company_id],['status',1]])->get();
+        $list_save_profile=[];
+        foreach($save_profile as $v)
+        {
+            $list_save_profile[]=$v->id;
+        }
+
+        $html='';
+        foreach($list_profile as $k=>$v)
+        {
+            $html.='<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont"> <div class="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper"> <div class="row"> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_side_img"> <img src="http://localhost:90/Find_Job/'.$v->candidate->image.'" alt="post_img" width="100px" height="95px"/> </div> <div class="jp_job_post_right_cont jp_job_post_grid_right_cont"> <h4>'.substr($v->title,0,50).'</h4> <p>'.substr($v->category->name,0,50).'</p> <ul> <li><i class="fa fa-cc-paypal"></i>&nbsp; '.MyLibrary::getNameSetting('slary',$v->slary).'</li> <li><i class="fa fa-map-marker"></i>&nbsp; '.MyLibrary::getNameSetting('city',$v->city).'</li> </ul> </div> </div> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper"> <ul> <li style="display:none"><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li> <li><a href="cv-ung-vien-'.$v->id.'.html" target="_blank">Xem</a></li>';
+            if(!in_array($v->id,$list_save_profile))
+            {
+                $html.='<li><a href="luu-ung-vien-'.$v->id.'.html">Lưu</a></li>';
+            }else
+            {
+                $html.='<li><a href="javascript:void(0)" style="background-color:#37d09c"><i class="fa fa-check"></i>Đã Lưu</a></li>';
+            }
+            $html.='</ul> </div> </div> </div> </div> </div> </div>';
+        }
+        //Hiển thị trang tin
+        $html.='<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hidden-sm hidden-xs"> <div class="pager_wrapper gc_blog_pagination"> <ul class="pagination">';
+        for($i=1;$i<=$total_page;$i++)
+        {
+            if($i==$page)
+            {
+                $html.='<li class="active"><a href="javascript:void(0);" class="ajax_page" data-page="'.$i.'">'.$i.'</a></li>';
+            }else
+            {
+                $html.='<li class=""><a href="javascript:void(0);" class="ajax_page" data-page="'.$i.'">'.$i.'</a></li>';
+            }            
+        }
+        $html.='</ul> </div> </div>';
+
+        $msg=[
+            'status'=>200,
+            'content'=>$html
+        ];
+        return json_encode($msg);
     }
 }

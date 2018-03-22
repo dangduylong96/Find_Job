@@ -37,6 +37,11 @@
                 <i class="fa fa-save"></i> <span>Danh sách CV đã lưu</span>
                 </a>
             </li>
+            <li class="<?php if(strpos(url()->current(),'danh-sach-tim-kiem-cv.html')!==false) echo 'active'?>">
+                <a href="danh-sach-tim-kiem-cv.html">
+                <i class="fa fa-save"></i> <span>CV đã lưu khi tìm kiếm</span>
+                </a>
+            </li>
             <li class="treeview">
                 <a href="#">
                 <i class="fa fa-files-o"></i>

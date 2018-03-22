@@ -3,7 +3,7 @@
 @section('content')
 <div class="cc_slider_main_wrapper">
     <div class="cc_slider_img_section">
-        <div class="owl-carousel owl-theme">
+        <div class="">
             <form action="ket-qua-ung-vien.html" method="GET">
                 <div class="item cc_main_slide1">
                     <div class="cc_slider_overlay"></div>

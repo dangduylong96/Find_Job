@@ -43,11 +43,16 @@
                     </div>
                     <div class="jp_job_des">
                         <h2>Mục tiêu nghề nghiệp</h2>
+                        @if(!empty($target))
                         <p>{{$target->target}}</p>
+                        @else
+                        <br>
+                        @endif
                     </div>
                     <div class="jp_job_des">
                         <h2>Kinh nghiệm làm việc</h2>
                         <div class="detail_cv">
+                            @if(!empty($experience))
                             @foreach($experience as $k=>$v)
                             <?php
                             $desc_experience=str_replace('+','<br>- ',$v->experience_desc);
@@ -60,11 +65,15 @@
                             <span>Thành tích đạt được: <i>{{$v->experience_medal}}</i></span>
                             <br>
                             @endforeach
+                            @else
+                            <br>
+                            @endif
                         </div>
                     </div>
                     <div class="jp_job_des">
                         <h2>Trình độ</h2>
                         <div class="detail_cv">
+                            @if(!empty($level))
                             @foreach($level as $k=>$v)
                             <h3 style="color:blueviolet">{{MyLibrary::getNameSetting('level',$v->name_level)}}</h3>
                             <span>Trình độ: <i>{{MyLibrary::getNameSetting('level',$v->name_level)}}</i></span>
@@ -73,25 +82,36 @@
                             <span>Loại: <i>{{MyLibrary::getNameSetting('type_level',$v->type_level)}}</i></span>
                             <br>
                             @endforeach
+                            @else
+                            <br>
+                            @endif
                         </div>
                     </div>
                     <div class="jp_job_des">
                         <h2>Ngoại ngữ</h2>
                         <div class="detail_cv">
+                            @if(!empty($english))
                             <?php
                             $desc_english=str_replace('+','<br>- ',$english->english);
                             ?>
                             <span><i>{!!$desc_english!!}</i></span>
+                            @else
+                            <br>
+                            @endif
                             <br>
                         </div>
                     </div>
                     <div class="jp_job_des">
                         <h2>Ưu điểm</h2>
                         <div class="detail_cv">
+                            @if(!empty($english))
                             <?php
                             $desc_advantage=str_replace('+','<br>- ',$advantages->advantages);
                             ?>
                             <span><i>{!!$desc_advantage!!}</i></span>
+                            @else
+                            <br>
+                            @endif
                             <br>
                         </div>
                     </div>

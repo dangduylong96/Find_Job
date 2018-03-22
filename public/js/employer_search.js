@@ -1,6 +1,6 @@
 //Ajax tìm kiếm ứng viên
 $(document).on('click','.ajax_page_normal',function(){
-    var key_word=$('input[name="keyword"]').val();
+    var keyword=$('input[name="keyword"]').val();
     var sort_order=$('select[name="sort_order"]').val();
 
     var category_id = $("input[name='ajax_category_id[]']:checked").map(function(){
@@ -25,7 +25,7 @@ $(document).on('click','.ajax_page_normal',function(){
         return $(this).val();
     }).get();
     //Nếu lương k chọn thì lấy trên input
-    if(jQuery.isEmptyObject(level))
+    if(jQuery.isEmptyObject(slary))
     {
         slary=$('select[name="slary"]').val();
     }
@@ -38,4 +38,29 @@ $(document).on('click','.ajax_page_normal',function(){
     {
         city=$('select[name="city"]').val();
     }
+
+    var data={
+        'keyword':keyword,
+        'sort_order':sort_order,
+        'page':1,
+        'category_id':category_id,
+        'level':level,
+        'slary':slary,
+        'city':city
+    };
+    console.log(data);
+    $.ajax({
+        url:'http://localhost:90/Find_Job/employer/ajax-tim-kiem-ung-vien.html',
+        type:"GET",
+        data:data,
+        dataType:"html",
+        success: function(reponse){
+            var res=JSON.parse(reponse);
+            if(res.status==200)
+            {
+                // $('#show').html('Bạn đang xem &nbsp;<span>'+(res.page-1)*12+' đến '+res.total+'</span>');
+                $('#result_grid').html(res.content);
+            }       
+        }
+    })
 })
