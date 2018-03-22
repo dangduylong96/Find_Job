@@ -19,4 +19,8 @@ class CandidateProfile extends Model
     {
         return $this->belongsTo('App\Category','category_id','id');
     }
+    public function company_save_candidate()
+    {
+        return $this->hasMany('App\Company_save_candidate','candidate_profile_id','id');
+    }
 }

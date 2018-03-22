@@ -53,6 +53,12 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
         Route::get('huy-luu-cv-{id}.html','ManagerCvCompanyController@deleteSaveCvAction');
         //Danh sách CV đã lưu
         Route::get('danh-sach-cv-luu.html','ManagerCvCompanyController@getListSaveCv');
+        
+        //Tìm kiếm ứng viên
+        Route::get('tim-kiem-ung-vien.html','EmployerSearchController@pageSearch');
+        Route::get('ket-qua-ung-vien.html','EmployerSearchController@searchResult');
+        Route::get('cv-ung-vien-{id}.html','EmployerSearchController@getDetailCvCandidate');
+        Route::get('luu-ung-vien-{id}.html','EmployerSearchController@saveCvAction');
 
         Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
     });

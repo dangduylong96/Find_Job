@@ -430,16 +430,17 @@ $('#return-to-top').on('click', function() {
 			  }
 
 			  owl.on('change.owl.carousel', function(event) {
-				  var $currentItem = $('.owl-item', owl).eq(event.item.index);
-				  var $elemsToanim = $currentItem.find("[data-animation-out]");
-				  setAnimation ($elemsToanim, 'out');
+          // console.log(event.item);
+				  // var $currentItem = $('.owl-item', owl).eq(event.item.index);
+				  // var $elemsToanim = $currentItem.find("[data-animation-out]");
+				  // setAnimation ($elemsToanim, 'out');
 			  });
 
 			  owl.on('changed.owl.carousel', function(event) {
 
-				  var $currentItem = $('.owl-item', owl).eq(event.item.index);
-				  var $elemsToanim = $currentItem.find("[data-animation-in]");
-				  setAnimation ($elemsToanim, 'in');
+				  // var $currentItem = $('.owl-item', owl).eq(event.item.index);
+				  // var $elemsToanim = $currentItem.find("[data-animation-in]");
+				  // setAnimation ($elemsToanim, 'in');
 			  })
 
 			});

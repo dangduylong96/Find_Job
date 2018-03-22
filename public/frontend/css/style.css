@@ -142,8 +142,8 @@ ul{
 	background-color: hsla(200,40%,30%,.4);
 	background-image:		
 
-		url('../images/header/header_img.jpg'),
-		url('https://db.tt/vKBcgeOj');
+		url('../images/header/header_img.jpg');
+		/* url('https://db.tt/vKBcgeOj'); */
 	background-repeat: repeat-x;
 	background-position: 
 		0 20%,

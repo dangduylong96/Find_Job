@@ -9,6 +9,11 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
+            <li>
+                <a target="_blank" href="tim-kiem-ung-vien.html">
+                <i class="fa fa-search"></i> <span>Tìm kiếm ứng viên</span>
+                </a>
+            </li>
             <li class="<?php if(strpos(url()->current(),'thong-tin-cong-ty.html')!==false) echo 'active'?>">
                 <a href="thong-tin-cong-ty.html">
                 <i class="fa fa-building"></i> <span>Thông tin Công Ty</span>
