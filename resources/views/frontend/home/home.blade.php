@@ -52,7 +52,7 @@
                                     <div class="item">
                                         <div class="jp_hiring_content_main_wrapper">
                                             <div class="jp_hiring_content_wrapper">
-                                                <img src="{{$v['image']}}" alt="hiring_img" width="60px" height="60px" />
+                                                <img src="{{$v['image']}}" alt="hiring_img" width="60px" height="60px" width="60px" height="60px"/>
                                                 <h4>{{$v['name']}}</h4>
                                                 <p>{{MyLibrary::getNameSetting('city',$v['place'])}}</p>
                                                 <ul>
@@ -100,7 +100,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                             <div class="jp_job_post_side_img">
-                                                                <img src="{{$v->Company->image}}" alt="post_img" />
+                                                                <img src="{{$v->Company->image}}" alt="post_img" width="105px" height="100px"/>
                                                             </div>
                                                             <div class="jp_job_post_right_cont">
                                                                 <h4>{{$v->title}}</h4>
@@ -171,7 +171,7 @@
                                                     <div class="row">
                                                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                                             <div class="jp_job_post_side_img">
-                                                                <img src="{{$v->Company->image}}" alt="post_img" />
+                                                                <img src="{{$v->Company->image}}" alt="post_img" width="105px" height="100px"/>
                                                             </div>
                                                             <div class="jp_job_post_right_cont">
                                                                 <h4>{{$v->title}}</h4>
