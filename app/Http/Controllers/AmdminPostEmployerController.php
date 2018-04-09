@@ -70,6 +70,16 @@ class AmdminPostEmployerController extends Controller
         $new_post->workplace=$request->workplace;
         $new_post->benefit=$request->benefit;
         $new_post->expiration_date=date('y-m-d',strtotime($request->expiration_date));
+        //Kiểm tra so với ngày hiện
+        $curent_date=date('Y-m-d H:i:s');
+        $curent_date=strtotime($curent_date);
+        if(strtotime($request->expiration_date)<$curent_date)
+        {
+            $new_post->status=4;
+        }else
+        {
+            $new_post->status=0;
+        }
         //Thông tin liên hệ
         $arr_contact=[
             'name_contact'=>$request->name_contact,

@@ -9,6 +9,11 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
+            <li class="<?php if(strpos(url()->current(),'danh-sach-cong-ty.html')!==false) echo 'active'?>">
+                <a href="danh-sach-cong-ty.html">
+                <i class="fa fa-building"></i> <span>Danh sách công ty</span>
+                </a>
+            </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>">
                 <a href="danh-sach-tin.html">
                 <i class="fa fa-sticky-note"></i> <span>Tin tuyển dụng</span>
@@ -27,40 +32,6 @@
                     <li class="<?php if(strpos(url()->current(),'them-nghanh.html')!==false) echo 'active'?>" data-active="category"><a href="them-nghanh.html"><i class="fa fa-circle-o"></i> Thêm nghành</a></li>
                 </ul>
             </li>
-            <li class="treeview">
-                <a href="#">
-                <i class="fa fa-files-o"></i>
-                <span>Layout Options</span>
-                <span class="pull-right-container">
-                <span class="label label-primary pull-right">4</span>
-                </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                    <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>Widgets</span>
-                <span class="pull-right-container">
-                <small class="label pull-right bg-green">new</small>
-                </span>
-                </a>
-            </li>
-            <li>
-                <a href="pages/mailbox/mailbox.html">
-                <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                <span class="pull-right-container">
-                <small class="label pull-right bg-yellow">12</small>
-                <small class="label pull-right bg-green">16</small>
-                <small class="label pull-right bg-red">5</small>
-                </span>
-                </a>
-            </li>
-            <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
             <li class="header">Tùy Chỉnh</li>
             <li id="setting" class="treeview">
                 <a href="#">

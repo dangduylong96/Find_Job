@@ -162,11 +162,13 @@ class EmployerSearchController extends Controller
             $row->candidate_profile_id=$id;
             $row->status=1;
             $row->save();
+            session()->flash('message', 'Lưu thành công!!!');
             return redirect()->back();
         }else
         {
             $company_save_candidate->status=1;
             $company_save_candidate->save();
+            session()->flash('message', 'Lưu thành công!!!');
             return redirect()->back();
         }
     }

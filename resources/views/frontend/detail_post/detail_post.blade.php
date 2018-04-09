@@ -251,7 +251,7 @@
                                 <div class="jp_listing_right_bar_btn_wrapper">
                                     <div class="jp_listing_right_bar_btn">
                                         <ul>
-                                            <li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Ứng tuyển ngay!</a></li>
+                                            <li><a href="ung-tuyen-p{{$post->id}}.html"><i class="fa fa-plus-circle"></i> &nbsp;Ứng tuyển ngay!</a></li>
                                         </ul>
                                     </div>
                                 </div>

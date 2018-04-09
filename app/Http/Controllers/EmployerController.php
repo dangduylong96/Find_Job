@@ -13,6 +13,6 @@ class EmployerController extends Controller
     public function Logout()
     {
         Auth::logout();
-        return redirect('employer/dang-nhap.html');
+        return redirect('/');
     }
 }

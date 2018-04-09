@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\Company;
+use App\PostEmployer;
+use App\Tag;
+use App\Category;
 
 class AdminController extends Controller
 {
@@ -33,6 +37,10 @@ class AdminController extends Controller
 
     public function dashBoard()
     {
-        return view('admin.dashboard.dashboard');
+        $data['Company']=Company::count();
+        $data['PostEmployer']=PostEmployer::count();
+        $data['Tag']=Tag::count();
+        $data['Category']=Category::count();
+        return view('admin.dashboard.dashboard',$data);
     }
 }

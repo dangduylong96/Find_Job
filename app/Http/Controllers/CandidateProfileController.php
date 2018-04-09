@@ -9,6 +9,7 @@ use MyLibrary;
 Use App\User;
 Use App\Category;
 Use App\CandidateProfile;
+Use App\Manager_cadidate_and_post;
 class CandidateProfileController extends Controller
 {
     public function candidateGetListHelpSearch()
@@ -118,5 +119,37 @@ class CandidateProfileController extends Controller
         $profile->display=$request->status;
         $profile->save();
         return redirect('ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'success','content'=>'Cập nhập thông tin hồ sơ thành công']);
+    }
+
+    public function getListApply(){
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $user=User::find($user_id);
+        $candidate_id=$user->candidate->id;
+        $list=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type_apply',1]])->get();
+        $data['list']=$list;
+        return view('candidate.action.list_apply',$data);
+    }
+    public function getListLove(){
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $user=User::find($user_id);
+        $candidate_id=$user->candidate->id;
+        $list=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+        $data['list']=$list;
+        return view('candidate.action.list_love',$data);
+    }
+    public function removeLove($id){
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $user=User::find($user_id);
+        $candidate_id=$user->candidate->id;
+        $list=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['id',$id]])->first();
+        $list->type=0;
+        $list->save();
+        return redirect('ung-vien/danh-sach-yeu-thich.html')->with('message',['status'=>'success','content'=>'Bỏ yêu thích thành công']);
     }
 }

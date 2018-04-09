@@ -1,6 +1,9 @@
 @extends('frontend.layout.layout')
 
 @section('content')
+@if(session()->has('message'))
+<?php echo '<script>alert("'.session('message').'")</script>' ?>
+@endif
 <div class="cc_slider_main_wrapper">
     <div class="cc_slider_img_section">
         <div class="">

@@ -20,8 +20,8 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                        <h3>150</h3>
-                        <p>New Orders</p>
+                        <h3>{{$Company}}</h3>
+                        <p>Công ty</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-bag"></i>
@@ -34,8 +34,8 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
-                        <p>Bounce Rate</p>
+                        <h3>{{$Tag}}<sup style="font-size: 20px">+</sup></h3>
+                        <p>Từ khóa</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-stats-bars"></i>
@@ -48,8 +48,8 @@
                 <!-- small box -->
                 <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>44</h3>
-                        <p>User Registrations</p>
+                        <h3>{{$PostEmployer}}</h3>
+                        <p>Bài tuyển dụng</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-person-add"></i>
@@ -62,8 +62,8 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>65</h3>
-                        <p>Unique Visitors</p>
+                        <h3>{{$Category}}<sup style="font-size: 20px">+</sup></h3>
+                        <p>Nghành</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>

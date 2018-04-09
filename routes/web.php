@@ -68,7 +68,6 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
     });
     Route::get('thong-tin-cong-ty.html','CompaniesController@company');
     Route::post('thong-tin-cong-ty.html','CompaniesController@updateCompany')->name('employer_update_company');
-    Route::get('dang-xuat.html','EmployerController@Logout');
 });
 
 
@@ -94,6 +93,10 @@ Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
         Route::post('them-ho-so.html','ProfileCvController@candidatePostAddProfile');
         //Ajax upload hồ sơ bổ sung
         Route::post('upload-ho-so.html','ProfileCvController@candidatePostCVProfile');
+
+        Route::get('danh-sach-ung-tuyen.html','CandidateProfileController@getListApply');
+        Route::get('danh-sach-yeu-thich.html','CandidateProfileController@getListLove');
+        Route::get('bo-yeu-thich-{id}.html','CandidateProfileController@removeLove');
     });
     
     Route::get('thong-tin-tai-khoan.html','CandidateController@candidateGetCandidateInfo');
@@ -123,13 +126,18 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('duyet-tin-{id}.html','AmdminPostEmployerController@adminCheckPost');
     Route::get('huy-tin-{id}.html','AmdminPostEmployerController@adminUnCheckPost');
 
-    //Quản lí loại tin
+    //Quản lí ngành
     Route::get('danh-sach-nghanh.html','AdminCategoryController@getListCategory');
     Route::get('them-nghanh.html','AdminCategoryController@addCategory');
     Route::post('them-nghanh.html','AdminCategoryController@postAddCategory')->name('add_category');
     Route::get('sua-nghanh-{id}.html','AdminCategoryController@editCategory');
     Route::post('sua-nghanh-{id}.html','AdminCategoryController@postEditCategory');
     Route::get('xoa-nghanh-{id}.html','AdminCategoryController@deleteCategory');
+
+    //Quản lí công ty
+    Route::get('danh-sach-cong-ty.html','AdminCompanyController@getAllCompany');
+    Route::get('duyet-cong-ty-{id}.html','AdminCompanyController@adminCheckCompany');
+    Route::get('huy-cong-ty-{id}.html','AdminCompanyController@destroyCompany');
 
     //Setting Quy mô
     Route::get('qui-mo.html','SettingController@companySize');
@@ -141,3 +149,4 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::post('qui-mo/sua-{id}.html','SettingController@postEditSizeCompany');
     Route::get('qui-mo/xoa-{id}.html','SettingController@deleteSizeCompany');
 });
+Route::get('dang-xuat.html','EmployerController@Logout');
