@@ -309,7 +309,7 @@ class PostEmployerController extends Controller
         if(isset($url_cv_out) && $url_cv_out!='')
         {
             //Nếu chỉ có cv thôi
-            return redirect('http://localhost:90/Find_Job/public/out_cv/'.$url_cv_out);
+            return redirect('https://findjobiuh.000webhostapp.com/public/out_cv/'.$url_cv_out);
         }elseif(isset($manager_cadidate_and_post->candidate_profile_id))
         {
             //Lấy thông tin của cv ứng tuyển

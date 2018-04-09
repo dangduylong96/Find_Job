@@ -6,7 +6,7 @@ $(document).on('click','.love_action',function(){
     //Kiểm tra có yêu thích hay chưa
     if($(this).hasClass('love_active'))
     {
-        var url='http://localhost:90/Find_Job/yeu-thich.html?id='+id;
+        var url='https://findjobiuh.000webhostapp.com/yeu-thich.html?id='+id;
         $.get(url,function(res){
             var result=JSON.parse(res);
             if(result.status!=200)
@@ -23,7 +23,7 @@ $(document).on('click','.love_action',function(){
         });
     }else
     {
-        var url='http://localhost:90/Find_Job/yeu-thich.html?id='+id;
+        var url='https://findjobiuh.000webhostapp.com/yeu-thich.html?id='+id;
         $.get(url,function(res){
             var result=JSON.parse(res);
             if(result.status!=200)

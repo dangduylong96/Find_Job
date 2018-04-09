@@ -62,7 +62,7 @@ $(document).on('click','.ajax_page',function(){
         'category_id':category_id
     };
     $.ajax({
-        url:'http://localhost:90/Find_Job/tim-kiem-ajax.html',
+        url:'https://findjobiuh.000webhostapp.com/tim-kiem-ajax.html',
         type:"POST",
         data:data,
         dataType:"html",
@@ -128,7 +128,7 @@ $(document).on('click','.ajax_page_normal',function(){
         'category_id':category_id
     };
     $.ajax({
-        url:'http://localhost:90/Find_Job/tim-kiem-ajax.html',
+        url:'https://findjobiuh.000webhostapp.com/tim-kiem-ajax.html',
         type:"POST",
         data:data,
         dataType:"html",
@@ -194,7 +194,7 @@ $(document).on('change','select[name="sort_order"]',function(){
         'category_id':category_id
     };
     $.ajax({
-        url:'http://localhost:90/Find_Job/tim-kiem-ajax.html',
+        url:'https://findjobiuh.000webhostapp.com/tim-kiem-ajax.html',
         type:"POST",
         data:data,
         dataType:"html",

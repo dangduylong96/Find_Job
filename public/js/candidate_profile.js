@@ -35,7 +35,7 @@ $(document).on('click','#submit_target',function(){
             'target': target
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -72,7 +72,7 @@ $(document).on('click','.edit_experience',function(){
             'data_id': data_id
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -105,7 +105,7 @@ $(document).on('click','#submit_edit_experience',function(){
             'data_id': data_id
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -127,7 +127,7 @@ $(document).on('click','.remove_experience',function(){
             'data_id': data_id
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -157,7 +157,7 @@ $(document).on('click','#submit_experience',function(){
             'experience_medal': experience_medal
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -179,7 +179,7 @@ $(document).on('click','#add_level',function(){
         'id': id,
         'name': 'get_form_level'
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -197,7 +197,7 @@ $(document).on('click','#reset_level',function(){
         'id': id,
         'name': 'reset_form_level'
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -225,7 +225,7 @@ $(document).on('click','#submit_level',function(){
             'type_level':type_level
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -248,7 +248,7 @@ $(document).on('click','.edit_level',function(){
             'data_id': data_id
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -279,7 +279,7 @@ $(document).on('click','#submit_edit_level',function(){
             'data_id': data_id
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -302,7 +302,7 @@ $(document).on('click','.remove_level',function(){
             'data_id': data_id
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -320,7 +320,7 @@ $(document).on('click','#add_english',function(){
         'id': id,
         'name': 'get_form_english'
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -342,7 +342,7 @@ $(document).on('click','#add_new_english',function(){
             'english': english
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -360,7 +360,7 @@ $(document).on('click','#edit_english',function(){
         'id': id,
         'name': 'edit_english'
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -380,7 +380,7 @@ $(document).on('click','#add_advantages',function(){
         'id': id,
         'name': 'get_form_advantages'
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -402,7 +402,7 @@ $(document).on('click','#add_new_advantages',function(){
             'advantages': advantages
         }
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {
@@ -420,7 +420,7 @@ $(document).on('click','#edit_advantages',function(){
         'id': id,
         'name': 'edit_advantages'
     };
-    $.post('http://localhost:90/Find_Job/ung-vien/them-ho-so.html',data,function(data){
+    $.post('https://findjobiuh.000webhostapp.com/ung-vien/them-ho-so.html',data,function(data){
         var res=JSON.parse(data);
         if(res.status==404)
         {

@@ -245,7 +245,7 @@
         tags: true,
         data: [1,2,3],
         ajax: {
-            url: 'http://localhost:90/Find_Job/employer/ajax-list-tags.html',
+            url: 'https://findjobiuh.000webhostapp.com/employer/ajax-list-tags.html',
             dataType: 'json',
             processResults: function(data) {
                 return {

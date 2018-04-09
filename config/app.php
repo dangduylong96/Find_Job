@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost:90/Find_Job/',
+    'url' => 'https://findjobiuh.000webhostapp.com/',
 
     /*
     |--------------------------------------------------------------------------

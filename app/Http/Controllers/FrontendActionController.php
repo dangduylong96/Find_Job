@@ -21,7 +21,7 @@ class FrontendActionController extends Controller
                 $message=[
                     'status'=>'404',
                     'content'=>'Bạn chưa đăng nhập.Vui lòng đăng nhập để thêm mục yêu thích',
-                    'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap.html'                
+                    'link'=>'https://findjobiuh.000webhostapp.com/ung-vien/dang-nhap.html'                
                 ];
                 echo json_encode($message);
                 exit;
@@ -34,7 +34,7 @@ class FrontendActionController extends Controller
                     $message=[
                         'status'=>'404',
                         'content'=>'Tài khoản của bạn không phải là người tìm việc',
-                        'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap.html'
+                        'link'=>'https://findjobiuh.000webhostapp.com/ung-vien/dang-nhap.html'
                     ];
                     echo json_encode($message);
                     exit;
@@ -48,7 +48,7 @@ class FrontendActionController extends Controller
                         $message=[
                             'status'=>'404',
                             'content'=>'Vui lòng bổ sung thông tin cá nhân để kích hoạt tài khoản',
-                            'link'=>'http://localhost:90/Find_Job/ung-vien/thong-tin-tai-khoan.html'
+                            'link'=>'https://findjobiuh.000webhostapp.com/ung-vien/thong-tin-tai-khoan.html'
                         ];
                         echo json_encode($message);
                         exit;

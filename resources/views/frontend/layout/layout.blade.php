@@ -77,9 +77,9 @@
                                     <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal1"><i class="fa fa-user"></i>&nbsp; Đăng kí</a></li>
                                     <li><a href="javascript:void(0)" data-toggle="modal" data-target="#myModal"><i class="fa fa-sign-in"></i>&nbsp; Đăng Nhập</a></li>
                                     @elseif(Auth::user()->type=="employer")
-                                    <a href="http://localhost:90/Find_Job/employer/dashboard.html" target="_blank"><button class="btn btn-danger btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp; Quay lại trang nhà tuyển dụng</button></a>
+                                    <a href="https://findjobiuh.000webhostapp.com/employer/dashboard.html" target="_blank"><button class="btn btn-danger btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp; Quay lại trang nhà tuyển dụng</button></a>
                                     @else
-                                    <a href="http://localhost:90/Find_Job/ung-vien/dashboard.html" target="_blank"><button class="btn btn-danger btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp; Quay lại trang người tìm việc</button></a>
+                                    <a href="https://findjobiuh.000webhostapp.com/ung-vien/dashboard.html" target="_blank"><button class="btn btn-danger btn-lg btn-block"><i class="fa fa-sign-in"></i>&nbsp; Quay lại trang người tìm việc</button></a>
                                     @endif                                    
                                 </ul>
                             </div>

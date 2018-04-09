@@ -50,7 +50,7 @@ $(document).on('click','.ajax_page_normal',function(){
     };
     console.log(data);
     $.ajax({
-        url:'http://localhost:90/Find_Job/employer/ajax-tim-kiem-ung-vien.html',
+        url:'https://findjobiuh.000webhostapp.com/employer/ajax-tim-kiem-ung-vien.html',
         type:"GET",
         data:data,
         dataType:"html",
