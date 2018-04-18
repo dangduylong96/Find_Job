@@ -27,8 +27,8 @@ Route::get('cong-ty-c{id}.html','FrontendCompanyController@getDetailCompany');
 
 //Nhà tuyển dụng
 /****************************Nhà tuyển dụng đăng nhập trước khi quản trị*/
-Route::get('/employer/dang-nhap.html','UserController@getLogin')->name('employer_login');
-Route::post('/employer/dang-nhap.html','UserController@postLogin')->name('post_employer_login');
+Route::get('/employer/dang-nhap.html','EmployerController@getLogin')->name('employer_login');
+Route::post('/employer/dang-nhap.html','EmployerController@postLogin')->name('post_employer_login');
 /*****Nhà tuyển dụng đăng kí*/
 Route::get('/employer/dang-ki.html','UserController@getRegister')->name('register');
 Route::post('/employer/dang-ki.html','UserController@postRegister')->name('postRegister');
@@ -66,8 +66,8 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
 
         Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
     });
-    Route::get('thong-tin-cong-ty.html','CompaniesController@company');
-    Route::post('thong-tin-cong-ty.html','CompaniesController@updateCompany')->name('employer_update_company');
+    Route::get('thong-tin-cong-ty.html','EmployerCompanyController@company');
+    Route::post('thong-tin-cong-ty.html','EmployerCompanyController@updateCompany')->name('employer_update_company');
 });
 
 

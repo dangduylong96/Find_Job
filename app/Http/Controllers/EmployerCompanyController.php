@@ -9,7 +9,7 @@ use App\Company;
 use MyLibrary;
 use Auth;
 use File;
-class CompaniesController extends Controller
+class EmployerCompanyController extends Controller
 {
     /**********************Nhà tuyển dụng  */
     //Thông tin công ty
