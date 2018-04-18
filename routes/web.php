@@ -39,15 +39,15 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
         
         //Quản lí tin của nhà tuyển dụng
         Route::get('dashboard.html','EmployerController@dashBoard');    
-        Route::get('them-tin.html','PostEmployerController@employerGetAddEmployer');    
-        Route::post('them-tin.html','PostEmployerController@employerPostAddEmployer')->name('post_add_employer');
-        Route::get('sua-tin-{id}.html','PostEmployerController@employerGetEditEmployer');
-        Route::post('sua-tin-{id}.html','PostEmployerController@employerPostEditEmployer');
-        Route::get('huy-tin-{id}.html','PostEmployerController@employerPostRemoveEmployer');
-        Route::get('danh-sach-tin.html','PostEmployerController@employerGetListPost');  
+        Route::get('them-tin.html','EmployerPostController@employerGetAddEmployer');    
+        Route::post('them-tin.html','EmployerPostController@employerPostAddEmployer')->name('post_add_employer');
+        Route::get('sua-tin-{id}.html','EmployerPostController@employerGetEditEmployer');
+        Route::post('sua-tin-{id}.html','EmployerPostController@employerPostEditEmployer');
+        Route::get('huy-tin-{id}.html','EmployerPostController@employerPostRemoveEmployer');
+        Route::get('danh-sach-tin.html','EmployerPostController@employerGetListPost');  
         //Danh sách ng ứng tuyển  
-        Route::get('danh-ung-tuyen-p{id}.html','PostEmployerController@getListApply');  
-        Route::get('chi-tiet-cv-{id}.html','PostEmployerController@getCvApply');  
+        Route::get('danh-ung-tuyen-p{id}.html','EmployerPostController@getListApply');  
+        Route::get('chi-tiet-cv-{id}.html','EmployerPostController@getCvApply');  
         //Lưu CV
         Route::get('luu-cv-{id}.html','ManagerCvCompanyController@saveCvAction');
         Route::get('huy-luu-cv-{id}.html','ManagerCvCompanyController@deleteSaveCvAction');

@@ -12,7 +12,7 @@ use App\Tag;
 use App\Category;
 use App\Manager_cadidate_and_post;
 use App\CandidateProfile;
-class PostEmployerController extends Controller
+class EmployerPostController extends Controller
 {
     /*Admin quản lí*/
 
