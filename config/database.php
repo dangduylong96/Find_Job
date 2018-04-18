@@ -43,7 +43,7 @@ return [
             'driver' => 'mysql',
             'host' => 'localhost',
             'port' => env('DB_PORT', '3306'),
-            'database' => 'find_job',
+            'database' => 'find_job2',
             'username' => 'root',
             'password' => '',
             'unix_socket' => env('DB_SOCKET', ''),
