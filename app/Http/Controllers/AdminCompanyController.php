@@ -13,6 +13,23 @@ class AdminCompanyController extends Controller
         $data['list_company']=$list_company;
         return view('admin.company.list_company',$data);
     }
+    public function getDetailCompany($id){
+        //Lây thông tin công ty
+        $company=Company::find($id);   
+        if(!isset($company))
+        {
+            return redirect('admin/danh-sach-cong-ty.html')->with('message',['status'=>'danger','content'=>'Công ty không tồn tại!!']);
+        }
+        //Tăng lượt xem của công ty lên
+        if(!session()->has('view_company_'.$id))
+        {
+            $company->view=$company->view+1;
+            $company->save();
+            session()->put('view_company_'.$id,$id);
+        } 
+        $data['company']=$company;
+        return view('admin.company.detail_company',$data);
+    }
 
     public function adminCheckCompany($id){
         //Lấy thông tin hiện tại

@@ -52,6 +52,19 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Nghành</label>
+                                <div class="col-sm-10">
+                                    <select id="input_category" class="form-control select2" name="category[]" multiple="multiple" data-placeholder="Chọn nghành, tối đa 5 ngành" style="width: 100%;">
+                                    @if(count($category)>0)
+                                    @foreach($category as $v)
+                                    <option value="{{$v}}" selected="selected">{{MyLibrary::getNameCategory($v)}}</option>
+                                    @endforeach
+                                    @endif
+                                    </select>
+                                    <span class="error">{{$errors->first('category')}}</span>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Mô tả công việc</label>
                                 <div class="col-sm-10">
                                     <textarea name="desc" class="form-control" rows="10"  placeholder="Sơ lược về bài đăng" required>{{old('desc',$current_post['desc'])}}</textarea>
@@ -234,7 +247,7 @@
         tags: true,
         data: [1,2,3],
         ajax: {
-            url: 'http://localhost:90/Find_Job/employer/ajax-list-tags.html',
+            url: 'http://localhost:90/Find_Job/admin/ajax-list-tags.html',
             dataType: 'json',
             processResults: function(data) {
                 return {
@@ -257,6 +270,19 @@
                 text: term + ' (new keyword)'
             };
         },
+    });
+    $("#input_category").select2({
+        ajax: {
+            url: 'http://localhost:90/Find_Job/admin/ajax-list-category.html',
+            dataType: 'json',
+            processResults: function(data) {
+                return {
+                    results: data
+                };
+            }
+        },
+        // max tags is 5
+        maximumSelectionLength: 5,
     });
 </script>
 @endsection

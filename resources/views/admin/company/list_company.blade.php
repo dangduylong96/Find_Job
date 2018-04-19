@@ -39,7 +39,7 @@
                         @foreach($list_company as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v->name}}</td>
+                                <td><a href="<?php echo url('/admin/chi-tiet-cong-ty-'.$v['id'].'.html')?>" target="_blank">{{$v->name}}</a></td>
                                 @if($v->status==0)
                                 <td><span class="label label-primary">Chờ duyệt</span></td>
                                 @elseif($v->status==1)
@@ -49,7 +49,7 @@
                                 @endif
                                 <td>
                                     <a href="<?php echo url('/admin/duyet-cong-ty-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
-                                    <a href="<?php echo url('/admin/huy-cong-ty-'.$v['id'].'.html')?>"><button type="button" class="btn btn-danger">Hủy</button></a>
+                                    <a href="<?php echo url('/admin/huy-cong-ty-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy công ty? hủy công thì tất cả bài viết và thông tin công ty đều k được hiển thị trong mục duyệt và trong website?')"><button type="button" class="btn btn-danger">Hủy</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

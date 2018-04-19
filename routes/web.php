@@ -120,12 +120,14 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('thanh-pho/sua-{id}.html','SettingController@editCity');
     Route::post('thanh-pho/sua-{id}.html','SettingController@postEditCity');
     Route::get('thanh-pho/xoa-{id}.html','SettingController@deleteCity');
-
+    //Quản lí tin
     Route::get('danh-sach-tin.html','AmdminPostEmployerController@adminGetListPost');
     Route::get('sua-tin-{id}.html','AmdminPostEmployerController@adminGetEditEmployer');
     Route::post('sua-tin-{id}.html','AmdminPostEmployerController@adminPostEditEmployer');
     Route::get('duyet-tin-{id}.html','AmdminPostEmployerController@adminCheckPost');
     Route::get('huy-tin-{id}.html','AmdminPostEmployerController@adminUnCheckPost');
+    Route::get('ajax-list-tags.html','EmployerTagController@ajaxListTag');    
+    Route::get('ajax-list-category.html','EmployerTagController@ajaxListCategory');
 
     //Quản lí ngành
     Route::get('danh-sach-nghanh.html','AdminCategoryController@getListCategory');
@@ -137,6 +139,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
 
     //Quản lí công ty
     Route::get('danh-sach-cong-ty.html','AdminCompanyController@getAllCompany');
+    Route::get('chi-tiet-cong-ty-{id}.html','AdminCompanyController@getDetailCompany');
     Route::get('duyet-cong-ty-{id}.html','AdminCompanyController@adminCheckCompany');
     Route::get('huy-cong-ty-{id}.html','AdminCompanyController@destroyCompany');
 
@@ -151,3 +154,4 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('qui-mo/xoa-{id}.html','SettingController@deleteSizeCompany');
 });
 Route::get('dang-xuat.html','EmployerController@Logout');
+  

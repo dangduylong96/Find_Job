@@ -12,8 +12,8 @@ class AmdminPostEmployerController extends Controller
     /*Nhà tuyển dụng quản lí*/
     public function adminGetListPost()
     {
-        //Lấy danh sách tin của cong ty đó
-        $list_post=PostEmployer::orderBy('id','desc')->get();
+        //Lấy danh sách tin của tất cả công ty và công ty đó phải kích hoạt
+        $list_post=PostEmployer::join('company','post_employers.company_id','=','company.id')->select('post_employers.id as id','post_employers.title as title','post_employers.expiration_date as expiration_date','post_employers.status as status','company.name as name')->where('company.status',1)->orderBy('post_employers.id','desc')->get();
         $data['list_post']=$list_post;
         return view('admin.post.list_post',$data);
     }
@@ -35,6 +35,9 @@ class AmdminPostEmployerController extends Controller
         $data['tags']=$tags;
         //id bài viết
         $data['id']=$id;
+        //Lấy danh sách ngành
+        $category=json_decode($current_post['category_id'],true);
+        $data['category']=$category;
 
         $data['list_sex']=MyLibrary::getSetting('sex');
         $data['list_working_form']=MyLibrary::getSetting('working_form');
@@ -88,6 +91,23 @@ class AmdminPostEmployerController extends Controller
             'mobile_contact'=>$request->mobile_contact
         ];
         $new_post->contact=json_encode($arr_contact);
+        //Xử lí category
+        $arr_category=$request->category;
+        $stamp_arr_cate=[];
+        if(count($arr_category)>5){
+            $i=1;
+            foreach($arr_category as $v)
+            {
+                if($i>5)
+                {
+                    break;
+                }
+                $stamp_arr_cate[]=$v;
+                $i++;
+            } 
+            $arr_category=$stamp_arr;
+        }
+        $new_post->category_id=json_encode($arr_category);
         //Xử lí thẻ tag
         $arr_tag=$request->tags;
         $stamp_arr=[];
@@ -108,7 +128,13 @@ class AmdminPostEmployerController extends Controller
         $new_post->tags=json_encode($arr_tag);
         $new_post->save();
         //id vừa thêm vào là
-        $new_id=$new_post->id;
+        $new_id=$id;
+        //Xóa tag cũ
+        $old_tag=Tag::where('post_id',$new_id)->get();
+        foreach($old_tag as $v)
+        {
+            $v->delete();
+        }
         //Thêm tag vào bảng tag
         if(count($arr_tag)>0)
         {
@@ -146,6 +172,6 @@ class AmdminPostEmployerController extends Controller
         }
         $current_post->status=3;
         $current_post->save();
-        return redirect('admin/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Bài tuyển dụng đã k được duyệt']);
+        return redirect('admin/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Bài tuyển dụng đã ở trạng thái k được duyệt(hủy)']);
     }
 }

@@ -41,14 +41,14 @@
                         @foreach($list_post as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v['title']}}</td>
+                                <td>{{$v->title}}</td>
                                 <td>{{date('d-m-Y',strtotime($v['expiration_date']))}}</td>
-                                <td>{{$v->Company->name}}</td>
+                                <td>{{$v->name}}</td>
                                 <td>{!!createLabel($v['status'])!!}</td>
                                 <td>
-                                    <a href="<?php echo url('/admin/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
-                                    <a href="<?php echo url('/admin/duyet-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
-                                    <a href="<?php echo url('/admin/huy-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-danger">Hủy</button></a>
+                                    <a href="<?php echo url('/admin/sua-tin-'.$v->id.'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
+                                    <a href="<?php echo url('/admin/duyet-tin-'.$v->id.'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
+                                    <a href="<?php echo url('/admin/huy-tin-'.$v->id.'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy tin? hủy tin tuyển dụng thì tin tuyển dụng sẽ k được hiển thị trên website?')"><button type="button" class="btn btn-danger">Hủy</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
