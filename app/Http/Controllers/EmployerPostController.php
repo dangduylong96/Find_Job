@@ -14,10 +14,6 @@ use App\Manager_cadidate_and_post;
 use App\CandidateProfile;
 class EmployerPostController extends Controller
 {
-    /*Admin quản lí*/
-
-
-
     /*Nhà tuyển dụng quản lí*/
     public function employerGetListPost()
     {
@@ -69,7 +65,24 @@ class EmployerPostController extends Controller
         $new_post->time_try=$request->time_try;
         $new_post->workplace=$request->workplace;
         $new_post->benefit=$request->benefit;
-        $new_post->category_id=$request->category;
+        //Xử lí category
+        $arr_category=$request->category;
+        $stamp_arr_cate=[];
+        if(count($arr_category)>5){
+            $i=1;
+            foreach($arr_category as $v)
+            {
+                if($i>5)
+                {
+                    break;
+                }
+                $stamp_arr_cate[]=$v;
+                $i++;
+            } 
+            $arr_category=$stamp_arr;
+        }
+        $new_post->category_id=json_encode($arr_category);
+
         $new_post->expiration_date=date('y-m-d',strtotime($request->expiration_date));
         $new_post->status=0;
         $new_post->view=1;
@@ -152,7 +165,8 @@ class EmployerPostController extends Controller
         $data['time_try']=MyLibrary::getSetting('time_try');
         $data['city']=MyLibrary::getSetting('city');
         //Lấy danh sách ngành
-        $data['category']=Category::get();
+        $category=json_decode($current_post['category_id'],true);
+        $data['category']=$category;
         return view('employer.post.edit_post',$data);
     }
     public function employerPostEditEmployer($id,PostEmployeRequest $request)
@@ -189,8 +203,26 @@ class EmployerPostController extends Controller
         $new_post->time_try=$request->time_try;
         $new_post->workplace=$request->workplace;
         $new_post->benefit=$request->benefit;
-        $new_post->category_id=$request->category;
         $new_post->expiration_date=date('y-m-d',strtotime($request->expiration_date));
+
+        //Xử lí category
+        $arr_category=$request->category;
+        $stamp_arr_cate=[];
+        if(count($arr_category)>5){
+            $i=1;
+            foreach($arr_category as $v)
+            {
+                if($i>5)
+                {
+                    break;
+                }
+                $stamp_arr_cate[]=$v;
+                $i++;
+            } 
+            $arr_category=$stamp_arr;
+        }
+        $new_post->category_id=json_encode($arr_category);
+
         //Thông tin liên hệ
         $arr_contact=[
             'name_contact'=>$request->name_contact,
@@ -217,9 +249,16 @@ class EmployerPostController extends Controller
             $arr_tag=$stamp_arr;
         }
         $new_post->tags=json_encode($arr_tag);
+        $new_post->status=0;
         $new_post->save();
         //id vừa thêm vào là
-        $new_id=$new_post->id;
+        $new_id=$id;
+        //Xóa tag cũ
+        $old_tag=Tag::where('post_id',$new_id)->get();
+        foreach($old_tag as $v)
+        {
+            $v->delete();
+        }
         //Thêm tag vào bảng tag
         if(count($arr_tag)>0)
         {
@@ -231,7 +270,7 @@ class EmployerPostController extends Controller
                 $tag->save();
             }
         }
-        return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Cập nhập bài tuyển dụng thành công']);
+        return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Cập nhập bài tuyển dụng thành công. Bài tuyển dụng sẽ chờ xét duyệt từ quản trị trước khi hiển thị']);
     }
     public function employerPostRemoveEmployer($id)
     {

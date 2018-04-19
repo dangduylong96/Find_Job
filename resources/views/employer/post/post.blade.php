@@ -54,10 +54,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Nghành</label>
                                 <div class="col-sm-10">
-                                    <select id="sex" name="category" class="form-control select2" style="width: 100%;">
-                                        @foreach($category as $k=>$v)
-                                        <option value="{{$v->id}}">{{$v->name}}</option>
-                                        @endforeach
+                                    <select id="category" class="form-control select2" name="category[]" multiple="multiple" data-placeholder="Chọn nghành, tối đa 5 ngành" style="width: 100%;">
                                     </select>
                                     <span class="error">{{$errors->first('category')}}</span>
                                 </div>
@@ -65,14 +62,14 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Mô tả công việc</label>
                                 <div class="col-sm-10">
-                                    <textarea name="desc" class="form-control" rows="10"  placeholder="Sơ lược về bài đăng" required>{{old('desc')}}</textarea>
+                                    <textarea name="desc" class="form-control" rows="10"  placeholder="Nhập dấu + đầu dòng nếu muốn xuống dòng" required>{{old('desc')}}</textarea>
                                     <span class="error">{{$errors->first('desc')}}</span>
                                 </div>
                             </div>  
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Yêu cầu công việc</label>
                                 <div class="col-sm-10">
-                                    <textarea name="requirement" class="form-control" rows="10"  placeholder="Yêu cầu công việc" required>{{old('requirement')}}</textarea>
+                                    <textarea name="requirement" class="form-control" rows="10"  placeholder="Nhập dấu + đầu dòng nếu muốn xuống dòng" required>{{old('requirement')}}</textarea>
                                     <span class="error">{{$errors->first('requirement')}}</span>
                                 </div>
                             </div>
@@ -134,7 +131,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Quyền Lợi</label>
                                 <div class="col-sm-10">
-                                    <textarea name="benefit" class="form-control" rows="10"  placeholder="Sơ lược về bài đăng">{{old('benefit')}}</textarea>
+                                    <textarea name="benefit" class="form-control" rows="10"  placeholder="Nhập dấu + đầu dòng nếu muốn xuống dòng">{{old('benefit')}}</textarea>
                                     <span class="error" required>{{$errors->first('benefit')}}</span>
                                 </div>
                             </div>
@@ -164,7 +161,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Keywords</label>
                                 <div class="col-sm-10">
-                                    <select id="tags" class="form-control select2" name="tags[]" multiple="multiple" data-placeholder="Chọn keyword.." style="width: 100%;">
+                                    <select id="tags" class="form-control select2" name="tags[]" multiple="multiple" data-placeholder="Chọn keyword.., tối đa 5 keywords" style="width: 100%;">
                                         
                                     </select>
                                     <span class="error">{{$errors->first('tags')}}</span>
@@ -263,6 +260,19 @@
                 text: term + ' (new keyword)'
             };
         },
+    });
+    $("#category").select2({
+        ajax: {
+            url: 'http://localhost:90/Find_Job/employer/ajax-list-category.html',
+            dataType: 'json',
+            processResults: function(data) {
+                return {
+                    results: data
+                };
+            }
+        },
+        // max tags is 5
+        maximumSelectionLength: 5,
     });
 </script>
 @endsection

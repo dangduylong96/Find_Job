@@ -3,6 +3,7 @@ namespace App\Helper;
  
 use DB;
 use App\Setting;
+use App\Category;
 use App\Manager_cadidate_and_post;
 class MyLibrary {
     public static function getSetting($colum) {
@@ -35,5 +36,10 @@ class MyLibrary {
     public static function getCountApplyPost($id) {
         $count=Manager_cadidate_and_post::where([['post_id',$id],['type_apply',1]])->count();
         return $count;
+    }
+    //Lấy tên của category theo id
+    public static function getNameCategory($id) {
+        $category=Category::find($id);
+        return $category->name;
     }
 }

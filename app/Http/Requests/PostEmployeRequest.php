@@ -33,6 +33,7 @@ class PostEmployeRequest extends FormRequest
         return [
             'title'=>'required',
             'qty_candidate'=>'required|numeric',
+            'category'=>'required',
             'sex'=>'in:'.$arr_sex,
             'desc'=>'required|min:10',
             'requirement'=>'required|min:10',
@@ -43,7 +44,7 @@ class PostEmployeRequest extends FormRequest
             'time_try'=>'in:'.$arr_time_try,
             'workplace'=>'in:'.$arr_workplace,
             'benefit'=>'required|min:10',
-            'expiration_date'=>'required|date',
+            'expiration_date'=>'required|date|after:tomorrow',
             'name_contact'=>'required',
             'email_contact'=>'required|email',
             'address_contact'=>'required',
@@ -55,6 +56,7 @@ class PostEmployeRequest extends FormRequest
         return [
             'title.required' => 'Tiêu không được bỏ trống',
             'qty_candidate.required' => 'Số lương không được bỏ trống',
+            'category.required' => 'Nghành không được bỏ trống',
             'sex.in'  => 'Giới tính k hợp lệ',
             'desc.required'  => 'Mô tả không được bỏ trống',
             'desc.min'  => 'Mô tả tối thiểu 10 kí tự',
@@ -70,6 +72,7 @@ class PostEmployeRequest extends FormRequest
             'benefit.min'  => 'Phúc lợi tối thiểu 10 kí tự',
             'expiration_date.required'  => 'Ngày hết hạn không được bỏ trống',
             'expiration_date.date'  => 'Ngày hết hạn phải là ngày',
+            'expiration_date.after'  => 'Ngày hết hạn phải lớn hơn ngày hiện tại 2 ngày',
             'name_contact.required' => 'Tên người liên hệ không được bỏ trống',
             'email_contact.required' => 'Email liên hệ không được bỏ trống',
             'email_contact.email' => 'Email liên hệ không hợp lệ',

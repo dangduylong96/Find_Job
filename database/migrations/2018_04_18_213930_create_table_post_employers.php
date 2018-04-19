@@ -28,8 +28,7 @@ class CreateTablePostEmployers extends Migration
             $table->integer('slary');
             $table->integer('time_try');
             $table->text('benefit');
-            $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+            $table->text('category_id');
             $table->integer('workplace');
             $table->text('contact');
             $table->dateTime('expiration_date');

@@ -50,7 +50,7 @@
                                 <td>
                                     @if($v['status']!=3)
                                     <a href="<?php echo url('/employer/sua-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
-                                    <a href="<?php echo url('/employer/huy-tin-'.$v['id'].'.html')?>"><button type="button" class="btn btn-danger">Hủy</button></a>
+                                    <a href="<?php echo url('/employer/huy-tin-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắn muốn hủy bài viết không? Nếu hủy bài viết sẽ k được hiển thị và k được duyệt?')"><button type="button" class="btn btn-danger">Hủy</button></a>
                                     @endif
                                 </td>
                             </tr>

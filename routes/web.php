@@ -64,7 +64,8 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
         Route::get('huy-ung-vien-{id}.html','EmployerSearchController@removeSaveCvAction');
         Route::get('ajax-tim-kiem-ung-vien.html','EmployerSearchController@ajaxSearchResult');
 
-        Route::get('ajax-list-tags.html','TagController@ajaxListTag');    
+        Route::get('ajax-list-tags.html','EmployerTagController@ajaxListTag');    
+        Route::get('ajax-list-category.html','EmployerTagController@ajaxListCategory');    
     });
     Route::get('thong-tin-cong-ty.html','EmployerCompanyController@company');
     Route::post('thong-tin-cong-ty.html','EmployerCompanyController@updateCompany')->name('employer_update_company');

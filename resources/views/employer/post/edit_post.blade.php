@@ -54,10 +54,12 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Nghành</label>
                                 <div class="col-sm-10">
-                                    <select id="category" name="category" class="form-control select2" style="width: 100%;">
-                                        @foreach($category as $k=>$v)
-                                        <option value="{{$v->id}}" {{(old("category",$current_post['category_id']) == $v->id ? "selected":"") }}>{{$v->name}}</option>
-                                        @endforeach
+                                    <select id="category" class="form-control select2" name="category[]" multiple="multiple" data-placeholder="Chọn nghành, tối đa 5 ngành" style="width: 100%;">
+                                    @if(count($category)>0)
+                                    @foreach($category as $v)
+                                    <option value="{{$v}}" selected="selected">{{MyLibrary::getNameCategory($v)}}</option>
+                                    @endforeach
+                                    @endif
                                     </select>
                                     <span class="error">{{$errors->first('category')}}</span>
                                 </div>
@@ -268,6 +270,19 @@
                 text: term + ' (new keyword)'
             };
         },
+    });
+    $("#category").select2({
+        ajax: {
+            url: 'http://localhost:90/Find_Job/employer/ajax-list-category.html',
+            dataType: 'json',
+            processResults: function(data) {
+                return {
+                    results: data
+                };
+            }
+        },
+        // max tags is 5
+        maximumSelectionLength: 5,
     });
 </script>
 @endsection
