@@ -1,14 +1,14 @@
-@extends('employer.layout.layout')
+@extends('admin.layout.layout')
 @section('main_page')
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Quản Lí Tin tuyển dụng
+            Quản Lí Ứng viên
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Danh sách Tin tuyển dụng</li>
+            <li class="active">Danh sách Ứng viên</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,9 +27,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên</th>
-                                <th>Tiêu đề tuyển dụng</th>
-                                <th>Số điện thoại</th>
+                                <th>Ứng viên</th>
                                 <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
@@ -38,26 +36,23 @@
                         <?php
                             $i=1;
                         ?>
-                        @foreach($Manager_cadidate_and_post as $k=>$v)
-                        @if($v->candidate->status==1)
+                        @foreach($list_candidate as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v->candidate->name}}</td>
-                                <td>{{$v->postemployer->title}}</td>
-                                <td>{{$v->candidate->phone}}</td>
-                                @if(!isset($v->manager_cv_company) || $v->manager_cv_company->status!=1)
-                                <td><small class="label label-danger"><i class="fa fa-clock-o"></i>Chưa lưu </small></td>
+                                <td><a href="<?php echo url('/admin/chi-tiet-ung-vien-'.$v['id'].'.html')?>" target="_blank">{{$v->name}}</a></td>
+                                @if($v->status==0)
+                                <td><span class="label label-primary">Chờ duyệt</span></td>
+                                @elseif($v->status==1)
+                                <td><span class="label label-success">Đã Duyệt</span></td>
                                 @else
-                                <td><small class="label label-success"><i class="fa fa-clock-o"></i>Đã lưu </small></td>
+                                <td><span class="label label-danger">Đã hủy</span></td>
                                 @endif
                                 <td>
-                                    <a href="chi-tiet-cv-{{$v->id}}.html" target="_blank"><button type="button" class="btn btn-info">Xem CV</button></a>
-                                    <a href="luu-cv-{{$v->id}}.html"><button type="button" class="btn btn-danger">Lưu CV</button></a>
-                                    <a href="huy-luu-cv-{{$v->id}}.html"><button type="button" class="btn btn-default">Hủy Lưu</button></a>
+                                    <a href="<?php echo url('/admin/duyet-ung-vien-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
+                                    <a href="<?php echo url('/admin/huy-ung-vien-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy Ứng viên? hủy công thì tất cả các hoạt động của ứng viên đều k được hiển thị cho ng tuyển dụng và trong trang web?')"><button type="button" class="btn btn-danger">Hủy</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>
-                        @endif
                         @endforeach
                         </tbody>
                     </table>

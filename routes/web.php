@@ -135,6 +135,12 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('ajax-list-tags.html','EmployerTagController@ajaxListTag');    
     Route::get('ajax-list-category.html','EmployerTagController@ajaxListCategory');
 
+    //Quản lí ứng viên
+    Route::get('danh-sach-ung-vien.html','AdminCandidateController@getListCandidate');
+    Route::get('chi-tiet-ung-vien-{id}.html','AdminCandidateController@getDetailCandidate');
+    Route::get('duyet-ung-vien-{id}.html','AdminCandidateController@checkCandidate');
+    Route::get('huy-ung-vien-{id}.html','AdminCandidateController@destroyCandidate');
+
     //Quản lí ngành
     Route::get('danh-sach-nghanh.html','AdminCategoryController@getListCategory');
     Route::get('them-nghanh.html','AdminCategoryController@addCategory');

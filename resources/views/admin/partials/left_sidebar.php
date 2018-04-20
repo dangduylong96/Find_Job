@@ -14,6 +14,11 @@
                 <i class="fa fa-building"></i> <span>Danh sách công ty</span>
                 </a>
             </li>
+            <li class="<?php if(strpos(url()->current(),'danh-sach-ung-vien.html')!==false) echo 'active'?>">
+                <a href="danh-sach-ung-vien.html">
+                <i class="fa fa-user"></i> <span>Danh sách Ứng viên</span>
+                </a>
+            </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>">
                 <a href="danh-sach-tin.html">
                 <i class="fa fa-sticky-note"></i> <span>Tin tuyển dụng</span>

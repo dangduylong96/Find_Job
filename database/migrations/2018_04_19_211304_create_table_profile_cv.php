@@ -36,6 +36,6 @@ class CreateTableProfileCv extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('profile_cv');
     }
 }
