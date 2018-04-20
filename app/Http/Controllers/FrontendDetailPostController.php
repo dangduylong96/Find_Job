@@ -31,18 +31,34 @@ class FrontendDetailPostController extends Controller
             $user=Auth::user();
             if($user->type=="candidate")
             {
-                $candidate_id=$user->candidate->id;
-                $check_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1],['post_id',$id]])->first();
-                if(isset($check_love))
-                {
-                    $data['check_love']=1;
+                if(isset($user->candidate->id)){
+                    $candidate_id=$user->candidate->id;
+                    $check_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1],['post_id',$id]])->first();
+                    if(isset($check_love))
+                    {
+                        $data['check_love']=1;
+                    }
                 }
             }
         }
-
         //Lấy 3 việc làm liên quan đầu tiên
-        $relationship_post=PostEmployer::where([['category_id',$post->category_id],['status',1]])->skip(0)->take(3)->orderBy('created_at','desc')->get();
-        $data['relationship_post']=$relationship_post;
+        $arr_cate_relate=json_decode($post->category_id);
+        // $relationship_post=PostEmployer::whereIn('id', [3,5])->where('status',1)->skip(0)->take(3)->orderBy('created_at','desc')->get();
+        $result_relationship=[];
+        $relationship_post=PostEmployer::where('status',1)->orderBy('created_at','desc')->get();
+        foreach($relationship_post as $v){
+            if(count($result_relationship)<3){
+                $arr_cate=json_decode($v->category_id);
+                foreach($arr_cate_relate as $v1){
+                    if(in_array($v1,$arr_cate)){
+                        $result_relationship[]=$v;
+                    }
+                }
+            }else{
+                break;
+            }
+        }
+        $data['relationship_post']=$result_relationship;
 
         //Danh sách các bài viết đã ưa thích
         if(Auth::check())
@@ -50,15 +66,21 @@ class FrontendDetailPostController extends Controller
             $user=Auth::user();
             if($user->type=="candidate")
             {
-                $candidate_id=$user->candidate->id;
-                $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
-                if(isset($list_love))
-                {
-                    $data['list_love']=[];
-                    foreach($list_love as $v)
+                if(isset($user->candidate)){
+                    $candidate_id=$user->candidate->id;
+                    $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+                    if(isset($list_love))
                     {
-                        $data['list_love'][]=$v->post_id;
+                        $data['list_love']=[];
+                        foreach($list_love as $v)
+                        {
+                            $data['list_love'][]=$v->post_id;
+                        }
                     }
+                }else{
+                    echo '<script>alert("Vui lòng bổ sung thông tin cá nhân để kích hoạt tài khoản trước khi yêu thích hoặc ứng tuyển")</script>';
+                    echo '<script>window.location.href="ung-vien/thong-tin-tai-khoan2.html"</script>';
+                    exit;
                 }
             }
         }

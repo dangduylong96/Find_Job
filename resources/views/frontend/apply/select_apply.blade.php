@@ -38,8 +38,8 @@
                             <div class="radio">
                                 <label><input type="radio" name="cv" value="{{$v->id}}">{{$v->title}}</label>
                             </div>
-                                <label><input type="radio" name="cv" value="cv_file">Chọn từ máy tính</label>
-                            @endforeach                   
+                            @endforeach              
+                            <label><input type="radio" name="cv" value="cv_file">Chọn từ máy tính</label>     
                             <input type="file" name="cv_file"><br>
                             <button type="submit" class="btn btn-danger btn-block">Ứng tuyển</button>
                         </form>

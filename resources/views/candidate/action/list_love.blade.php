@@ -39,7 +39,7 @@
                         @foreach($list as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v->postemployer->title}}</td>
+                                <td><a href="{{url('/').'/chi-tiet-p'.$v->post_id.'.html'}}" target="_blanks">{{$v->postemployer->title}}</a></td>
                                 <td>{{date('d-m-Y',strtotime($v->postemployer->expiration_date))}}</td>
                                 <td><a href="<?php echo url('/ung-vien/bo-yeu-thich-'.$v->id.'.html')?>"><button type="button" class="btn btn-danger">Bỏ yêu thích</button></a></td>
                             </tr>

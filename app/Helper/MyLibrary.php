@@ -42,4 +42,14 @@ class MyLibrary {
         $category=Category::find($id);
         return $category->name;
     }
+    //Lấy tên của category từ json trong CSDL
+    public static function converJsonToString($json=null) {
+        $arr=json_decode($json);
+        $arr_string=[];
+        foreach($arr as $v){
+            $arr_string[]=self::getNameCategory($v);
+        }
+        $string=implode(',',$arr_string);
+        return $string;
+    }
 }

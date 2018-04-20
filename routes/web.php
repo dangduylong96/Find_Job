@@ -77,6 +77,9 @@ Route::group(['prefix' => 'employer','middleware'=>'employer'], function() {
 /*************************************Ứng viên quản trị */
 Route::get('/ung-vien/dang-nhap.html','CandidateController@getLogin')->name('candidate_login');
 Route::post('/ung-vien/dang-nhap.html','CandidateController@postLogin')->name('post_candidate_login');
+//Đăng nhập từ trang khác
+Route::get('/ung-vien/dang-nhap2.html','CandidateController@getLogin2')->name('candidate_login2');
+Route::post('/ung-vien/dang-nhap2.html','CandidateController@postLogin2')->name('post_candidate_login2');
 Route::get('/ung-vien/dang-ki.html','CandidateController@getRegister')->name('candidate_register');
 Route::post('/ung-vien/dang-ki.html','CandidateController@postRegister')->name('post_register_candidate');
 Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
@@ -102,6 +105,9 @@ Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
     
     Route::get('thong-tin-tai-khoan.html','CandidateController@candidateGetCandidateInfo');
     Route::post('thong-tin-tai-khoan.html','CandidateController@candidatePostCandidateInfo')->name('candidate_post_candidate_info');
+    //Thông tin tài khaonr khi redirect về trang trước
+    Route::get('thong-tin-tai-khoan2.html','CandidateController@candidateGetCandidateInfo2');
+    Route::post('thong-tin-tai-khoan2.html','CandidateController@candidatePostCandidateInfo2')->name('candidate_post_candidate_info2');
 });
 
 

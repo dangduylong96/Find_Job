@@ -15,49 +15,27 @@ class FrontendActionController extends Controller
     //Yêu thích
     public function frontendLoveAction(Request $request)
     {
-        $this->middleware(function ($request, $next) {
-            if(!Auth::check())
-            {
+        if(!Auth::check()){
+            $message=[
+                'status'=>'404',
+                'content'=>'Bạn chưa đăng nhập.Vui lòng đăng nhập để thêm mục yêu thích',
+                'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap2.html'                
+            ];
+            echo json_encode($message);
+            exit;
+        }else{
+            //Kiểm tra có phải là người tìm việc hay không?
+            $user=Auth::user();
+            if($user->type!='candidate'){
                 $message=[
                     'status'=>'404',
-                    'content'=>'Bạn chưa đăng nhập.Vui lòng đăng nhập để thêm mục yêu thích',
-                    'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap.html'                
+                    'content'=>'Tài khoản của bạn không phải là người tìm việc',
+                    'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap2.html'
                 ];
                 echo json_encode($message);
                 exit;
-            }else
-            {
-                //Kiểm tra có phải là người tìm việc hay không?
-                $user=Auth::user();
-                if($user->type!='candidate')
-                {
-                    $message=[
-                        'status'=>'404',
-                        'content'=>'Tài khoản của bạn không phải là người tìm việc',
-                        'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap.html'
-                    ];
-                    echo json_encode($message);
-                    exit;
-                }else
-                {
-                    //Kiểm tra đã bổ sung thông tin cá nhân chưa
-                    $id_user=$user->id;
-                    $candidate=Candidate::where('user_id',$id_user)->first();
-                    if(!$candidate)
-                    {
-                        $message=[
-                            'status'=>'404',
-                            'content'=>'Vui lòng bổ sung thông tin cá nhân để kích hoạt tài khoản',
-                            'link'=>'http://localhost:90/Find_Job/ung-vien/thong-tin-tai-khoan.html'
-                        ];
-                        echo json_encode($message);
-                        exit;
-                    }                
-                }
-            }    
-            return $next($request);
-        });
-        
+            }
+        } 
         //Lấy id và hành động của thêm hoặc loại bỏ
         $id=$request->id;
 
@@ -93,7 +71,8 @@ class FrontendActionController extends Controller
             $row->candidate_id=$candidate->id;
             $row->post_id=$id;
             $row->type=1;
-            $row->type_apply='';
+            $row->type_apply=0;
+            $row->url_cv_out='';
             $row->save();
             $message=[
                 'status'=>'200',
@@ -129,7 +108,7 @@ class FrontendActionController extends Controller
         if(!Auth::check())
         {
             echo '<script>alert("Bạn chưa đăng nhập.Vui lòng đăng nhập")</script>';
-            echo '<script>window.location.href="ung-vien/dang-nhap.html"</script>';
+            echo '<script>window.location.href="ung-vien/dang-nhap2.html"</script>';
             exit;
         }else
         {
@@ -138,7 +117,7 @@ class FrontendActionController extends Controller
             if($user->type!='candidate')
             {
                 echo '<script>alert("Tài khoản của bạn không phải là người tìm việc")</script>';
-                echo '<script>window.location.href="ung-vien/dang-nhap.html"</script>';
+                echo '<script>window.location.href="ung-vien/dang-nhap2.html"</script>';
                 exit;
             }else
             {
@@ -148,7 +127,7 @@ class FrontendActionController extends Controller
                 if(!$candidate)
                 {
                     echo '<script>alert("Vui lòng bổ sung thông tin cá nhân để kích hoạt tài khoản")</script>';
-                    echo '<script>window.location.href="ung-vien/thong-tin-tai-khoan.html"</script>';
+                    echo '<script>window.location.href="ung-vien/thong-tin-tai-khoan2.html"</script>';
                     exit;
                 }                
             }
@@ -239,6 +218,7 @@ class FrontendActionController extends Controller
                 $row->type=0;
                 $row->type_apply=1;
                 $row->candidate_profile_id=$candidate_profile->id;
+                $row->url_cv_out='';
                 $row->save();
 
                 //gửi mail khi ứng tuyển thành công   
@@ -259,7 +239,7 @@ class FrontendActionController extends Controller
                 
                 
                 echo '<script>alert("Ứng tuyển thành công")</script>';
-                echo '<script>history.go(-1);</script>';
+                echo '<script>history.go(-2);</script>';
                 exit;
             }else
             {
@@ -289,7 +269,7 @@ class FrontendActionController extends Controller
                     $message->to($email_user_post, $name_apply)->subject($name_apply.' vừa ứng tuyển');
                 });
                 echo '<script>alert("Ứng tuyển thành công")</script>';
-                echo '<script>history.go(-1);</script>';
+                echo '<script>history.go(-2);</script>';
                 exit;
             }
         }else if($request->has('cv') && $request->has('cv_file') && $request->cv='cv_file')

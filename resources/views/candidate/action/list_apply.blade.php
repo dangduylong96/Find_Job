@@ -38,7 +38,7 @@
                         @foreach($list as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td>{{$v->postemployer->title}}</td>
+                                <td><a href="{{url('/').'/chi-tiet-p'.$v->post_id.'.html'}}" target="_blanks">{{$v->postemployer->title}}</a></td>
                                 <td>{{date('d-m-Y',strtotime($v->postemployer->expiration_date))}}</td>
                             </tr>
                             <?php $i++; ?>

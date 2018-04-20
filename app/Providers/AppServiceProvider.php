@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
+        $url=url()->full();
+        if($url!='http://localhost:90/Find_Job/ung-vien/dang-nhap2.html' || $url!='http://localhost:90/Find_Job/ung-vien/thong-tin-tai-khoan2.html'){
+            session()->put('url_back',$url);
+        }
         //Ngày giờ hiện tại
         // $curent_date=date('Y-m-d H:i:s');
         // $curent_date=strtotime($curent_date);
