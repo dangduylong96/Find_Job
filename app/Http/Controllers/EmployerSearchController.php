@@ -35,6 +35,7 @@ class EmployerSearchController extends Controller
         $data['old_city']='all';
         //Lấy giá trị input cũ
         $list_profile=CandidateProfile::select('*')->where('status',1);
+        // $list_profile=$list_profile->where('display',1);
         if($request->has('keyword') && $request->keyword!='')
         {
             $data['old_keyword']=$request->keyword;
@@ -81,7 +82,7 @@ class EmployerSearchController extends Controller
         $list_save_profile=[];
         foreach($save_profile as $v)
         {
-            $list_save_profile[]=$v->id;
+            $list_save_profile[]=$v->candidate_profile_id;
         }
         $data['list_save_profile']=$list_save_profile;
 
@@ -251,9 +252,8 @@ class EmployerSearchController extends Controller
         $list_save_profile=[];
         foreach($save_profile as $v)
         {
-            $list_save_profile[]=$v->id;
+            $list_save_profile[]=$v->candidate_profile_id;
         }
-
         $html='';
         foreach($list_profile as $k=>$v)
         {

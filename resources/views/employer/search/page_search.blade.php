@@ -16,7 +16,7 @@
                                         <h1 data-animation-in="fadeInUp" data-animation-out="animate-out fadeOutDown">Tìm việc, tuyển dụng & Cơ hội nghề nghiệp</h1>
                                         <p data-animation-in="zoomIn" data-animation-out="animate-out zoomIn">Chúng tôi tìm kiếm các công việc xuất sắc từ các công ty hàng đầu<br> Cung cấp tài nguyên, nội dung công việc để bạn có thể chuyển sang công việc mới</p>
                                         <ul>
-                                            <li data-animation-in="bounceInLeft" data-animation-out="animate-out bounceOutLeft"><a href="/Find_Job"><i class="fa fa-plus-circle"></i> Bắt đầu</a></li>
+                                            <li data-animation-in="bounceInLeft" data-animation-out="animate-out bounceOutLeft"><a href="#" onclick="javascript:void(0)"><i class="fa fa-plus-circle"></i> Bắt đầu</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="jp_slider_form_location_wrapper">
                                         <i class="fa fa-th-large first_icon"></i>
-                                            <select name="category_id">
+                                            <select name="category_id" class="select2">
                                                 <option value="all">Tất cả nghành nghề</option>
                                                 @foreach($category as $v)
                                                 <option value="{{$v->id}}">{{$v->name}}</option>
@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="jp_slider_form_location_wrapper">
                                         <i class="fa fa-arrow-up first_icon"></i>
-                                            <select name="level">
+                                            <select name="level" class="select2">
                                                 <option value="all">Tất cả trình độ</option>
                                                 @foreach($level as $k=>$v)
                                                 <option value="{{$k}}">{{$v}}</option>
@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="jp_slider_form_location_wrapper">
                                         <i class="fa fa-money first_icon"></i>
-                                            <select name="slary">
+                                            <select name="slary" class="select2">
                                                 <option value="all">Tất cả mức lương</option>
                                                 @foreach($slary as $k=>$v)
                                                 <option value="{{$k}}">{{$v}}</option>
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="jp_slider_form_location_wrapper">
                                         <i class="fa fa-dot-circle-o first_icon"></i>
-                                            <select name="city">
+                                            <select name="city" class="select2">
                                                 <option value="all">Tất cả địa điểm</option>
                                                 @foreach($city as $k=>$v)
                                                 <option value="{{$k}}">{{$v}}</option>

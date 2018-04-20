@@ -115,13 +115,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                <div class="gc_causes_search_box_wrapper gc_causes_search_box_wrapper2">
-                                    <div class="gc_causes_search_box">
-                                        <p id="show">Bạn đang xem &nbsp;<span>{{($page-1)*$post_of_page}} đến {{$total_profile}}</span></p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -293,43 +286,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 visible-sm visible-xs">
-                        <div class="pager_wrapper gc_blog_pagination">
-                            <ul class="pagination">
-                                <li><a href="#">Priv.</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li class="hidden-xs"><a href="#">4</a></li>
-                                <li><a href="#">Next</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="jp_downlord_main_wrapper">
-    <div class="jp_downlord_img_overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 hidden-sm hidden-xs">
-                <div class="jp_down_mob_img_wrapper">
-                    <img src="{{asset('public/frontend/images/content/mobail.png')}}" alt="mobail_img" />
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="ss_download_wrapper_details">
-                    <h1><span>Tải Miễn Phí</span><br>Job Pro App ngay bây giờ!</h1>
-                    <p>Nhanh, Đơn giản & Hiệu quả. Tất cả chỉ mất 30s!!!.</p>
-                    <a href="#" class="ss_appstore"><span><i class="fa fa-apple" aria-hidden="true"></i></span> App Store</a>
-                    <a href="#" class="ss_playstore"><span><i class="fa fa-android" aria-hidden="true"></i></span> Play Store</a>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 visible-sm visible-xs">
-                <div class="jp_down_mob_img_wrapper">
-                    <img src="{{asset('public/frontend/images/content/mobail.png')}}" class="img-responsive')}}" alt="mobail_img" />
                 </div>
             </div>
         </div>
