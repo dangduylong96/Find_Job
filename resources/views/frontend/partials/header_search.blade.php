@@ -18,7 +18,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="jp_form_location_wrapper">
                                 <i class="fa fa-dot-circle-o first_icon"></i>
-                                <select name="city">
+                                <select name="city" class="select2">
                                     <option value="all" {{$current_city=='all'?'selected':''}}>Tất cả</option>
                                     @foreach($city as $k=>$v)
                                     <option value="{{$k}}" {{$current_city==$k?'selected':''}}>{{$v}}</option>
@@ -29,7 +29,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                             <div class="jp_form_exper_wrapper">
                                 <i class="fa fa-dot-circle-o first_icon"></i>
-                                <select name="category">
+                                <select name="category" class="select2">
                                     <option value="all" {{$current_city=='all'?'selected':''}}>Tất cả</option>
                                     @foreach($category as $k=>$v)
                                     <option value="{{$v->id}}" {{$current_category==$v->id?'selected':''}}>{{$v->name}}</option>

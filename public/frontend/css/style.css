@@ -869,6 +869,25 @@ ul{
     -moz-appearance: none;
 	position:relative;
 }
+.jp_form_location_wrapper span.select2-selection, .jp_form_exper_wrapper span.select2-selection{
+	width:100%;
+	height:50px;
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+	border:transparent;
+	padding-left:40px;
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	position:relative;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+	position: absolute;
+	top: 23%;
+}
+.select2-selection__arrow{
+	display: none;
+}
 .jp_form_location_wrapper .second_icon, .jp_form_exper_wrapper .second_icon{
 	margin-left:-30px;
 	position: absolute;

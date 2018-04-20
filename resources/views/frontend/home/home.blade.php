@@ -510,6 +510,7 @@ $( function() {
     $( "#search_job" ).autocomplete({
       source: availableTags
     });
+    //Search select
 });
 </script>
 @endsection

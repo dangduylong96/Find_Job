@@ -66,7 +66,9 @@ class FrontendSearchController extends Controller
             }
             if($request->has('category') && $request->category!='all')
             {
-                $category=['category_id',$request->category];
+                $category=$request->category;
+            }else{
+                $category='all';
             }
             if($request->has('page'))
             {
@@ -74,16 +76,43 @@ class FrontendSearchController extends Controller
             }
             /*Danh mục tìm kiếm sẽ bằng : tên post tuyển dụng + tên công ty + tên post chưa tag là keyword*/
             $list_result=[];
+
             //Lấy tên post tuyển dụng có keyword đã chọn
-            $list_post=PostEmployer::where([['title','like','%'.$keyword.'%'],$city,$category,['status',1]])->orderBy('created_at','desc')->get();
-            foreach($list_post as $v)
+            $list_post=PostEmployer::where([['title','like','%'.$keyword.'%'],$city,['status',1]])->orderBy('created_at','desc')->get();
+            $list_post_result=[];
+            //Lọc theo loại
+            if($category!='all'){
+                foreach($list_post as $v){
+                    $arr_cate=json_decode($v->category_id);
+                    if(in_array($category,$arr_cate)){
+                        $list_post_result[]=$v;
+                    }
+                }
+            }else{
+                $list_post_result=$list_post;
+            }
+            
+            foreach($list_post_result as $v)
             {
                 $name_company=$v->Company->name;
                 $list_result[]=$v;
             }
             //Lấy thẻ tag và tên công ty giống keyword
-            $list_tag=PostEmployer::where([$city,$category,['status',1]])->orderBy('created_at','desc')->get();
-            foreach($list_tag as $v)
+            $list_tag=PostEmployer::where([$city,['status',1]])->orderBy('created_at','desc')->get();
+            $list_tag_result=[];
+            //Lọc theo loại
+            if($category!='all'){
+                foreach($list_tag as $v){
+                    $arr_cate=json_decode($v->category_id);
+                    if(in_array($category,$arr_cate)){
+                        $list_tag_result[]=$v;
+                    }
+                }
+            }else{
+                $list_tag_result=$list_tag;
+            }
+            //Lọc tag theo category
+            foreach($list_tag_result as $v)
             {
                 $check=0;
                 $value_tag=json_decode($v->tags);
@@ -208,21 +237,6 @@ class FrontendSearchController extends Controller
                 }              
             }
 
-            //Kiểm tra nghành
-            $category_id=$request->category_id;
-            if(is_array($category_id))
-            {
-                if(!in_array('all',$category_id))
-                {
-                    $list_post=$list_post->whereIn('category_id',$category_id);
-                    $list_tag=$list_tag->whereIn('category_id',$category_id);
-                }              
-            }elseif($category_id!='all')
-            {
-                $list_post=$list_post->where('category_id',$category_id);
-                $list_tag=$list_tag->where('category_id',$category_id);
-            }
-
             //Sắp xếp (mặc định là ngày đăng giảm)
             if($request->has('sort_order'))
             {
@@ -240,18 +254,40 @@ class FrontendSearchController extends Controller
                 $list_post=$list_post->orderBy('created_at','desc');    
                 $list_tag=$list_tag->orderBy('created_at','desc');              
             }
-            /*Danh mục tìm kiếm sẽ bằng : tên post tuyển dụng + tên công ty + tên post chưa tag là keyword*/
+            $list_post=$list_post->get();
+            $list_tag=$list_tag->get();                        
+            //Lọc theo nghành
+            $category_id=$request->category_id;
+            $list_post_result=[];
+            $list_tag_result=[];
+            if($category_id!='all'){
+                foreach($list_post as $v){
+                    $arr_cate=json_decode($v->category_id);
+                    if(in_array($category_id,$arr_cate)){
+                        $list_post_result[]=$v;
+                    }
+                }
+                foreach($list_tag as $v){
+                    $arr_cate=json_decode($v->category_id);
+                    if(in_array($category_id,$arr_cate)){
+                        $list_tag_result[]=$v;
+                    }
+                }
+            }else{
+                $list_post_result=$list_post;
+                $list_tag_result=$list_tag;
+            }
+
+            /*Danh mục tìm kiếm sẽ bằng : tên post tuyển dụng + tên công ty + tên post chứa tag là keyword*/
             $list_result=[];
             //Lấy post có keyword tìm theo tên
-            $list_post=$list_post->get();
-            foreach($list_post as $v)
+            foreach($list_post_result as $v)
             {
                 $name_company=$v->Company->name;
                 $list_result[]=$v;
             }
             //Lấy thẻ tag và tên công ty giống keyword
-            $list_tag=$list_tag->get();            
-            foreach($list_tag as $v)
+            foreach($list_tag_result as $v)
             {
                 $check=0;
                 $value_tag=json_decode($v->tags);
@@ -283,7 +319,7 @@ class FrontendSearchController extends Controller
             {
                 if($k>=(($page-1)*$post_of_page) && $k<=($page*$post_of_page))
                 {
-                    $html_result.='<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont"> <div class="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper"> <div class="row"> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_side_img"> <img src="'.$v->Company->image.'" alt="post_img" width="100px" height="95px"/> </div> <div class="jp_job_post_right_cont jp_job_post_grid_right_cont"> <h4>'.substr($v->title,0,50).'</h4> <p>'.substr($v->Company->name,0,50).'</p> <ul> <li><i class="fa fa-cc-paypal"></i>&nbsp; '.MyLibrary::getNameSetting('slary',$v->slary).'</li> <li><i class="fa fa-map-marker"></i>&nbsp; '.MyLibrary::getNameSetting('city',$v->workplace).'</li> </ul> </div> </div> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper"> <ul> <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li> <li><a href="chi-tiet-p'.$v->id.'.html">Xem</a></li> <li><a href="ung-tuyen-p'.$v->id.'.html">Ứng tuyển</a></li> </ul> </div> </div> </div> </div> <div class="jp_job_post_keyword_wrapper"> <ul> <li><i class="fa fa-tags"></i>Keywords :</li>'; foreach(json_decode($v->tags) as $tag_name)
+                    $html_result.='<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> <div class="jp_job_post_main_wrapper_cont jp_job_post_grid_main_wrapper_cont"> <div class="jp_job_post_main_wrapper jp_job_post_grid_main_wrapper"> <div class="row"> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_side_img"> <img src="'.$v->Company->image.'" alt="post_img" width="100px" height="95px"/> </div> <div class="jp_job_post_right_cont jp_job_post_grid_right_cont"> <h4>'.substr($v->title,0,50).'</h4> <p>'.substr($v->Company->name,0,50).'</p> <ul> <li><i class="fa fa-cc-paypal"></i>&nbsp; '.MyLibrary::getNameSetting('slary',$v->slary).'</li> <li><i class="fa fa-map-marker"></i>&nbsp; '.MyLibrary::getNameSetting('city',$v->workplace).'</li> </ul> </div> </div> <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper"> <ul> <li><a href="javascript:void(0)" class="love_action" data-id="'.$v->id.'"><i class="fa fa-heart-o"></i></a></li> <li><a href="chi-tiet-p'.$v->id.'.html">Xem</a></li> <li><a href="ung-tuyen-p'.$v->id.'.html">Ứng tuyển</a></li> </ul> </div> </div> </div> </div> <div class="jp_job_post_keyword_wrapper"> <ul> <li><i class="fa fa-tags"></i>Keywords :</li>'; foreach(json_decode($v->tags) as $tag_name)
                     {
                         $html_result.='<li><a href="tim-kiem.html?keyword='.$tag_name.'&city=all&experience=all">'.$tag_name.',</a></li>';
                     }

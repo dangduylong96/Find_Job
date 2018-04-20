@@ -9,6 +9,7 @@
         <meta name="author" content="" />
         <meta name="MobileOptimized" content="320" />
         <!--srart theme style -->
+        <link rel="stylesheet" type="text/css" href="{{asset('public/admin/bower_components/select2/dist/css/select2.min.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/animate.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/bootstrap.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('public/frontend/css/font-awesome.css')}}" />
@@ -185,6 +186,12 @@
         <script src="{{asset('public/frontend/js/custom.js')}}"></script>
         <script src="{{asset('public/frontend/library/jquery-ui/jquery-ui.min.js')}}"></script>
         <script src="{{asset('public/js/my_custom_frontend.js')}}"></script>
+        <script src="{{asset('public/admin/bower_components/select2/dist/js/select2.full.min.js')}}"></script>
+        <script>
+            $( function() {
+                $('.select2').select2();
+            });
+        </script>
         <!--main js file end-->
         @yield('js')
     </body>

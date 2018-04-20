@@ -79,9 +79,6 @@ class AmdminPostEmployerController extends Controller
         if(strtotime($request->expiration_date)<$curent_date)
         {
             $new_post->status=4;
-        }else
-        {
-            $new_post->status=0;
         }
         //Thông tin liên hệ
         $arr_contact=[

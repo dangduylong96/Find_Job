@@ -35,13 +35,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                <div class="gc_causes_search_box_wrapper gc_causes_search_box_wrapper2">
-                                    <div class="gc_causes_search_box">
-                                        <p id="show">Bạn đang xem &nbsp;<span>{{($page-1)*$post_of_page}} đến {{$total_post}}</span></p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -70,7 +64,7 @@
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="jp_job_post_right_btn_wrapper jp_job_post_grid_right_btn_wrapper">
                                                             <ul>
-                                                                <li><a href="javascript:void(0)" class="love_action"><i class="fa fa-heart-o"></i></a></li>
+                                                                <li><a href="javascript:void(0)" class="love_action" data-id="{{$v->id}}"><i class="fa fa-heart-o"></i></a></li>
                                                                 <li><a href="chi-tiet-p{{$v->id}}.html">Xem</a></li>
                                                                 <li><a href="ung-tuyen-p{{$v->id}}.html">Ứng tuyển</a></li>
                                                             </ul>
