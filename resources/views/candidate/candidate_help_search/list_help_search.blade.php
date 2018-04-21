@@ -40,6 +40,7 @@
                             $i=1;
                         ?>
                         @foreach($list as $k=>$v)
+                        @if($v['status']!=2)
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$v['title']}}</td>
@@ -51,11 +52,12 @@
                                     @if($v['status']!=3)
                                     <a href="<?php echo url('/ung-vien/sua-tro-giup-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
                                     <a href="<?php echo url('/ung-vien/chi-tiet-ho-so-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Thêm Chi tiết</button></a>
-                                    <a href="<?php echo url('/admin/thanh-pho/xoa-'.$k.'.html')?>"><button type="button" class="btn btn-danger">Xóa</button></a>
+                                    <a href="<?php echo url('/ung-vien/xoa-tro-giup-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắn muốn xóa hồ sơ này?')"><button type="button" class="btn btn-danger">Xóa</button></a>
                                     @endif
                                 </td>
                             </tr>
                             <?php $i++; ?>
+                        @endif
                         @endforeach
                         </tbody>
                     </table>

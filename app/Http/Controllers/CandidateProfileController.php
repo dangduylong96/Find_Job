@@ -120,6 +120,28 @@ class CandidateProfileController extends Controller
         $profile->save();
         return redirect('ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'success','content'=>'Cập nhập thông tin hồ sơ thành công']);
     }
+    //Xóa trợ giúp
+    public function candidateRemoveHelpSearch($id){
+        //Lấy id người đăng nhập
+        $user=Auth::user()->toArray();
+        $user_id=$user['id'];
+        $user=User::find($user_id);
+        $candidate=$user->candidate;
+        $candidate_id=$candidate->toArray()['id'];
+        $profile=CandidateProfile::find($id);
+        if(!isset($profile))
+        {
+            return redirect('ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'danger','content'=>'Bài viết không tồn tại']);
+        }
+        //Kiểm tra tài khoản có thuộc hồ sơ đó không
+        if((int)$profile['candidate_id']!==$candidate_id)
+        {
+            return redirect('ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'warning','content'=>'Bài viết không thuộc sở hữu của bạn']);
+        }
+        $profile->status=2;
+        $profile->save();
+        return redirect('ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')->with('message',['status'=>'success','content'=>'Xóa hồ sơ thành công']);
+    }
 
     public function getListApply(){
         //Lấy id người đăng nhập

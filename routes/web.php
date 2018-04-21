@@ -91,6 +91,7 @@ Route::group(['prefix' => 'ung-vien','middleware'=>'candidate'], function() {
         Route::post('sua-tro-giup-{id}.html','CandidateProfileController@candidatePostHelpSearch');
         Route::get('them-tro-giup.html','CandidateProfileController@candidateGetAddHelpSearch');
         Route::post('them-tro-giup.html','CandidateProfileController@candidatePostAddHelpSearch')->name('candidate_post_add_help_search');
+        Route::get('xoa-tro-giup-{id}.html','CandidateProfileController@candidateRemoveHelpSearch');
 
         Route::get('chi-tiet-ho-so-{id}.html','ProfileCvController@candidateGetProfile');
         //Ajax thêm hồ sơ
