@@ -10,9 +10,17 @@
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="jp_newsletter_field">
-                    <form action="dang-ki-email.html" method="GET">
-                        <i class="fa fa-envelope-o"></i><input name="email" type="text" placeholder="Enter Your Email"><button type="submit">Đăng kí</button>
-                    </from>
+                        <i class="fa fa-envelope-o"></i>
+                        <form action="{{route('post_register_email')}}" method="POST">
+                        @csrf
+                            <input name="email" type="email" placeholder="Enter Your Email" value="{{$email}}">
+                            <select name="category" class="select2">
+                                @foreach($category as $k=>$v)
+                                <option value="{{$v->id}}">{{$v->name}}</option>
+                                @endforeach
+                            </select><i class="fa fa-angle-down second_icon"></i>
+                            <button type="submit">Đăng kí</button>
+                        </from>
                     </div>
                 </div>
             </div>
@@ -35,7 +43,7 @@
                         <div class="jp_footer_first_cont_wrapper">
                             <div class="jp_footer_first_cont">
                                 <h2>Who We Are</h2>
-                                <p>This is Photoshop's version of Lom Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum.<br><br> Proin akshay handge vel velit auctor aliquet. Aenean sollicitudin,</p>
+                                <p>This is Photoshops version of Lom Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum.<br><br> Proin akshay handge vel velit auctor aliquet. Aenean sollicitudin,</p>
                                 <ul>
                                     <li><i class="fa fa-plus-circle"></i> <a href="#">READ MORE</a></li>
                                 </ul>

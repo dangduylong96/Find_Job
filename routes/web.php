@@ -23,6 +23,9 @@ Route::get('ung-tuyen-p{id}.html','FrontendActionController@frontendApplyAction'
 Route::post('ung-tuyen-p{id}.html','FrontendActionController@frontendPostsApplyAction');
 //Chi tiết công ty
 Route::get('cong-ty-c{id}.html','FrontendCompanyController@getDetailCompany'); 
+//Đăng kí email tìm vệc làm
+Route::get('dang-ki-email.html','FrontendRegisterEmail@registerEmail');
+Route::post('dang-ki-email.html','FrontendRegisterEmail@registerPostEmail')->name('post_register_email');
 
 
 //Nhà tuyển dụng

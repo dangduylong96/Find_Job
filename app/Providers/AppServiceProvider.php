@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Mail;
 use App\Check_job;
 use App\PostEmployer;
+use App\Register_email;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +26,12 @@ class AppServiceProvider extends ServiceProvider
         }
         // Ngày giờ hiện tại
         $curent_date=date('Y-m-d H:i:s');
+        //k xóa sử dụng phần dưới
+        $curent_date2=date('Y-m-d H:i:s');
         $curent_date=strtotime($curent_date);
+
+
+        //*******Cập nhập bài viết hết hạn
         //Ngày cập nhập cuối cùng
         $check_job=Check_job::first();
         $update_date=strtotime($check_job->updated_at);
@@ -49,6 +56,69 @@ class AppServiceProvider extends ServiceProvider
                 $check_job->status=1;                
             }
             $check_job->save();
+        }
+
+
+        //*******Gửi mail cho những email đã đăng kí
+        /*
+            Dòng đầu tiên trong bảng Register_email là dòng kiểm tra hôm nay đã gửi mail cho ai chưa qua
+            cột status
+        */
+        $row_check=Register_email::find(1);
+        $update_date=strtotime($row_check->updated_at);
+        //Ngày update cuối cùng +1 ngày
+        $update_date_last=strtotime("+1 day", strtotime($row_check->updated_at));
+        /*
+            Nếu ngày hôm nay lớn hơn ngày update cuối +1 ngày, có nghĩa là tin nào đăng 1 ngày sau mới gửi
+            cho các ứng viên qua email. Việc cập nhập đc thực hiện mỗi ngày 1 lần
+        */
+        //Ngày hôm nay -1 ngày là
+        $last_day=date('Y-m-d',strtotime("-1 day", $curent_date));
+
+        if($curent_date>$update_date_last){
+            $list_cate_update=[];
+            //Lấy các bài viết mới thêm từ hôm qua đến hôm nay
+            $new_post=PostEmployer::where([['created_at','>=',$last_day],['status',1]])->get();
+            if(isset($new_post)){
+                foreach($new_post as $v){
+                    //Gửi cho các email có category của tin đã đăng ( 1 tin thuộc nhiều nghành)
+                    $category=json_decode($v->category_id);
+                    foreach($category as $v_cate){
+                        //Lấy mảng với key là id_cate và value là id bài viết
+                        if(isset($list_cate_update[$v_cate])){
+                            array_push($list_cate_update[$v_cate],$v->id);
+                        }else{
+                            $list_cate_update[$v_cate]=[$v->id];
+                        }
+                    }
+                }
+            }
+            //Tiến hành gửi mail
+            if(count($list_cate_update)>0){
+                //k chính là id cate và v là mảng id các bài viết
+                foreach($list_cate_update as $k=>$v){
+                    //Lấy các email đã đăng kí cái category này
+                    $list_email=Register_email::where('category_id',$k)->get();
+                    foreach($list_email as $v_mail){
+                        //Vì v là mảng các bài viết nên ta có thể làm như sau
+                        $data=[
+                            'id_post'=>$v
+                        ];
+                        Mail::send('mail.mail_job', $data, function ($message) use ($v_mail) {
+                            $message->from('nh0xpr0py5@gmail.com', 'Job Pro');                
+                            $message->to($v_mail->email, 'Ứng viên')->subject('Find Job xin giới thiệu một số việc làm sẽ phù hợp với bạn');
+                        });
+                    }  
+                }
+            }
+            //Cập lại ngày hôm nay đã gửi mail cập nhập
+            if($row_check->status==0){
+                $row_check->status=1;
+                $row_check->save();
+            }else{
+                $row_check->status=0;
+                $row_check->save();
+            }
         }
     }
 

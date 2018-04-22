@@ -3349,6 +3349,26 @@ ul{
 	float:left;
 	width:100%;
 }
+.jp_newsletter_field .selection .select2-selection{
+	float: left;
+    width: 111%;
+    border: 2px solid transparent;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 15px;
+    color: #6f7e98;
+    background-color: #ffffff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    position: relative;
+    padding-left: 40px;
+    margin-left: 15%;
+    margin-bottom: 5%;
+}
+.jp_newsletter_field .selection .select2-selection .select2-selection__rendered{
+	left: 0;
+}
 .jp_newsletter_field input{
 	float:left;
 	width:calc(95% - 160px);

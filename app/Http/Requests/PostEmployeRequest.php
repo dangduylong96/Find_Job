@@ -48,7 +48,8 @@ class PostEmployeRequest extends FormRequest
             'name_contact'=>'required',
             'email_contact'=>'required|email',
             'address_contact'=>'required',
-            'mobile_contact'=>'required|numeric'
+            'mobile_contact'=>'required|numeric',
+            'tags'=>'required'
         ];
     }
     public function messages()
@@ -78,7 +79,8 @@ class PostEmployeRequest extends FormRequest
             'email_contact.email' => 'Email liên hệ không hợp lệ',
             'address_contact.required' => 'Địa chỉ liên hệ không được bỏ trống',
             'mobile_contact.required' => 'Số điện thoại liên hệ không được bỏ trống',
-            'mobile_contact.numeric' => 'Số điện thoại liên hệ phải là số'
+            'mobile_contact.numeric' => 'Số điện thoại liên hệ phải là số',
+            'tags.required' => 'Keywords không được bỏ trống'
         ];
     }
 }
