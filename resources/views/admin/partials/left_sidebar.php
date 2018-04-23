@@ -11,17 +11,17 @@
             </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-cong-ty.html')!==false) echo 'active'?>">
                 <a href="danh-sach-cong-ty.html">
-                <i class="fa fa-building"></i> <span>Danh sách công ty</span>
+                <i class="fa fa-building"></i> <span>Quản lí nhà tuyển dụng</span>
                 </a>
             </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-ung-vien.html')!==false) echo 'active'?>">
                 <a href="danh-sach-ung-vien.html">
-                <i class="fa fa-user"></i> <span>Danh sách Ứng viên</span>
+                <i class="fa fa-user"></i> <span>Quản lí ứng viên</span>
                 </a>
             </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>">
                 <a href="danh-sach-tin.html">
-                <i class="fa fa-sticky-note"></i> <span>Tin tuyển dụng</span>
+                <i class="fa fa-sticky-note"></i> <span>Quản lí tin tuyển dụng</span>
                 </a>
             </li>
             <li class="treeview" id="category">

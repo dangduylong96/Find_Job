@@ -11,20 +11,20 @@
             </li>
             <li class="<?php if(strpos(url()->current(),'thong-tin-tai-khoan.html')!==false) echo 'active'?>">
                 <a href="thong-tin-tai-khoan.html">
-                <i class="fa fa-building"></i> <span>Thông tin Tài Khoản</span>
+                <i class="fa fa-building"></i> <span>Quản lí thông tin tài khoản</span>
                 </a>
             </li>
             <li class="treeview" id="search">
                 <a href="#">
                 <i class="fa fa-search"></i>
-                <span>Trợ giúp nhà tuyển tìm kiếm</span>
+                <span>Quản lí hồ sơ</span>
                 <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?php if(strpos(url()->current(),'danh-sach-tro-giup-nha-tuyen-dung.html')!==false) echo 'active'?>" data-active="search"><a href="<?php echo url('/ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')?>"><i class="fa fa-circle-o"></i> Dang sách trợ giúp</a></li>
-                    <li class="<?php if(strpos(url()->current(),'them-tro-giup.html')!==false) echo 'active'?>" data-active="search"><a href="<?php echo url('/ung-vien/them-tro-giup.html')?>"><i class="fa fa-circle-o"></i> Thêm trợ giúp</a></li>
+                    <li class="<?php if(strpos(url()->current(),'danh-sach-tro-giup-nha-tuyen-dung.html')!==false) echo 'active'?>" data-active="search"><a href="<?php echo url('/ung-vien/danh-sach-tro-giup-nha-tuyen-dung.html')?>"><i class="fa fa-circle-o"></i> Dang sách hồ sơ</a></li>
+                    <li class="<?php if(strpos(url()->current(),'them-tro-giup.html')!==false) echo 'active'?>" data-active="search"><a href="<?php echo url('/ung-vien/them-tro-giup.html')?>"><i class="fa fa-circle-o"></i> Tạo hồ sơ</a></li>
                 </ul>
             </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-ung-tuyen.html')!==false) echo 'active'?>">

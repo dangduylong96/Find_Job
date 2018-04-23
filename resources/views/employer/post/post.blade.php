@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            bài đăng
+            Đăng Tin
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Thêm bài đăng</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Đăng tin</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,7 +19,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Thêm bài đăng</h3>
+                        <h3 class="box-title">Thông tin chi tiết</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -200,7 +200,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-success btn-block">Thêm</button>
+                            <button type="submit" class="btn btn-success btn-block">Đăng Tin</button>
                         </div>
                         <!-- /.box-footer -->
                     </form>

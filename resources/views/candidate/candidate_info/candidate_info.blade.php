@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Cá Nhân
+            Thông tin tài khoản
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Thông tin Cá Nhân</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Thông tin tài khoản</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,7 +19,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Thông tin Cá Nhân</h3>
+                        <h3 class="box-title">Thông tin chi tiết</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">Họ và Tên</label>
                                 <div class="col-sm-10">
-                                    <input name="name" type="text" class="form-control" id="name" placeholder="Tên Cá Nhân" value="{{old('name',$candidate_info['name'])}}" required>
+                                    <input name="name" type="text" class="form-control" id="name" placeholder="Tên Thông tin tài khoản" value="{{old('name',$candidate_info['name'])}}" required>
                                     <span class="error">{{$errors->first('name')}}</span>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                     <input name="image" type="file" id="imgInp">
                                     <span class="error">{{$errors->first('image')}}</span>
                                     <br>
-                                    <image id="blah" src="{{url('/').'/'.$candidate_info['image']}}" alt="Hình ảnh Cá Nhân" width="122px" height="133px">
+                                    <image id="blah" src="{{url('/').'/'.$candidate_info['image']}}" alt="Hình ảnh Thông tin tài khoản" width="122px" height="133px">
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                         <h4 class="modal-title">Cập nhập thành công</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Cập nhập thành công Cá Nhân!!</p>
+                        <p>Cập nhập thành công Thông tin tài khoản!!</p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>

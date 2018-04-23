@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Quản Lí Ứng viên
+            Danh sách ứng viên
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Danh sách Ứng viên</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Quản lí ứng viên</li>
         </ol>
     </section>
     <!-- Main content -->

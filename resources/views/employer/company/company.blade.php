@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Công Ty
+            Thông tin tài khoản
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Thông tin Công Ty</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Thông tin tài khoản</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -19,7 +19,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Thông tin công ty</h3>
+                        <h3 class="box-title">Thông tin chi tiết</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->

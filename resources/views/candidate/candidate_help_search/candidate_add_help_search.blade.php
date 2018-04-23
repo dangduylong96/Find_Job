@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Tìm Kiếm
+            Hồ sơ
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Thông tin Tìm Kiếm</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+            <li class="active">Tạo hồ sơ</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -101,7 +101,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-success btn-block">Thêm</button>
+                            <button type="submit" class="btn btn-success btn-block">Tạo</button>
                         </div>
                         <!-- /.box-footer -->
                     </form>

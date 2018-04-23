@@ -7,7 +7,7 @@
             Quản Lí tin ứng tuyển
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
             <li class="active">Danh sách tin ứng tuyển</li>
         </ol>
     </section>
@@ -27,7 +27,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>tin ứng tuyển</th>
+                                <th>Tin ứng tuyển</th>
                                 <th>Hết hạn</th>
                             </tr>
                         </thead>
