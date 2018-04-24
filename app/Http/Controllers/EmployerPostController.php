@@ -318,7 +318,7 @@ class EmployerPostController extends Controller
         //Kiểm tra bài viết hết hạn chưa
         if($current_post['status']!=1)
         {
-            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'danger','content'=>'Bài viết chưa được duyệt hoặc đã hết hạn']);
+            return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'warning','content'=>'Bài viết chưa được duyệt hoặc đã hết hạn']);
         }
 
         //Lấy tất cả người dùng đã ứng tuyển bài viết này
