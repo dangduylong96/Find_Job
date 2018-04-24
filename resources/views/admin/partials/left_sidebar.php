@@ -27,7 +27,7 @@
             <li class="treeview" id="category">
                 <a href="#">
                 <i class="fa fa-trademark"></i>
-                <span>Quản lí nghành</span>
+                <span>Quản lí ngành</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>

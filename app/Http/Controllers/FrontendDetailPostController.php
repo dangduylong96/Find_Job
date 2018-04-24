@@ -17,6 +17,9 @@ class FrontendDetailPostController extends Controller
         {
             return redirect('/');
         }
+        if($post->status!=1){
+            return redirect('/');
+        }
         //Tăng lượt xem của bài viết lên
         if(!session()->has('view_post_'.$id))
         {
