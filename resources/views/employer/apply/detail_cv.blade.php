@@ -119,7 +119,7 @@
                         <h2>Hồ sơ đính kèm</h2>
                         <div class="detail_cv">
                             @if(isset($cv) && $cv!='')
-                            <span><a href="http://localhost:90/Find_Job/public/cv/{{$cv}}">{{$cv}}</a></span>
+                            <span><a href="{{url('/')}}/public/cv/{{$cv}}">{{$cv}}</a></span>
                             <br>
                             @else
                             <span>Không có</span>
@@ -137,7 +137,7 @@
                             </div>
                             <div class="jp_jop_overview_img_wrapper">
                                 <div class="jp_jop_overview_img">
-                                    <img src="http://localhost:90/Find_Job/{{$candidate->image}}" alt="post_img" width="100px" height="95px"/>
+                                    <img src="{{url('/')}}/{{$candidate->image}}" alt="post_img" width="100px" height="95px"/>
                                 </div>
                             </div>
                             <div class="jp_job_listing_single_post_right_cont">

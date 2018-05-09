@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use MyLibrary;
 use DB;
 use View;
+use URL;
 use App\Tag;
 use App\Company;
 use App\PostEmployer;
@@ -69,6 +70,6 @@ class FrontendRegisterEmail extends Controller
         $row->status=0;
         $row->save();
         echo '<script>alert("Đăng kí email thành công!!!.")</script>';
-        echo '<script>window.location.href="http://localhost:90/Find_Job"</script>';
+        echo '<script>window.location.href="'.URL('/').'"</script>';
     }
 }

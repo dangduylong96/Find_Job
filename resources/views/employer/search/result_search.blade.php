@@ -128,7 +128,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="jp_job_post_side_img">
-                                                            <img src="http://localhost:90/Find_Job/{{$v->candidate->image}}" alt="post_img"   width="100px" height="95px"/>
+                                                            <img src="{{url('/')}}/{{$v->candidate->image}}" alt="post_img"   width="100px" height="95px"/>
                                                         </div>
                                                         <div class="jp_job_post_right_cont jp_job_post_grid_right_cont">
                                                             <h4>{{substr($v->title,0,50)}}</h4>

@@ -43,6 +43,8 @@ class CandidateController extends Controller
     }
     public function getLogin2()
     {
+        echo URL('/');
+        exit;
         return view('candidate.login2');
     }
     
@@ -60,7 +62,7 @@ class CandidateController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'type'=>'candidate']))
         {
             $url_back=session('url_back');
-            if($url_back!='http://localhost:90/Find_Job/ung-vien/dang-nhap2.html' || $url_back!='http://localhost:90/Find_Job/ung-vien/thong-tin-tai-khoan2.html'){
+            if($url_back!=URL('/').'/ung-vien/dang-nhap2.html' || $url_back!=URL('/').'/ung-vien/thong-tin-tai-khoan2.html'){
                 return redirect('/ung-vien/dashboard.html');
             }
             return redirect($url_back);

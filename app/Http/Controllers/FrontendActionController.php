@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use File;
 use Mail;
+use URL;
 use App\Manager_cadidate_and_post;
 use App\Candidate;
 use App\PostEmployer;
@@ -19,7 +20,7 @@ class FrontendActionController extends Controller
             $message=[
                 'status'=>'404',
                 'content'=>'Bạn chưa đăng nhập.Vui lòng đăng nhập để thêm mục yêu thích',
-                'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap2.html'                
+                'link'=>URL('/').'/ung-vien/dang-nhap2.html'                
             ];
             echo json_encode($message);
             exit;
@@ -30,7 +31,7 @@ class FrontendActionController extends Controller
                 $message=[
                     'status'=>'404',
                     'content'=>'Tài khoản của bạn không phải là người tìm việc',
-                    'link'=>'http://localhost:90/Find_Job/ung-vien/dang-nhap2.html'
+                    'link'=>URL('/').'/ung-vien/dang-nhap2.html'
                 ];
                 echo json_encode($message);
                 exit;

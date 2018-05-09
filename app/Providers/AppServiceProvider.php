@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Mail;
+use URL;
 use App\Check_job;
 use App\PostEmployer;
 use App\Register_email;
@@ -19,9 +20,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-
         $url=url()->full();
-        if($url!='http://localhost:90/Find_Job/ung-vien/dang-nhap2.html' || $url!='http://localhost:90/Find_Job/ung-vien/thong-tin-tai-khoan2.html'){
+        if($url!=URL('/').'/ung-vien/dang-nhap2.html' || $url!=URL('/').'/ung-vien/thong-tin-tai-khoan2.html'){
             session()->put('url_back',$url);
         }
         // Ngày giờ hiện tại

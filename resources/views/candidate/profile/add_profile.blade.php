@@ -179,7 +179,7 @@
                             </div>
                             </form>
                             <div id="cv_form" class="collapse">
-                                <form id="upload_cv" action="http://localhost:90/Find_Job/ung-vien/upload-ho-so.html" method="post" enctype="multipart/form-data">
+                                <form id="upload_cv" action="{{url('/')}}/ung-vien/upload-ho-so.html" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="id_profile1" value="{{$id}}">
                                     <div id="cv" class="form-group">                               
@@ -250,7 +250,7 @@
         multiple: true,
         tags: true,
         ajax: {
-            url: 'http://localhost:90/Find_Job/employer/ajax-list-tags.html',
+            url: '{{url('/')}}/employer/ajax-list-tags.html',
             dataType: 'json',
             processResults: function(data) {
                 return {

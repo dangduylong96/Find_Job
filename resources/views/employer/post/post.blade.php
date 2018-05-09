@@ -237,7 +237,7 @@
         multiple: true,
         tags: true,
         ajax: {
-            url: 'http://localhost:90/Find_Job/employer/ajax-list-tags.html',
+            url: '{{url('/')}}/employer/ajax-list-tags.html',
             dataType: 'json',
             processResults: function(data) {
                 return {
@@ -263,7 +263,7 @@
     });
     $("#category").select2({
         ajax: {
-            url: 'http://localhost:90/Find_Job/employer/ajax-list-category.html',
+            url: '{{url('/')}}/employer/ajax-list-category.html',
             dataType: 'json',
             processResults: function(data) {
                 return {

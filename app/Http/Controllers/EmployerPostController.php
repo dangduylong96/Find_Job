@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostEmployeRequest;
 use MyLibrary;
 use Auth;
+use URL;
 use App\Company;
 use App\PostEmployer;
 use App\Tag;
@@ -347,7 +348,7 @@ class EmployerPostController extends Controller
         if(isset($url_cv_out) && $url_cv_out!='')
         {
             //Nếu chỉ có cv thôi
-            return redirect('http://localhost:90/Find_Job/public/out_cv/'.$url_cv_out);
+            return redirect(URL('/').'/public/out_cv/'.$url_cv_out);
         }elseif(isset($manager_cadidate_and_post->candidate_profile_id))
         {
             //Lấy thông tin của cv ứng tuyển
