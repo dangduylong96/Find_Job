@@ -359,13 +359,21 @@ class EmployerPostController extends Controller
             $data['candidate']=$candidate;       
             //Lấy thông tin chi tiết hồ sơ (CV_profile)
             $profile_cv=$candidate_profile->profile_cv;
-            $data['target']=json_decode($profile_cv->target);
-            $data['experience']=json_decode($profile_cv->experience);
-            $data['level']=json_decode($profile_cv->level);
-            $data['english']=json_decode($profile_cv->english);
-            $data['advantages']=json_decode($profile_cv->advantages);
-            $data['cv']=$profile_cv->cv;
-
+            if(!isset($profile_cv)){
+                $data['target']=null;
+                $data['experience']=null;
+                $data['level']=null;
+                $data['english']=null;
+                $data['advantages']=null;
+                $data['cv']=null;
+            }else{
+                $data['target']=json_decode($profile_cv->target);
+                $data['experience']=json_decode($profile_cv->experience);
+                $data['level']=json_decode($profile_cv->level);
+                $data['english']=json_decode($profile_cv->english);
+                $data['advantages']=json_decode($profile_cv->advantages);
+                $data['cv']=$profile_cv->cv;
+            }
             //Tăng lượt view của hồ sơ lên
             if(!session()->has('view_cv_'.$id))
             {

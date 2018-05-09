@@ -35,7 +35,7 @@ class EmployerSearchController extends Controller
         $data['old_slary']='all';
         $data['old_city']='all';
         //Lấy giá trị input cũ
-        $list_profile=CandidateProfile::select('*')->where('status',1);
+        $list_profile=CandidateProfile::select('*')->where([['status',1],['display',1]]);
         // $list_profile=$list_profile->where('display',1);
         if($request->has('keyword') && $request->keyword!='')
         {
@@ -121,12 +121,22 @@ class EmployerSearchController extends Controller
         $data['candidate']=$candidate;       
         //Lấy thông tin chi tiết hồ sơ (CV_profile)
         $profile_cv=$candidate_profile->profile_cv;
-        $data['target']=json_decode($profile_cv->target);
-        $data['experience']=json_decode($profile_cv->experience);
-        $data['level']=json_decode($profile_cv->level);
-        $data['english']=json_decode($profile_cv->english);
-        $data['advantages']=json_decode($profile_cv->advantages);
-        $data['cv']=$profile_cv->cv;
+        if(!isset($profile_cv)){
+            $data['target']=null;
+            $data['experience']=null;
+            $data['level']=null;
+            $data['english']=null;
+            $data['advantages']=null;
+            $data['cv']=null;
+        }else{
+            $data['target']=json_decode($profile_cv->target);
+            $data['experience']=json_decode($profile_cv->experience);
+            $data['level']=json_decode($profile_cv->level);
+            $data['english']=json_decode($profile_cv->english);
+            $data['advantages']=json_decode($profile_cv->advantages);
+            $data['cv']=$profile_cv->cv;
+        }
+        
 
         //Tăng lượt view của hồ sơ lên
         if(!session()->has('view_cv_'.$id))
@@ -204,7 +214,7 @@ class EmployerSearchController extends Controller
         $page=1;
         if($request->has('page')) $page=$request->page;
         //Lấy giá trị input cũ
-        $list_profile=CandidateProfile::select('*')->where('status',1);
+        $list_profile=CandidateProfile::select('*')->where([['status',1],['display',1]]);
         if($request->has('keyword') && $request->keyword!='')
         {
             $list_profile=$list_profile->where('title','like','%'.$request->keyword.'%');

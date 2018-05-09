@@ -40,16 +40,15 @@
                             $i=1;
                         ?>
                         @foreach($list as $k=>$v)
-                        @if($v['status']!=2)
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$v['title']}}</td>
                                 <td>{{$v['view']}}</td>
                                 <td>{{date('d-m-Y',strtotime($v['created_at']))}}</td>                            
                                 <td>{!!createLabelShowHide($v['display'])!!}</td>
-                                <td>{!!createLabel($v['status'])!!}</td>
+                                <td>{!!createLabel2($v['status'])!!}</td>
                                 <td>
-                                    @if($v['status']!=3)
+                                    @if($v['status']!=2)
                                     <a href="<?php echo url('/ung-vien/sua-tro-giup-'.$v['id'].'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
                                     <a href="<?php echo url('/ung-vien/chi-tiet-ho-so-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Thêm Chi tiết</button></a>
                                     <a href="<?php echo url('/ung-vien/xoa-tro-giup-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắn muốn xóa hồ sơ này?')"><button type="button" class="btn btn-danger">Xóa</button></a>
@@ -57,7 +56,6 @@
                                 </td>
                             </tr>
                             <?php $i++; ?>
-                        @endif
                         @endforeach
                         </tbody>
                     </table>

@@ -39,6 +39,22 @@ if (! function_exists('createLabel')) {
         return '<span class="label label-'.$arr_color_status[$status].'">'.$arr_status[$status].'</span>';
     }
 }
+if (! function_exists('createLabel2')) {
+    function createLabel2($status=0)
+    {
+        $arr_status=[
+            0=>'Đang chờ duyệt',
+            1=>'Đã duyệt',
+            2=>'Hủy'
+        ];
+        $arr_color_status=[
+            0=>'primary',
+            1=>'success',
+            2=>'danger'
+        ];
+        return '<span class="label label-'.$arr_color_status[$status].'">'.$arr_status[$status].'</span>';
+    }
+}
 
 //Hiện ra lable hiện ẩn
 if (! function_exists('createLabelShowHide')) {

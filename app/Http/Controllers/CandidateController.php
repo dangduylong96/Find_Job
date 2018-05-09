@@ -43,8 +43,6 @@ class CandidateController extends Controller
     }
     public function getLogin2()
     {
-        echo URL('/');
-        exit;
         return view('candidate.login2');
     }
     

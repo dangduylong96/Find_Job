@@ -43,16 +43,16 @@
                                 <td>{{$v->title}}</td>
                                 <td><a href="<?php echo url('/admin/chi-tiet-ung-vien-'.$v->candidate->id.'.html')?>" target="_blank">{{$v->candidate->name}}</a></td>
                                 @if($v->status==0)
-                                <td><span class="label label-success">Đã Duyệt</span></td>
+                                <td><span class="label label-primary">Đang chờ duyệt</span></td>
                                 @elseif($v->status==1)
                                 <td><span class="label label-success">Đã Duyệt</span></td>
                                 @else
                                 <td><span class="label label-danger">Không duyệt</span></td>
                                 @endif
                                 <td>
-                                    <a href="<?php echo url('/admin/chi-tiet-ho-so-ung-vien-'.$v['id'].'.html')?>" target="_blank"><button type="button" class="btn btn-primary">Xem</button></a>
-                                    <a href="<?php echo url('/admin/chi-tiet-ung-vien-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
-                                    <a href="<?php echo url('/admin/huy-ung-vien-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy hồ sơ? Khi hủy sẽ vô hiệu hóa tài khoản của hồ sơ?')"><button type="button" class="btn btn-danger">Không duyệt</button></a>
+                                    <a href="<?php echo url('/admin/chi-tiet-ho-so-ung-vien-'.$v->id.'.html')?>" target="_blank"><button type="button" class="btn btn-primary">Xem</button></a>
+                                    <a href="<?php echo url('/admin/duyet-ho-so-ung-vien-'.$v->id.'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
+                                    <a href="<?php echo url('/admin/huy-ho-so-ung-vien-'.$v->id.'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy hồ sơ? Khi hủy sẽ vô hiệu hóa tài khoản của hồ sơ?')"><button type="button" class="btn btn-danger">Không duyệt</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

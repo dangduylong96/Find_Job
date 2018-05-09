@@ -35,9 +35,11 @@
                         <form id="form_apply" action="ung-tuyen-p{{$id}}.html" method="post" enctype='multipart/form-data'>
                         @csrf
                             @foreach($candidate_profile as $v)
+                            @if($v->status==1)
                             <div class="radio">
                                 <label><input type="radio" name="cv" value="{{$v->id}}">{{$v->title}}</label>
                             </div>
+                            @endif
                             @endforeach              
                             <label><input type="radio" name="cv" value="cv_file">Chọn từ máy tính</label>     
                             <input type="file" name="cv_file"><br>

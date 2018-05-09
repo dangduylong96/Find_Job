@@ -160,7 +160,6 @@ class FrontendActionController extends Controller
         //Lấy hồ sơ của tài khoản
         $candidate_profile=$user->candidate->candidateProfile;
         $data['candidate_profile']=$candidate_profile;
-
         return view('frontend.apply.select_apply',$data);
     }
 
