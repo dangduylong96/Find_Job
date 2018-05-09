@@ -43,7 +43,7 @@
                         <ul class="nav navbar-nav">
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
-                                <a href="{{url('/')}}/dang-xuat.html">
+                                <a href="{{url('/')}}/dang-xuat.html" onclick="return confirm('Bạn có chắc chắn muốn thoát??')">
                                 <span class="hidden-xs">Đăng xuất</span>
                                 </a>
                             </li>

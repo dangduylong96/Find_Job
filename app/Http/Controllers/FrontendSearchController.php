@@ -34,12 +34,6 @@ class FrontendSearchController extends Controller
         {
             $list_search_ajax[]='"'.$v->name.'"';
         }
-        //Lấy danh sách tên công ty
-        $list_name_company=Company::where('status',1)->distinct()->get();
-        foreach($list_name_company as $k=>$v)
-        {
-            $list_search_ajax[]='"'.$v->name.'"';
-        }
         //Lấy danh sách tên bài viết
         $list_name_post=PostEmployer::where('status',1)->distinct()->get();
         foreach($list_name_post as $k=>$v)

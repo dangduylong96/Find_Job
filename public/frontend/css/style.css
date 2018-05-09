@@ -1235,6 +1235,8 @@ ul{
 	text-transform:uppercase;
 	font-weight:bold;
 	padding-top:30px;
+	width: 110px;
+    height: 60px;
 }
 .jp_hiring_content_wrapper p{
 	font-size:14px;
@@ -3447,9 +3449,7 @@ ul{
 .jp_footer_logo_wrapper{
 	float:left;
 	width:100%;
-	text-align:center;
-	padding-bottom:50px;
-	border-bottom: 1px solid #ffffff1a;
+	text-align:center
 }
 .jp_footer_three_sec_main_wrapper{
 	float:left;

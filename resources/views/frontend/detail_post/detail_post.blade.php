@@ -29,9 +29,20 @@
         <div class="row">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <div class="jp_listing_left_sidebar_wrapper">
-                    <div class="jp_job_des">
+                    <div class="jp_job_res">
                         <h2>Mô tả công việc</h2>
-                        <p>{{$post->desc}}</p>
+                        <ul>
+                        <?php
+                            $list_requirement=explode("+",$post->desc);
+                        ?>
+                            @if(!empty($list_requirement))
+                                @foreach($list_requirement as $k=>$v)
+                                @if(!empty($v))
+                                <li><i class="fa fa-caret-right"></i>&nbsp;&nbsp; {{$v}}</li>
+                                @endif
+                                @endforeach
+                            @endif
+                        </ul>
                     </div>
                     <div class="jp_job_res">
                         <h2>Yêu cầu công việc</h2>

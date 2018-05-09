@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use URL;
 use App\Company;
 use App\PostEmployer;
 use App\Manager_cadidate_and_post;
@@ -36,15 +37,21 @@ class FrontendCompanyController extends Controller
             $user=Auth::user();
             if($user->type=="candidate")
             {
-                $candidate_id=$user->candidate->id;
-                $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
-                if(isset($list_love))
-                {
-                    $data['list_love']=[];
-                    foreach($list_love as $v)
+                $candidate_id=$user->candidate;
+                if(isset($candidate_id)){
+                    $candidate_id=$user->candidate->id;
+                    $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+                    if(isset($list_love))
                     {
-                        $data['list_love'][]=$v->post_id;
+                        $data['list_love']=[];
+                        foreach($list_love as $v)
+                        {
+                            $data['list_love'][]=$v->post_id;
+                        }
                     }
+                }else{
+                    echo '<script>alert("Vui lòng bổ sung thông tin cá nhân để tiếp tục!!!");</script>';
+                    echo '<script>window.location.href="'.URL::to('/').'/ung-vien/thong-tin-tai-khoan2.html";</script>';
                 }
             }
         }

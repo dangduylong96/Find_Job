@@ -19,6 +19,11 @@
                 <i class="fa fa-user"></i> <span>Quản lí ứng viên</span>
                 </a>
             </li>
+            <li class="<?php if(strpos(url()->current(),'danh-sach-ho-so-ung-vien.html')!==false) echo 'active'?>">
+                <a href="danh-sach-ho-so-ung-vien.html">
+                <i class="fa fa-file"></i> <span>Quản lí hồ sơ</span>
+                </a>
+            </li>
             <li class="<?php if(strpos(url()->current(),'danh-sach-tin.html')!==false) echo 'active'?>">
                 <a href="danh-sach-tin.html">
                 <i class="fa fa-sticky-note"></i> <span>Quản lí tin tuyển dụng</span>

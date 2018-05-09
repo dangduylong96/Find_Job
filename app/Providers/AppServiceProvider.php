@@ -37,16 +37,12 @@ class AppServiceProvider extends ServiceProvider
         $update_date=strtotime($check_job->updated_at);
         if($curent_date>$update_date)
         {
-            $post=PostEmployer::all();
+            $post=PostEmployer::where([['expiration_date','<',date('Y-m-d H:i:s')],['status','!=',2]])->get();
             foreach($post as $k=>$v)
             {
-                $exp_post=strtotime($v->expiration_date);
-                if($exp_post<$curent_date)
-                {
-                    $post_expirent=PostEmployer::find($v->id);
-                    $post_expirent->status=2;
-                    $post_expirent->save();
-                }
+                $post_expirent=PostEmployer::find($v->id);
+                $post_expirent->status=2;
+                $post_expirent->save();
             }
             //Cập nhập lại ngày
             if($check_job->status=1)

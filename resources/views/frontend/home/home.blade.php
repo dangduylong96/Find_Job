@@ -52,8 +52,8 @@
                                     <div class="item">
                                         <div class="jp_hiring_content_main_wrapper">
                                             <div class="jp_hiring_content_wrapper">
-                                                <img src="{{$v['image']}}" alt="hiring_img" width="60px" height="60px" width="60px" height="60px"/>
-                                                <h4>{{$v['name']}}</h4>
+                                                <img src="{{$v['image']}}" alt="hiring_img" style="width:60px!important;height:60px!important"/>
+                                                <h4>{{substr($v['name'],0,16)}}</h4>
                                                 <p>{{MyLibrary::getNameSetting('city',$v['place'])}}</p>
                                                 <ul>
                                                     <li><a href="cong-ty-c{{$v['id']}}.html">{{$v['count']}} việc làm</a></li>
@@ -263,7 +263,7 @@
                                     <img src="{{asset('public/frontend/images/content/resume_logo.png')}}" alt="logo" />
                                     <h4>Nhận công việc tốt nhất từ email.Thêm ngay bây giờ!!!</h4>
                                     <ul>
-                                        <li><a href="#"><i class="fa fa-plus-circle"></i> &nbsp;Thêm Email</a></li>
+                                        <li><a href="dang-ki-email.html"><i class="fa fa-plus-circle"></i> &nbsp;Thêm Email</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -278,57 +278,18 @@
                                         @foreach($hightlight_job as $k=>$v)
                                         <div class="item">
                                             <div class="jp_spotlight_slider_img_Wrapper">
-                                                <img src="{{asset('public/frontend/images/content/spotlight_img.jpg')}}" alt="spotlight_img" />
+                                                <img src="{{{$v->Company->image}}}" alt="spotlight_img" width="201px" height="105px"/>
                                             </div>
                                             <div class="jp_spotlight_slider_cont_Wrapper">
                                                 <h4>{{$v->title}})</h4>
                                                 <p>{{$v->company->name}}</p>
                                                 <ul>
                                                     <li style="width:135px"><i class="fa fa-cc-paypal"></i>&nbsp; {{MyLibrary::getNameSetting('slary',$v['slary'])}}</li>
-                                                    <li><i class="fa fa-map-marker"></i>&nbsp; {{MyLibrary::getNameSetting('city',$v['workplace'])}}</li>
+                                                    {{--  <li><i class="fa fa-map-marker"></i>&nbsp; {{MyLibrary::getNameSetting('city',$v['workplace'])}}</li>  --}}
                                                 </ul>
                                             </div>
                                         </div>
                                         @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="jp_rightside_career_wrapper">
-                                <div class="jp_rightside_career_heading">
-                                    <h4>Tin tức mới</h4>
-                                </div>
-                                <div class="jp_rightside_career_main_content">
-                                    <div class="jp_rightside_career_content_wrapper">
-                                        <div class="jp_rightside_career_img">
-                                            <img src="{{asset('public/frontend/images/content/career_img1.jpg')}}" alt="career_img" />
-                                        </div>
-                                        <div class="jp_rightside_career_img_cont">
-                                            <h4>Job Seekeks OCT - 2017</h4>
-                                            <p><i class="fa fa-calendar-o"></i> &nbsp;20 OCT, 2017</p>
-                                        </div>
-                                    </div>
-                                    <div class="jp_rightside_career_content_wrapper">
-                                        <div class="jp_rightside_career_img">
-                                            <img src="{{asset('public/frontend/images/content/career_img2.jpg')}}" alt="career_img" />
-                                        </div>
-                                        <div class="jp_rightside_career_img_cont">
-                                            <h4>Job Seekeks OCT - 2017</h4>
-                                            <p><i class="fa fa-calendar-o"></i> &nbsp;20 OCT, 2017</p>
-                                        </div>
-                                    </div>
-                                    <div class="jp_rightside_career_content_wrapper">
-                                        <div class="jp_rightside_career_img">
-                                            <img src="{{asset('public/frontend/images/content/career_img3.jpg')}}" alt="career_img" />
-                                        </div>
-                                        <div class="jp_rightside_career_img_cont">
-                                            <h4>Job Seekeks OCT - 2017</h4>
-                                            <p><i class="fa fa-calendar-o"></i> &nbsp;20 OCT, 2017</p>
-                                        </div>
-                                    </div>
-                                    <div class="jp_rightside_career_btn">
-                                        <a href="#"><i class="fa fa-plus-circle"></i> View All</a>
                                     </div>
                                 </div>
                             </div>

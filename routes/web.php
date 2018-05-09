@@ -145,6 +145,12 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('duyet-ung-vien-{id}.html','AdminCandidateController@checkCandidate');
     Route::get('huy-ung-vien-{id}.html','AdminCandidateController@destroyCandidate');
 
+    //Quản lí hồ sơ
+    Route::get('danh-sach-ho-so-ung-vien.html','AdminCandidateProfileController@getListProfile');
+    Route::get('chi-tiet-ho-so-ung-vien-{id}.html','AdminCandidateProfileController@getDetailCandidate');
+    Route::get('duyet-ho-so-ung-vien-{id}.html','AdminCandidateProfileController@checkCandidate');
+    Route::get('huy-ho-so-ung-vien-{id}.html','AdminCandidateProfileController@destroyCandidate');
+
     //Quản lí ngành
     Route::get('danh-sach-nghanh.html','AdminCategoryController@getListCategory');
     Route::get('them-nghanh.html','AdminCategoryController@addCategory');

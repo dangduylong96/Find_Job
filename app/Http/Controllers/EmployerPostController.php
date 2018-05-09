@@ -249,7 +249,6 @@ class EmployerPostController extends Controller
             $arr_tag=$stamp_arr;
         }
         $new_post->tags=json_encode($arr_tag);
-        $new_post->status=0;
         $new_post->save();
         //id vừa thêm vào là
         $new_id=$id;
@@ -270,7 +269,7 @@ class EmployerPostController extends Controller
                 $tag->save();
             }
         }
-        return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Cập nhập bài tuyển dụng thành công. Bài tuyển dụng sẽ chờ xét duyệt từ quản trị trước khi hiển thị']);
+        return redirect('employer/danh-sach-tin.html')->with('message',['status'=>'success','content'=>'Cập nhập bài tuyển dụng thành công!!']);
     }
     public function employerPostRemoveEmployer($id)
     {

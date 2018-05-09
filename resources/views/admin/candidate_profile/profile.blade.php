@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Danh sách ứng viên
+            Danh sách hồ sơ
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li class="active">Quản lí ứng viên</li>
+            <li class="active">Quản lí hồ sơ</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,7 +27,8 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Ứng viên</th>
+                                <th>hồ sơ</th>
+                                <th>ứng viên</th>
                                 <th>Trạng thái</th>
                                 <th>Thao tác</th>
                             </tr>
@@ -36,20 +37,22 @@
                         <?php
                             $i=1;
                         ?>
-                        @foreach($list_candidate as $k=>$v)
+                        @foreach($list_profile as $k=>$v)
                             <tr>
                                 <td>{{$i}}</td>
-                                <td><a href="<?php echo url('/admin/chi-tiet-ung-vien-'.$v['id'].'.html')?>" target="_blank">{{$v->name}}</a></td>
+                                <td>{{$v->title}}</td>
+                                <td><a href="<?php echo url('/admin/chi-tiet-ung-vien-'.$v->candidate->id.'.html')?>" target="_blank">{{$v->candidate->name}}</a></td>
                                 @if($v->status==0)
                                 <td><span class="label label-success">Đã Duyệt</span></td>
                                 @elseif($v->status==1)
                                 <td><span class="label label-success">Đã Duyệt</span></td>
                                 @else
-                                <td><span class="label label-danger">Đã hủy</span></td>
+                                <td><span class="label label-danger">Không duyệt</span></td>
                                 @endif
                                 <td>
-                                    <a href="<?php echo url('/admin/duyet-ung-vien-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Mở</button></a>
-                                    <a href="<?php echo url('/admin/huy-ung-vien-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy ứng viên? Khi hủy sẽ vô hiệu hóa tài khoản của ứng viên?')"><button type="button" class="btn btn-danger">Hủy</button></a>
+                                    <a href="<?php echo url('/admin/chi-tiet-ho-so-ung-vien-'.$v['id'].'.html')?>" target="_blank"><button type="button" class="btn btn-primary">Xem</button></a>
+                                    <a href="<?php echo url('/admin/chi-tiet-ung-vien-'.$v['id'].'.html')?>"><button type="button" class="btn btn-success">Duyệt</button></a>
+                                    <a href="<?php echo url('/admin/huy-ung-vien-'.$v['id'].'.html')?>" onclick="return confirm('Bạn có chắc chắc muốn hủy hồ sơ? Khi hủy sẽ vô hiệu hóa tài khoản của hồ sơ?')"><button type="button" class="btn btn-danger">Không duyệt</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

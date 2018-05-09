@@ -68,42 +68,42 @@
         <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border jp_job_cate_left_border_bottom">
             <div class="jp_top_jobs_category">
                 <i class="fa fa-chrome"></i>
-                <h3><a href="#">Web Developer</a></h3>
+                <h3><a href="javascript: void(0)">Web Developer</a></h3>
                 <p>(240 mục)</p>
             </div>
         </div>
         <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
             <div class="jp_top_jobs_category">
                 <i class="fa fa-laptop"></i>
-                <h3><a href="#">Desktop Developer</a></h3>
-                <p>(504 jobs)</p>
+                <h3><a href="javascript: void(0)">Desktop Developer</a></h3>
+                <p>(504 mục)</p>
             </div>
         </div>
         <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_bottom">
             <div class="jp_top_jobs_category">
                 <i class="fa fa-android"></i>
-                <h3><a href="#">Android Developer</a></h3>
+                <h3><a href="javascript: void(0)">Android Developer</a></h3>
                 <p>(2250 mục)</p>
             </div>
         </div>
         <div class="jp_top_jobs_category_wrapper jp_job_cate_left_border_res">
             <div class="jp_top_jobs_category">
                 <i class="fa fa-apple"></i>
-                <h3><a href="#">IOS Developer</a></h3>
+                <h3><a href="javascript: void(0)">IOS Developer</a></h3>
                 <p>(202 mục)</p>
             </div>
         </div>
         <div class="jp_top_jobs_category_wrapper">
             <div class="jp_top_jobs_category">
                 <i class="fa fa-code"></i>
-                <h3><a href="#">Order</a></h3>
+                <h3><a href="javascript: void(0)">Order</a></h3>
                 <p>(1457 mục)</p>
             </div>
         </div>
         <div class="jp_top_jobs_category_wrapper">
             <div class="jp_top_jobs_category">
                 <i class="fa fa-th-large"></i>
-                <h3><a href="#">Tất cả</a></h3>
+                <h3><a href="javascript: void(0)">Tất cả</a></h3>
                 <p>(2000+ mục)</p>
             </div>
         </div>

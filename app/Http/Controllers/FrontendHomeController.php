@@ -7,6 +7,7 @@ use MyLibrary;
 use View;
 use DB;
 use Auth;
+use URL;
 use App\Tag;
 use App\Company;
 use App\PostEmployer;
@@ -35,12 +36,6 @@ class FrontendHomeController extends Controller
         //lấy dánh sách tag
         $list_tag=Tag::distinct()->select('name')->get();
         foreach($list_tag as $k=>$v)
-        {
-            $list_search_ajax[]='"'.$v->name.'"';
-        }
-        //Lấy danh sách tên công ty
-        $list_name_company=Company::where('status',1)->distinct()->get();
-        foreach($list_name_company as $k=>$v)
         {
             $list_search_ajax[]='"'.$v->name.'"';
         }
@@ -73,7 +68,7 @@ class FrontendHomeController extends Controller
         $data['top_view_post']=$top_view_post;
 
         //Việc làm nổi bật
-        $hightlight_job=PostEmployer::select('id','title','company_id','slary','workplace','tags')->where('status',1)->orderBy('view','desc')->skip(0)->take(3)->get();
+        $hightlight_job=PostEmployer::select('id','title','company_id','slary','workplace','tags')->where('status',1)->orderBy('view','desc')->skip(0)->take(5)->get();
         $data['hightlight_job']=$hightlight_job;
 
         //Danh sách các bài viết đã ưa thích
@@ -82,15 +77,21 @@ class FrontendHomeController extends Controller
             $user=Auth::user();
             if($user->type=="candidate")
             {
-                $candidate_id=$user->candidate->id;
-                $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
-                if(isset($list_love))
-                {
-                    $data['list_love']=[];
-                    foreach($list_love as $v)
+                $candidate_id=$user->candidate;
+                if(isset($candidate_id)){
+                    $candidate_id=$user->candidate->id;
+                    $list_love=Manager_cadidate_and_post::where([['candidate_id',$candidate_id],['type',1]])->get();
+                    if(isset($list_love))
                     {
-                        $data['list_love'][]=$v->post_id;
+                        $data['list_love']=[];
+                        foreach($list_love as $v)
+                        {
+                            $data['list_love'][]=$v->post_id;
+                        }
                     }
+                }else{
+                    echo '<script>alert("Vui lòng bổ sung thông tin cá nhân để tiếp tục!!!");</script>';
+                    echo '<script>window.location.href="'.URL::to('/').'/ung-vien/thong-tin-tai-khoan2.html";</script>';
                 }
             }
         }
@@ -105,7 +106,7 @@ class FrontendHomeController extends Controller
         //Danh sách category
 
         //Ứng viên mới
-        $data['new_candidate']=Candidate::where('status',1)->orderBy('created_at','desc')->skip(0)->take(3)->get();
+        $data['new_candidate']=Candidate::where('status',1)->orderBy('id','desc')->skip(0)->take(3)->get();
 
         return view('frontend.home.home',$data);
     }
