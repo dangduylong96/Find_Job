@@ -33,7 +33,7 @@
                         <h2>Thông tin hồ sơ</h2>
                         <div class="detail_cv">
                             <span>Tiêu đề: <i>{{$candidate_profile->title}}</i></span>
-                            <span>Nghành nghề: <i>{{$candidate_profile->category->name}}</i></span>
+                            <span>ngành nghề: <i>{{$candidate_profile->category->name}}</i></span>
                             <span>Trình độ: <i>{{MyLibrary::getNameSetting('level',$candidate_profile->level)}}</i></span>
                             <span>Kinh nghiệm: <i>{{MyLibrary::getNameSetting('experience',$candidate_profile->experience)}}</i></span>
                             <span>Mức lương mong muốn: <i>{{MyLibrary::getNameSetting('slary',$candidate_profile->slary)}}</i></span>
@@ -78,7 +78,7 @@
                             <h3 style="color:blueviolet">{{MyLibrary::getNameSetting('level',$v->name_level)}}</h3>
                             <span>Trình độ: <i>{{MyLibrary::getNameSetting('level',$v->name_level)}}</i></span>
                             <span>Đơn vị đào tạo: <i>{{$v->tranning_unit_level}}</i></span>
-                            <span>Chuyên nghành: <i>{{$v->specialized_level}} tháng</i></span>
+                            <span>Chuyên ngành: <i>{{$v->specialized_level}} tháng</i></span>
                             <span>Loại: <i>{{MyLibrary::getNameSetting('type_level',$v->type_level)}}</i></span>
                             <br>
                             @endforeach
@@ -191,7 +191,7 @@
                                     </div>
                                     <div class="jp_listing_list_icon_cont_wrapper">
                                         <ul>
-                                            <li>Nghành nghề:</li>
+                                            <li>ngành nghề:</li>
                                             <li>{{$candidate_profile->category->name}}</li>
                                         </ul>
                                     </div>

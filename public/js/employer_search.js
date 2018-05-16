@@ -6,7 +6,7 @@ $(document).on('click','.ajax_page_normal',function(){
     var category_id = $("input[name='ajax_category_id[]']:checked").map(function(){
         return $(this).val();
     }).get();
-    //Nếu nghành k chọn thì lấy trên input
+    //Nếu ngành k chọn thì lấy trên input
     if(jQuery.isEmptyObject(category_id))
     {
         category_id=$('select[name="category_id"]').val();

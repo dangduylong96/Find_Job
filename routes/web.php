@@ -26,6 +26,8 @@ Route::get('cong-ty-c{id}.html','FrontendCompanyController@getDetailCompany');
 //Đăng kí email tìm vệc làm
 Route::get('dang-ki-email.html','FrontendRegisterEmail@registerEmail');
 Route::post('dang-ki-email.html','FrontendRegisterEmail@registerPostEmail')->name('post_register_email');
+//Chat cộng đồng
+Route::get('chat.html','FrontendActionController@chat');
 
 
 //Nhà tuyển dụng

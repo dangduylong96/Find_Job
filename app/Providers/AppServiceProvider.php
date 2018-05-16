@@ -77,7 +77,7 @@ class AppServiceProvider extends ServiceProvider
             $new_post=PostEmployer::where([['created_at','>=',$last_day],['status',1]])->get();
             if(isset($new_post)){
                 foreach($new_post as $v){
-                    //Gửi cho các email có category của tin đã đăng ( 1 tin thuộc nhiều nghành)
+                    //Gửi cho các email có category của tin đã đăng ( 1 tin thuộc nhiều ngành)
                     $category=json_decode($v->category_id);
                     foreach($category as $v_cate){
                         //Lấy mảng với key là id_cate và value là id bài viết

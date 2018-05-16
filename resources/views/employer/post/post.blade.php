@@ -52,9 +52,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Nghành</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">ngành</label>
                                 <div class="col-sm-10">
-                                    <select id="category" class="form-control select2" name="category[]" multiple="multiple" data-placeholder="Chọn nghành, tối đa 5 ngành" style="width: 100%;">
+                                    <select id="category" class="form-control select2" name="category[]" multiple="multiple" data-placeholder="Chọn ngành, tối đa 5 ngành" style="width: 100%;">
                                     </select>
                                     <span class="error">{{$errors->first('category')}}</span>
                                 </div>

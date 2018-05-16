@@ -63,7 +63,7 @@
                 <div class="small-box bg-red">
                     <div class="inner">
                         <h3>{{$Category}}<sup style="font-size: 20px">+</sup></h3>
-                        <p>Nghành</p>
+                        <p>ngành</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>

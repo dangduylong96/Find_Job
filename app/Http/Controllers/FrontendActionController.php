@@ -370,4 +370,8 @@ class FrontendActionController extends Controller
             }
         }
     }
+
+    public function chat(){
+        return view('frontend.chat.chat');
+    }
 }

@@ -19,6 +19,17 @@
                                 <option value="{{$v->id}}">{{$v->name}}</option>
                                 @endforeach
                             </select><i class="fa fa-angle-down second_icon"></i>
+                            <style>
+                                .select2-container--default{
+                                    margin-top: 20px;
+                                    margin-left: -33px;
+                                }
+                                .select2-dropdown--below{
+                                    width: 270px;
+                                    margin-top: -31px;
+                                    margin-left: 70px;
+                                }
+                            </style>
                             <button type="submit">Đăng kí</button>
                         </from>
                     </div>
@@ -35,67 +46,6 @@
                     <div class="jp_footer_logo_wrapper">
                         <div class="jp_footer_logo">
                             <a href="#"><img src="{{asset('public/frontend/images/content/resume_logo.png')}}" alt="footer_logo"/></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="jp_footer_three_sec_main_wrapper">
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="jp_footer_first_cont_wrapper">
-                            <div class="jp_footer_first_cont">
-                                <h2>Who We Are</h2>
-                                <p>This is Photoshops version of Lom Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum.<br><br> Proin akshay handge vel velit auctor aliquet. Aenean sollicitudin,</p>
-                                <ul>
-                                    <li><i class="fa fa-plus-circle"></i> <a href="#">READ MORE</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="jp_footer_condidate_wrapper jp_footer_condidate_wrapper2">
-                            <div class="jp_footer_condidate">
-                                <h2>For CANDIDATE</h2>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Add a Resume</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Candidate Dashboard</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Past Applications</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Job Alerts</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Bookmarks</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> My Account</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Your Jobs</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="jp_footer_condidate_wrapper jp_footer_condidate_wrapper3">
-                            <div class="jp_footer_condidate">
-                                <h2>For Employers</h2>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Browse Candidates</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Employer Dashboard</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Add Job</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Job Page</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Job Packages</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Work Process</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> My Account</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="jp_footer_condidate_wrapper jp_footer_condidate_wrapper4">
-                            <div class="jp_footer_condidate">
-                                <h2>Information</h2>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> About Us</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Terms & Conditions</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Privacy Policy</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Careers with Us</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Sitemap</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> Contact Us</a></li>
-                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i> FAQs</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

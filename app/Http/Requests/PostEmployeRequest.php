@@ -57,7 +57,7 @@ class PostEmployeRequest extends FormRequest
         return [
             'title.required' => 'Tiêu không được bỏ trống',
             'qty_candidate.required' => 'Số lương không được bỏ trống',
-            'category.required' => 'Nghành không được bỏ trống',
+            'category.required' => 'ngành không được bỏ trống',
             'sex.in'  => 'Giới tính k hợp lệ',
             'desc.required'  => 'Mô tả không được bỏ trống',
             'desc.min'  => 'Mô tả tối thiểu 10 kí tự',

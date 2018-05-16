@@ -4,11 +4,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Quản Lí nghành
+            Quản Lí ngành
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-            <li class="active">Danh sách nghành</li>
+            <li class="active">Danh sách ngành</li>
         </ol>
     </section>
     <!-- Main content -->
@@ -27,7 +27,7 @@
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Tên nghành</th>
+                                <th>Tên ngành</th>
                                 <th>Thao tác</th>
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                                 <td>{{$v->name}}</td>
                                 <td>
                                     <a href="<?php echo url('/admin/sua-nghanh-'.$v->id.'.html')?>"><button type="button" class="btn btn-info">Sửa</button></a>
-                                    <a href="<?php echo url('/admin/xoa-nghanh-'.$v->id.'.html')?>"><button type="button" class="btn btn-danger" onclick="return confirm('Xóa loại nghành sẽ xóa tất cả các tin của nghành đó. Khi xóa không thể khôi phục lại.')">Xóa</button></a>
+                                    <a href="<?php echo url('/admin/xoa-nghanh-'.$v->id.'.html')?>"><button type="button" class="btn btn-danger" onclick="return confirm('Xóa loại ngành sẽ xóa tất cả các tin của ngành đó. Khi xóa không thể khôi phục lại.')">Xóa</button></a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

@@ -13,7 +13,7 @@ class EmployerSearchController extends Controller
 {
     public function pageSearch()
     {   
-        //Lây danh sách nghành
+        //Lây danh sách ngành
         $data['category']=Category::get();
         //Lấy danh sách setting
         $data['sex']=Mylibrary::getSetting('sex');
@@ -87,7 +87,7 @@ class EmployerSearchController extends Controller
         }
         $data['list_save_profile']=$list_save_profile;
 
-        //Lây danh sách nghành
+        //Lây danh sách ngành
         $data['category']=Category::get();
         //Lấy danh sách setting
         $data['sex']=Mylibrary::getSetting('sex');

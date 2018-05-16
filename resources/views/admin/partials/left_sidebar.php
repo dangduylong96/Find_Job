@@ -38,8 +38,8 @@
                 </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?php if(strpos(url()->current(),'danh-sach-nghanh.html')!==false) echo 'active'?>" data-active="category"><a href="danh-sach-nghanh.html"><i class="fa fa-circle-o"></i> Dang sách nghành</a></li>
-                    <li class="<?php if(strpos(url()->current(),'them-nghanh.html')!==false) echo 'active'?>" data-active="category"><a href="them-nghanh.html"><i class="fa fa-circle-o"></i> Thêm nghành</a></li>
+                    <li class="<?php if(strpos(url()->current(),'danh-sach-nghanh.html')!==false) echo 'active'?>" data-active="category"><a href="danh-sach-nghanh.html"><i class="fa fa-circle-o"></i> Dang sách ngành</a></li>
+                    <li class="<?php if(strpos(url()->current(),'them-nghanh.html')!==false) echo 'active'?>" data-active="category"><a href="them-nghanh.html"><i class="fa fa-circle-o"></i> Thêm ngành</a></li>
                 </ul>
             </li>
             <li class="header">Tùy Chỉnh</li>

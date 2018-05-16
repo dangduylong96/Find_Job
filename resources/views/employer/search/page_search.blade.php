@@ -32,7 +32,7 @@
                                     <div class="jp_slider_form_location_wrapper">
                                         <i class="fa fa-th-large first_icon"></i>
                                             <select name="category_id" class="select2">
-                                                <option value="all">Tất cả nghành nghề</option>
+                                                <option value="all">Tất cả ngành nghề</option>
                                                 @foreach($category as $v)
                                                 <option value="{{$v->id}}">{{$v->name}}</option>
                                                 @endforeach

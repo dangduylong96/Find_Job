@@ -120,7 +120,7 @@
                                             <td><p><span>{{$v['tranning_unit_level']}}</span><p></td>
                                         </tr>
                                         <tr>
-                                            <td><p>Chuyên nghành:</p></td>
+                                            <td><p>Chuyên ngành:</p></td>
                                             <td><p><span>{{$v['specialized_level']}}</span><p></td>
                                         </tr>
                                         <tr>

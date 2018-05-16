@@ -8,13 +8,13 @@ class AdminCategoryController extends Controller
 {
     public function getListCategory()
     {
-        //Lấy danh sách nghành hiện có
+        //Lấy danh sách ngành hiện có
         $category=Category::get();
         $data['category']=$category;
         return view('admin.category.list_category',$data);
     }
 
-    //Thêm nghành
+    //Thêm ngành
     public function addCategory()
     {
         return view('admin.category.add_category');
@@ -25,24 +25,24 @@ class AdminCategoryController extends Controller
             'name'=>'required|unique:category,name'
         ],
         [
-            'name.required'=>'Tên nghành k được bỏ trống',
-            'name.unique'=>'Tên nghành đã tồn tại'
+            'name.required'=>'Tên ngành k được bỏ trống',
+            'name.unique'=>'Tên ngành đã tồn tại'
         ]);
         $name=$request->name;
         $row=new Category;
         $row->name=$name;
         $row->save();
-        return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'success','content'=>'Thêm nghành thành công!!']);
+        return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'success','content'=>'Thêm ngành thành công!!']);
     }
 
-    //Sửa nghành
+    //Sửa ngành
     public function editCategory($id)
     {
         //Kiểm tra có tồn tại loại k
         $category=Category::find($id);
         if(!isset($category))
         {
-            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'danger','content'=>'Nghành không tồn tại !!']);
+            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'danger','content'=>'ngành không tồn tại !!']);
         }
         $data['category']=$category;
         $data['id']=$id;
@@ -54,7 +54,7 @@ class AdminCategoryController extends Controller
         $category=Category::find($id);
         if(!isset($category))
         {
-            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'danger','content'=>'Nghành không tồn tại !!']);
+            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'danger','content'=>'ngành không tồn tại !!']);
         }
         if($request->has('name'))
         {
@@ -62,28 +62,28 @@ class AdminCategoryController extends Controller
                 'name'=>'required|unique:category,name'
             ],
             [
-                'name.required'=>'Tên nghành k được bỏ trống',
-                'name.unique'=>'Tên nghành đã tồn tại'
+                'name.required'=>'Tên ngành k được bỏ trống',
+                'name.unique'=>'Tên ngành đã tồn tại'
             ]);
             $name=$request->name;
             $category->name=$name;
             $category->save();
-            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'success','content'=>'Sửa nghành thành công!!']);
+            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'success','content'=>'Sửa ngành thành công!!']);
         }
     }
 
-    //Xóa nghành
+    //Xóa ngành
     public function deleteCategory($id)
     {
         //Kiểm tra có tồn tại loại k
         $category=Category::find($id);
         if(!isset($category))
         {
-            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'danger','content'=>'Nghành không tồn tại !!']);
+            return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'danger','content'=>'ngành không tồn tại !!']);
         }
-        //xóa nghành
+        //xóa ngành
         $category->delete();
-        return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'success','content'=>'Xóa nghành thành công!!']);
+        return redirect('admin/danh-sach-nghanh.html')->with('message',['status'=>'success','content'=>'Xóa ngành thành công!!']);
 
     }
 }

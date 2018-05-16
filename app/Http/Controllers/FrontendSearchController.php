@@ -154,7 +154,7 @@ class FrontendSearchController extends Controller
 
     //Ajax phân trang và lọc và sắp xếp
     public function ajaxSearch(Request $request)
-    {
+    {;
         if($request->has('keyword'))
         {
             $keyword=$request->keyword;
@@ -250,7 +250,7 @@ class FrontendSearchController extends Controller
             }
             $list_post=$list_post->get();
             $list_tag=$list_tag->get();                        
-            //Lọc theo nghành
+            //Lọc theo ngành
             $category_id=$request->category_id;
             $list_post_result=[];
             $list_tag_result=[];
@@ -329,14 +329,24 @@ class FrontendSearchController extends Controller
                 $html_paginator.='<li class="'.$active.'"><a href="javascript:void(0);" class="ajax_page" data-page="'.$i.'">'.$i.'</a></li>';
             }
             $html_paginator.='<li><a href="#">Next</a></li> </ul> </div> </div>';
-
             $message=[
                 'status'=>'200',
                 'total'=>$count_post,
                 'page'=>$page,
-                'content'=>$html_result.$html_paginator
+                'content'=>mb_convert_encoding($html_result.$html_paginator, 'UTF-8', 'UTF-8')
             ];
-            return json_encode($message);
+            $responsecode = 200;
+        
+            $header = array (
+                'Content-Type' => 'application/json',
+                'charset' => 'utf-8'
+            );
+            
+            return response()->json($message , $responsecode, $header, JSON_UNESCAPED_UNICODE);
+            // echo $html_result.$html_paginator;
+            // echo json_encode($html_result.$html_paginator);
+            // exit;
+            // return json_encode($message);
         }
     }
 }

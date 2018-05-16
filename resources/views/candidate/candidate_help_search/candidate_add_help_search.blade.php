@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Nghành</label>
+                                <label for="inputEmail3" class="col-sm-2 control-label">ngành</label>
                                 <div class="col-sm-10">
                                     <select id="category" name="category" class="form-control select2" style="width: 100%;">
                                         @foreach($category as $k=>$v)

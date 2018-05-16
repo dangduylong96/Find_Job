@@ -173,6 +173,26 @@
                 </div>
             </div>
         </div>
+
+        //Tư vấn trợ giúp
+        <div class="help" onclick="window.location='{{url('/')}}/chat.html'">
+            <span>Tư vấn - Trợ giúp</span>
+        </div>
+        <style>
+            .help{
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                width: 20%;
+                z-index: 99;
+                background-color: blueviolet;
+                color: white;
+                text-align: center;
+                font-size: 20px;
+                padding: 10px 0;
+                cursor: pointer;
+            }
+        </style>
         
         <!-- jp footer Wrapper End -->
         <!--main js file start-->

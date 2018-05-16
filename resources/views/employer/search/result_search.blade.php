@@ -35,7 +35,7 @@
                                     <div class="jp_slider_form_location_wrapper">
                                         <i class="fa fa-th-large first_icon"></i>
                                             <select name="category_id">
-                                                <option value="all">Tất cả nghành nghề</option>
+                                                <option value="all">Tất cả ngành nghề</option>
                                                 @foreach($category as $v)
                                                 <option value="{{$v->id}}" {{$old_category_id==$v->id?'selected':''}}>{{$v->name}}</option>
                                                 @endforeach
@@ -177,7 +177,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="jp_rightside_job_categories_wrapper">
                             <div class="jp_rightside_job_categories_heading">
-                                <h4>Chuyên nghành</h4>
+                                <h4>Chuyên ngành</h4>
                             </div>
                             <div class="jp_rightside_job_categories_content">
                                 <div class="handyman_sec1_wrapper">
