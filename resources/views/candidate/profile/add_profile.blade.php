@@ -210,9 +210,9 @@
                             </div>
                         </div>
                         <!-- /.box-body -->
-                        <div class="box-footer">
+                        {{--  <div class="box-footer">
                             <button type="submit" class="btn btn-danger btn-block">Xem trước hồ sơ</button>
-                        </div>
+                        </div>  --}}
                         <!-- /.box-footer -->
                     </form>
                 </div>

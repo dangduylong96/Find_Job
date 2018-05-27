@@ -54,7 +54,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
 <script>
     setTimeout(function(){
-        var html_chat='<div><span><strong>Tư vấn viên :</strong> Xin chào!! mọi thắc mắc và phan hồi xin vui lòng liên hệ email: dangduylong96@gmail.com hoặc sđt: 0988936354</span></div>';
+        var html_chat='<div><span><strong>Tư vấn viên :</strong> Xin chào!! mọi thắc mắc và phản hồi xin vui lòng liên hệ email: dangduylong96@gmail.com hoặc sđt: 0988936354</span></div>';
         $('#content_chat').append(html_chat);
     }, 2000);
     var socket = io('http://localhost:3000');

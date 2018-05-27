@@ -45,7 +45,7 @@
                             <input type="file" name="cv_file"><br>
                             <button type="submit" class="btn btn-danger btn-block">Ứng tuyển</button>
                         </form>
-                        <p><a href="/ung-vien/them-tro-giup.html" target="_blank" class="link_create_cv">Bạn muốn tạo mới hồ sơ?</a></p>
+                        <p><a href="{{url('/')}}/ung-vien/them-tro-giup.html" target="_blank" class="link_create_cv">Bạn muốn tạo mới hồ sơ?</a></p>
                     </div>
                 </div>
             </div>
